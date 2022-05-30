@@ -26,3 +26,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::view('/example', 'example')->name('example');
+});

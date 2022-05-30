@@ -1,0 +1,19 @@
+para ejecutar migraciones y los seeders:
+php artisan migrate:fresh --seed
+
+para ejecutar migracion de una tabla:
+php artisan make:migration Example
+
+para crear un modelo 
+php artisan make:model Example
+
+Para crear un seeder
+php artisan make:seeder ExampleSeeder
+
+Para crear un componente livewire
+php artisan make:livewire Example
+Te crea 2 archivos uno en http/livewire 
+que es el componente livewire como tal
+y la vista en views/livewire
+pero *TIENES QUE AGREGAR* el archivo 
+para conectar el livewire y la vista 

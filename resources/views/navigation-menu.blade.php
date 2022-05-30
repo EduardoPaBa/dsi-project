@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+{{-- <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -6,7 +6,8 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
+                       <!-- <x-jet-application-mark class="block h-9 w-auto" />  -->
+                       <img src="{{url('/img/logo.jpeg')}}" width="50" height="50"/>
                     </a>
                 </div>
 
@@ -14,6 +15,11 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
+                    </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('example') }}" :active="request()->routeIs('example')">
+                        {{ __('Example') }}
                     </x-jet-nav-link>
                 </div>
             </div>
@@ -212,4 +218,124 @@
             </div>
         </div>
     </div>
-</nav>
+</nav> --}}
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Contact</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Wish shop project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+    <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="styles/contact.css">
+    <link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
+</head>
+
+<body>
+
+    <div class="super_container">
+        <header class="header">
+            <div class="header_inner d-flex flex-row align-items-center justify-content-start">
+                <div class="logo"><a href="#"><img src="{{url('/img/logo.jpeg')}}" width="80" height="80"/></a></div>
+                <nav class="main_nav">
+                    <ul>
+                        <li><a href="{{ route('dashboard') }}">home</a></li>
+                        <li><a href="{{ route('example') }}">clothes</a></li>
+                        <li><a href="#">accessories</a></li>
+                        <li><a href="#">lingerie</a></li>
+                        <li><a href="#">contact</a></li>
+                    </ul>
+                </nav>
+                <div class="header_content ml-auto">
+                    <div class="search header_search">
+                        <form action="#">
+                            <input type="search" class="search_input" required="required">
+                            <button type="submit" id="search_button" class="search_button"><img
+                                    src="images/magnifying-glass.svg" alt=""></button>
+                        </form>
+                    </div>
+                    <div class="shopping">
+                        <!-- Cart -->
+                        <a href="#">
+                            <div class="cart">
+                                <img src="images/shopping-bag.svg" alt="">
+                                <div class="cart_num_container">
+                                    <div class="cart_num_inner">
+                                        <div class="cart_num">1</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- Star -->
+                        <a href="#">
+                            <div class="star">
+                                <img src="images/star.svg" alt="">
+                                <div class="star_num_container">
+                                    <div class="star_num_inner">
+                                        <div class="star_num">0</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- Avatar -->
+                        <a href="#">
+                            <div class="avatar">
+                                <img src="images/avatar.svg" alt="">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="burger_container d-flex flex-column align-items-center justify-content-around menu_mm">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </header>
+        <!-- Menu -->
+
+        <div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
+            <div class="menu_close_container">
+                <div class="menu_close">
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <div class="logo menu_mm"><a href="#">Wish</a></div>
+            <div class="search">
+                <form action="#">
+                    <input type="search" class="search_input menu_mm" required="required">
+                    <button type="submit" id="search_button_menu" class="search_button menu_mm"><img
+                            class="menu_mm" src="images/magnifying-glass.svg" alt=""></button>
+                </form>
+            </div>
+            <nav class="menu_nav">
+                <ul class="menu_mm">
+                    <li class="menu_mm"><a href="#">home</a></li>
+                    <li class="menu_mm"><a href="#">clothes</a></li>
+                    <li class="menu_mm"><a href="#">accessories</a></li>
+                    <li class="menu_mm"><a href="#">lingerie</a></li>
+                    <li class="menu_mm"><a href="#">contact</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="styles/bootstrap4/popper.js"></script>
+    <script src="styles/bootstrap4/bootstrap.min.js"></script>
+    <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <script src="plugins/easing/easing.js"></script>
+    <script src="plugins/parallax-js-master/parallax.min.js"></script>
+    <script src="plugins/colorbox/jquery.colorbox-min.js"></script>
+    <script src="js/custom.js"></script>
+</body>
