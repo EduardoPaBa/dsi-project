@@ -10,7 +10,7 @@ class Listado extends Component
 {
     //public $catalogos;
     public $search,
-        $name, $selectedCatalogo, $editname;
+        $name, $selectedCatalogo, $editname, $deleteCatalodo_id;
         
     use WithPagination;
     public function mount()
@@ -37,6 +37,14 @@ class Listado extends Component
         $this->selectedCatalogo->update([
             'name' => $this->editname,
         ]);
+    }
+    public function delete($value)
+    {
+        $this->deleteCatalodo_id = $value;
+    }
+    public function delete_now()
+    {
+        Catalogo::find($this->deleteCatalodo_id)->delete();
     }
 
     public function clear()
