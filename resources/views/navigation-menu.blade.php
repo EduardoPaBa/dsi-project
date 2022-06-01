@@ -248,8 +248,8 @@
                 <nav class="main_nav">
                     <ul>
                         <li><a href="{{ route('dashboard') }}">home</a></li>
-                        <li><a href="{{ route('example') }}">clothes</a></li>
-                        <li><a href="#">accessories</a></li>
+                        <li><a href="{{ route('example') }}">example</a></li>
+                        <li><a href="{{ route('listCatalog') }}">Catálogo</a></li>
                         <li><a href="#">lingerie</a></li>
                         <li><a href="#">contact</a></li>
                     </ul>

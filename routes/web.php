@@ -30,3 +30,12 @@ Route::middleware([
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('/example', 'example')->name('example');
 });
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::view('/agregarCatalogo/{valueidCata?}', 'catalogo.agregar')->name('addCatalog');
+});
+
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::view('/listadoCatalogo', 'catalogo.listado')->name('listCatalog');
+});
