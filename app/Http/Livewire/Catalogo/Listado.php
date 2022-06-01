@@ -51,10 +51,5 @@ class Listado extends Component
     {
         $this->name = '';
     }
-    public function toEdit($valueidCata)
-    {
-        //dd($valueidCata);
-        //return redirect()->route('addCatalog', ['valueidCata' => $valueidCata]);
-        return redirect()->route('addCatalog', ['valueidCata' => $valueidCata]);
-    }
+        
 }

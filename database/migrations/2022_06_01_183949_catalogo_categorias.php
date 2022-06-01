@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CatalogoCategoria extends Migration
+class CatalogoCategorias extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,7 @@ class CatalogoCategoria extends Migration
      */
     public function up()
     {
-        //
-        Schema::create('catalogoscategorias', function (Blueprint $table) {
+        Schema::create('catalogo_categorias', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('catalogo_id');
             $table->unsignedBigInteger('categoria_id');
@@ -31,7 +30,7 @@ class CatalogoCategoria extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('catalogo_categorias');
         Schema::dropIfExists('catalogoscategorias');
     }
 }

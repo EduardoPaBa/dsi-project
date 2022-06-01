@@ -250,7 +250,7 @@
                         <li><a href="{{ route('dashboard') }}">home</a></li>
                         <li><a href="{{ route('example') }}">example</a></li>
                         <li><a href="{{ route('listCatalog') }}">Catálogo</a></li>
-                        <li><a href="#">lingerie</a></li>
+                        <li><a href="{{ route('listCategor') }}">Categoría</a></li>
                         <li><a href="#">contact</a></li>
                     </ul>
                 </nav>

@@ -12,4 +12,12 @@ class CatalogoCategoria extends Model
         'catalogo_id',
         'categoria_id',
     ];
+    public function catalogo()
+    {
+        return $this->belongsTo(Catalogo::class);
+    }
+    public function categoria()
+    {
+        return $this->belongsTo(Categoria::class);
+    }
 }
