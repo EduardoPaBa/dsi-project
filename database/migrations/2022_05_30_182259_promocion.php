@@ -20,6 +20,7 @@ class Promocion extends Migration
             $table->string('description');
             $table->unsignedBigInteger('producto_id');
             $table->decimal('descuento');
+            $table->integer('duracion_dias');
             $table->foreign('producto_id')->references('id')->on('productos');
             $table->timestamps();
         });

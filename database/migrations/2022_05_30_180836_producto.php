@@ -22,6 +22,7 @@ class Producto extends Migration
             $table->string('talla');
             $table->decimal('precio');
             $table->boolean('disponibilidad');
+            $table->string('color');
             $table->foreign('subcategoria_id')->references('id')->on('subcategorias');
             $table->timestamps();
         });

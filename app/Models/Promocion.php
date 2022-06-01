@@ -13,6 +13,7 @@ class Promocion extends Model
         'description',
         'producto_id',
         'descuento',
+        'duracion_dias',
     ];
     public function producto()
     {

@@ -15,6 +15,7 @@ class Producto extends Model
         'talla',
         'precio',
         'disponibilidad',
+        'color',
         
     ];
     public function subcategoria()

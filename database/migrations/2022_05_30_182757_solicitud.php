@@ -18,6 +18,10 @@ class Solicitud extends Migration
             $table->id();
             $table->unsignedBigInteger('usuario_id');
             $table->string('estado');
+            $table->string('direccion');
+            $table->string('departamento');
+            $table->string('municipio');
+            $table->string('punto_referencia');
             $table->foreign('usuario_id')->references('id')->on('users');
             $table->timestamps();
         });

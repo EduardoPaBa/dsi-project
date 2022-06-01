@@ -19,12 +19,12 @@ return new class extends Migration
             $table->string('lastname')->nullable();
             $table->string('email')->unique();
             $table->unsignedBigInteger('role_id')->default('3');
-            $table->foreign('role_id')->references('id')->on('roles');
             $table->integer('phone')->nullable();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->timestamp('email_verified_at')->nullable();
             $table->foreignId('current_team_id')->nullable();
+            $table->foreign('role_id')->references('id')->on('roles');
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
         });

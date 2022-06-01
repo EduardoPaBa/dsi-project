@@ -9,10 +9,13 @@ class SolicitudEspecial extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name',
         'description',
         'link',
         'usuario_id',
+        'direccion',
+        'departamento',
+        'municipio',
+        'punto_referencia',
     ];
 
     public function usuario()

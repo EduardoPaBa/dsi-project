@@ -19,7 +19,11 @@ class SolicitudEspecial extends Migration
             $table->string('description');
             $table->string('link');
             $table->unsignedBigInteger('usuario_id');
-            $table->foreignId('current_team_id')->nullable();
+            $table->string('direccion');
+            $table->string('departamento');
+            $table->string('municipio');
+            $table->string('punto_referencia');
+            $table->foreign('usuario_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

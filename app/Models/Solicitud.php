@@ -11,6 +11,10 @@ class Solicitud extends Model
     protected $fillable = [
         'usuario_id',
         'estado',
+        'direccion',
+        'departamento',
+        'municipio',
+        'punto_referencia',
     ];
     public function usuario()
     {
