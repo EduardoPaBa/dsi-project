@@ -22,6 +22,9 @@ class Solicitud extends Migration
             $table->string('departamento');
             $table->string('municipio');
             $table->string('punto_referencia');
+            $table->string('nombre_adicional');
+            $table->string('apellido_adicional');
+            $table->integer('telefono');
             $table->foreign('usuario_id')->references('id')->on('users');
             $table->timestamps();
         });

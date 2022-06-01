@@ -16,6 +16,9 @@ class SolicitudEspecial extends Model
         'departamento',
         'municipio',
         'punto_referencia',
+        'nombre_adicional',
+        'apellido_adicional',
+        'telefono',
     ];
 
     public function usuario()
