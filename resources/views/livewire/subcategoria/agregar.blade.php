@@ -21,10 +21,11 @@
                     <div class="form-group">
                         <label for="">Categoria a la que pertenece</label>
                         
-                        <select>
-                            < @foreach ($categorias as $categoria)
+                        <select wire:model="categoria_id">
+                                <option value="">Escoja la categoria</option>
+                                @foreach ($categorias as $categoria)
                                 <option value="{{ $categoria->id }}">
-                                    {{ $categoria->id }}
+                                    {{ $categoria->name }}
                                 </option>
                                 @endforeach
                         </select>

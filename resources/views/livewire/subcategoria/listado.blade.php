@@ -79,15 +79,16 @@
                         
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Nombre de la SubCategoria:</label>
-                            <input type="text" class="form-control" id="recipient-name" wire:model="editname">
+                            <input type="text" class="form-control" id="recipient-name" wire:model="name">
                         </div>
                         <div class="form-group">
                             <label for="">Categoria a la que pertenece</label>
-                            <select>
+                            <select wire:model="categoria_id">
+                                <option value="">Escoja la categoria</option>
                                 @foreach ($categorias as $categoria)
                                 <option value=" {{ $categoria->id }}">
                                    
-                                    {{ $categoria->id }}
+                                    {{ $categoria->name }}
                                 </option>
                                 @endforeach
                             </select>

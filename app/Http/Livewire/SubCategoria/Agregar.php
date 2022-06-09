@@ -9,7 +9,12 @@ use App\Models\Categoria;
 
 class Agregar extends Component
 {
-    public $name, $valueidSubCate, $categorias;
+    public $name, $categoria_id, $categorias; 
+    protected $rules = [
+        'name'=>'required',
+        'categoria_id'=>'required'
+        
+    ];
 
      public function mount()
     {
@@ -19,11 +24,15 @@ class Agregar extends Component
         $this->categorias = Categoria::all();
         return view('livewire.subcategoria.agregar');
     }
+     /*public function updateSelectedCategoria() {
+        $this->valueidCate = Categoria::where('id', $this->valueidCate)->get();
+    }*/
+
     public function save()
     {
         $newValue = SubCategoria::create([
             'name' => $this->name,
-            'categoria_id'=> $this->valueidSubCate,
+            'categoria_id'=> $this->categoria_id,
         ]);
         $newValue->save();
         $this->clear();
@@ -31,7 +40,7 @@ class Agregar extends Component
      public function clear()
     {
         $this->name = '';
-        $this->valueidSubCate = '';
+        $this->categoria_id = '';
     }
     
 }
