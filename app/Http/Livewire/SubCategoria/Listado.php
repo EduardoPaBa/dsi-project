@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Http\Livewire\SubCategoria;
+namespace App\Http\Livewire\Subcategoria;
 
 use Livewire\Component;
 use App\Models\SubCategoria;
+use App\Models\Categoria;
 use Livewire\WithPagination;
 
 class Listado extends Component
 {
-    //public $catalogos;
-    public $search,
-        $name,$cateid, $selectedSubCategoria, $editname,$editcateid, $deleteSubCate_id;
-        
+    public $search,$name,$cateid, $selectedSubCategoria, $editname,$editcateid,$deleteSubCate_id;
+
     use WithPagination;
     public function mount()
     {
@@ -19,6 +18,7 @@ class Listado extends Component
     }
     public function render()
     {
+        $this->categorias = Categoria::all();
         return view('livewire.subcategoria.listado', [
             'subcategorias' => SubCategoria::where('name', 'like', '%' . $this->search . '%')->paginate(5),
         ]);
@@ -35,7 +35,7 @@ class Listado extends Component
     }
     public function save_edit()
     {
-        $this->selectedCatalogo->update([
+        $this->selectedSubCategoria->update([
             'name' => $this->editname,
             'categoria_id'=> $this->editcateid,
         ]);
@@ -54,5 +54,4 @@ class Listado extends Component
         $this->name = '';
         $this->cateid = '';
     }
-        
 }
