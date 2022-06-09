@@ -249,8 +249,9 @@
                     <ul>
                         <li><a href="{{ route('dashboard') }}">home</a></li>
                         <li><a href="{{ route('example') }}">example</a></li>
-                        <li><a href="{{ route('listCatalog') }}">Catálogo</a></li>
-                        <li><a href="{{ route('listCategor') }}">Categoría</a></li>
+                        <li><a href="{{ route('listCatalog') }}">Catálogos</a></li>
+                        <li><a href="{{ route('listCategor') }}">Categorías</a></li>
+                        <li><a href="{{ route('listSubCate') }}">SubCategorias</a></li>
                         <li><a href="#">contact</a></li>
                     </ul>
                 </nav>
