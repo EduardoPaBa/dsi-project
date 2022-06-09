@@ -45,4 +45,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('/agregarSolicitud', 'solicitud.agregar')->name('addSolicitud');
+    Route::view('/agregarSubCategoria/{valueidSubCate?}', 'subcategoria.agregar')->name('addSubCate');
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::view('/listadoSubCategoria', 'subcategoria.listado')->name('listSubCate');
 });

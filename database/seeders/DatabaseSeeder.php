@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             CatalogoSeeder::class,
             CategoriaSeeder::class,
             CatalogoCategoriaSeeder::class,
+            SubCategoriaSeeder::class,
         ]);
     }
 }
