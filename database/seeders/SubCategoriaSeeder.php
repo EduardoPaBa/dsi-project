@@ -17,23 +17,23 @@ class SubCategoriaSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('subcategorias')->insert([
+        DB::table('sub_categorias')->insert([
             'name' => 'Tenis',            
             'categoria_id' => 1, 
         ]);
-        DB::table('subcategorias')->insert([
+        DB::table('sub_categorias')->insert([
             'name' => 'Tacones',            
             'categoria_id' => 1, 
         ]);
-        DB::table('subcategorias')->insert([
+        DB::table('sub_categorias')->insert([
             'name' => 'Casuales',            
             'categoria_id' => 1, 
         ]);
-        DB::table('subcategorias')->insert([
+        DB::table('sub_categorias')->insert([
             'name' => 'Formales',            
             'categoria_id' => 2, 
         ]);
-        DB::table('subcategorias')->insert([
+        DB::table('sub_categorias')->insert([
             'name' => 'Polo',            
             'categoria_id' => 2, 
         ]);
