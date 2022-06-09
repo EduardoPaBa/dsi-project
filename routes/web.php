@@ -42,3 +42,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('/listadoCategoria', 'categoria.listado')->name('listCategor');
 });
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::view('/agregarProducto/{valuesidProducto}', 'producto.agregar')->name('addProducto');
+});
