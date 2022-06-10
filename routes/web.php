@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Producto\Productos;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,7 +45,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::view('/agregarProducto/{valuesidProducto}', 'producto.agregar')->name('addProducto');
+    Route::get('/productos',Productos::class);
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
