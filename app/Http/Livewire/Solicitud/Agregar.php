@@ -33,8 +33,8 @@ class Agregar extends Component
         return view('livewire.solicitud.agregar');
     }
 
-    public function updateSelectedDepartamento() {
-        $this->municipios = Municipio::where('DEPSV_ID', $this->departamento)->get();
+    public function updateddepartamento($departamento_id) {
+        $this->municipios = Municipio::where('DEPSV_ID', $departamento_id)->get();
     }
 
     public function save() {
