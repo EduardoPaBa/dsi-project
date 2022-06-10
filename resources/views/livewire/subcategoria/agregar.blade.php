@@ -15,13 +15,14 @@
                     <a href="{{ route('listSubCate') }}"> <button type="button" class="btn btn-outline-secondary"
                         style="float: right;">Volver</button> </a> <br>
                     <div class="form-group">
-                        <label for="">Nombre de la SubCategoria</label>
-                        <input type="text" class="form-control" id="" placeholder="Nombre SubCategoria" wire:model="name">
+                        <label for="nombresubcategoria">Nombre de la SubCategoria</label>
+                        <input type="text" class="form-control" id="nombresub" placeholder="Nombre SubCategoria" wire:model="name" >
+                       
                     </div>
                     <div class="form-group">
-                        <label for="">Categoria a la que pertenece</label>
-                        
-                        <select wire:model="categoria_id">
+                        <label for="categoria">Categoria a la que pertenece</label>
+                        <br>
+                        <select name="categoria" id="categoria "wire:model="categoria_id">
                                 <option value="">Escoja la categoria</option>
                                 @foreach ($categorias as $categoria)
                                 <option value="{{ $categoria->id }}">

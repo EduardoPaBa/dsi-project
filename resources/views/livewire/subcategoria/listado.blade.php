@@ -37,7 +37,7 @@
                                     <td>{{ $value->name }}</td>
                                     <td>{{ $value->categoria_id }}</td>
                                   
-                                    <td>{{ $value->categoria_id_name }}</td>
+                                    <td>{{ $value->categoria->name }}</td>
                                     
                                     <td>
                                         <button type="button" class="btn btn-primary" data-toggle="modal"
@@ -79,18 +79,24 @@
                         
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Nombre de la SubCategoria:</label>
-                            <input type="text" class="form-control" id="recipient-name" wire:model="name">
+                            <input type="text" class="form-control" id="nombresub" placeholder="Nombre SubCategoria" wire:model="name" >
+                        
                         </div>
                         <div class="form-group">
-                            <label for="">Categoria a la que pertenece</label>
-                            <select wire:model="categoria_id">
-                                <option value="">Escoja la categoria</option>
-                                @foreach ($categorias as $categoria)
-                                <option value=" {{ $categoria->id }}">
-                                   
-                                    {{ $categoria->name }}
-                                </option>
-                                @endforeach
+                            <label for="categoria">Categoria a la que pertenece</label>
+                            <br>
+                            <select name="categoria" id="categoria" wire:model="categoria_id">
+                                
+                                 @foreach ($categorias as $categoria)
+                                 <option value="{{$categoria->id}}" 
+                                    @foreach ($subcategoriass as $subcategoria)
+                                        @if ($subcategoria->categoria_id == $categoria->id)
+                                        {{'selected="selected"'}}
+                                        @endif 
+                                    @endforeach >
+                                    {{ $categoria->name }} 
+                                </option>               
+                                 @endforeach
                             </select>
                         </div>
                         {{-- <div class="form-group">
