@@ -1,4 +1,5 @@
 <div class="" style="float: center; margin: 1rem; ">
+    
     <br><br>
     {{-- A good traveler has no fixed plans and is not intent upon arriving. --}}
     {{-- <h1>Hola dentro de la carpeta catalogo</h1> --}}
@@ -19,14 +20,14 @@
                     </div>
                     <div class="form-group">
                         <label for="">Categoria a la que pertenece</label>
-                        <?php $categorias= Agregar::ShowCategorias(); ?>
-                        <select>
-                            <?php while ($cat =$categorias->fetch_object()):?>
-                                <option value="<?=$cat->id?>">
-                                    <?=$cat->nombre?>  
-
+                        
+                        <select wire:model="categoria_id">
+                                <option value="">Escoja la categoria</option>
+                                @foreach ($categorias as $categoria)
+                                <option value="{{ $categoria->id }}">
+                                    {{ $categoria->name }}
                                 </option>
-                            <? php endWhile; ?>
+                                @endforeach
                         </select>
                     </div>
                     <button type="button" class="btn btn-outline-primary" wire:click="save()">Guardar</button>
@@ -37,7 +38,4 @@
         <div class="col">
         </div>
     </div>
-
-
-
 </div>

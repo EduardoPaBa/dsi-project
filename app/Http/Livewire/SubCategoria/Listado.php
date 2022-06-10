@@ -1,17 +1,22 @@
 <?php
 
-namespace App\Http\Livewire\SubCategoria;
+namespace App\Http\Livewire\Subcategoria;
 
 use Livewire\Component;
 use App\Models\SubCategoria;
+use App\Models\Categoria;
 use Livewire\WithPagination;
 
 class Listado extends Component
 {
-    //public $catalogos;
-    public $search,
-        $name,$cateid, $selectedSubCategoria, $editname,$editcateid, $deleteSubCate_id;
+    public $search, $selectedSubCategoria, $name,$categoria_id,$deleteSubCate_id;
+
+
+     protected $rules = [
+        'name'=>'required',
+        'categoria_id'=>'required'
         
+    ];
     use WithPagination;
     public function mount()
     {
@@ -19,6 +24,7 @@ class Listado extends Component
     }
     public function render()
     {
+        $this->categorias = Categoria::all();
         return view('livewire.subcategoria.listado', [
             'subcategorias' => SubCategoria::where('name', 'like', '%' . $this->search . '%')->paginate(5),
         ]);
@@ -28,16 +34,16 @@ class Listado extends Component
         //dd($value);
         $this->clear();
         $this->selectedSubCategoria=SubCategoria::find($value);
-        $this->editname = SubCategoria::find($value)->name;
-        $this->editcateid = SubCategoria::find($value)->cateid;
+        $this->name = SubCategoria::find($value)->name;
+        $this->categoria_id = SubCategoria::find($value)->categoria_id;
         //dd($this->editname);
         
     }
     public function save_edit()
     {
-        $this->selectedCatalogo->update([
-            'name' => $this->editname,
-            'categoria_id'=> $this->editcateid,
+        $this->selectedSubCategoria->update([
+            'name' => $this->name,
+            'categoria_id'=> $this->categoria_id,
         ]);
     }
     public function delete($value)
@@ -52,7 +58,6 @@ class Listado extends Component
     public function clear()
     {
         $this->name = '';
-        $this->cateid = '';
+        $this->categoria_id = '';
     }
-        
 }

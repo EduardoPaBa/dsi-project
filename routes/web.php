@@ -44,9 +44,17 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
+    Route::view('/agregarProducto/{valuesidProducto}', 'producto.agregar')->name('addProducto');
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('/agregarSolicitud', 'solicitud.agregar')->name('addSolicitud');
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('/agregarSubCategoria/{valueidSubCate?}', 'subcategoria.agregar')->name('addSubCate');
 });
+
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('/listadoSubCategoria', 'subcategoria.listado')->name('listSubCate');
