@@ -61,6 +61,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('/listadoSubCategoria', 'subcategoria.listado')->name('listSubCate');
 });
 
+
+
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::view('/agregarSolicitudEspecial', 'solicitudespecial.agregar')->name('addSolicitudEspecial');
+    Route::view('/agregarSolicitudEspecial/{valueidSoliEspecial?}', 'solicitudespecial.agregar')->name('addSoliEspecial');
+});
+
+/*Route::middleware(['auth', 'verified'])->group(function () {
+    Route::view('/editarSolicitudEspecial/{valueidSoliEspecial?}', 'solicitudespecial.editar')->name('editSoliEspecial');
+});*/
+
+Route::middleware(['auth', 'verified'])->group(function () {
+     Route::view('/listadoSolicitudEspecial', 'solicitudespecial.listado')->name('listSolicitudEspecial');
 });
