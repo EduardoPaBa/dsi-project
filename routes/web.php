@@ -59,3 +59,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('/listadoSubCategoria', 'subcategoria.listado')->name('listSubCate');
 });
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::view('/agregarSolicitudEspecial', 'solicitudespecial.agregar')->name('addSolicitudEspecial');
+});

@@ -8,11 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class SolicitudEspecial extends Model
 {
     use HasFactory;
+
+    protected $table = 'solicitudespeciales';
+
     protected $fillable = [
-        'estado',
-        'description',
-        'link',
         'usuario_id',
+        'estado',
+        'link',
+        'description',
         'direccion',
         'departamento',
         'municipio',

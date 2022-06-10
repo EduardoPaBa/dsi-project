@@ -16,10 +16,10 @@ class SolicitudEspecial extends Migration
         //
         Schema::create('solicitudespeciales', function (Blueprint $table) {
             $table->id();
-            $table->string('estado')->nullable();
-            $table->string('description');
-            $table->string('link');
             $table->unsignedBigInteger('usuario_id');
+            $table->string('estado')->nullable();
+            $table->string('link');
+            $table->string('description');
             $table->string('direccion');
             $table->string('departamento');
             $table->string('municipio');
