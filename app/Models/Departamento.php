@@ -12,7 +12,7 @@ class Departamento extends Model
     protected $table = 'departamentos';
 
     protected $fillable = [
-        'nombre'
+        'DepName'
     ];
 
     public function municipios(){

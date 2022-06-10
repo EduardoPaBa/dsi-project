@@ -48,9 +48,20 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/productos',Productos::class);
 });
 
-Route::view('/agregarSolicitud', 'solicitud.agregar')->name('addSolicitud');
-Route::view('/agregarSubCategoria/{valueidSubCate?}', 'subcategoria.agregar')->name('addSubCate');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::view('/agregarSolicitud', 'solicitud.agregar')->name('addSolicitud');
+    Route::view('/listadoSolicitud', 'solicitud.listado')->name('listSolicitud');
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::view('/agregarSubCategoria/{valueidSubCate?}', 'subcategoria.agregar')->name('addSubCate');
+});
+
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('/listadoSubCategoria', 'subcategoria.listado')->name('listSubCate');
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::view('/agregarSolicitudEspecial', 'solicitudespecial.agregar')->name('addSolicitudEspecial');
 });
