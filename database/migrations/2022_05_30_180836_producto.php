@@ -18,12 +18,12 @@ class Producto extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->unsignedBigInteger('subcategoria_id');
+            $table->unsignedBigInteger('subcategorias_id');
             $table->string('talla');
             $table->decimal('precio');
             $table->boolean('disponibilidad');
             $table->string('color');
-            $table->foreign('subcategoria_id')->references('id')->on('subcategorias');
+            $table->foreign('subcategorias_id')->references('id')->on('sub_categorias');
             $table->timestamps();
         });
     }
