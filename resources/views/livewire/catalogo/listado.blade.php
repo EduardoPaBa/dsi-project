@@ -25,6 +25,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Acciones</th>
+                                <th scope="col">foto</th>
 
                             </tr>
                         </thead>
@@ -41,7 +42,9 @@
                                         data-target="#exampleModal2"
                                         wire:click="delete({{ $value->id  }})">Eliminar</button>
                                     </td>
-
+                                    <td>
+                                        <img src="{{ asset( 'storage/'.$value->image ) }}" width="100" height="100"/>
+                                    </td>
                                 </tr>
                             @endforeach
 

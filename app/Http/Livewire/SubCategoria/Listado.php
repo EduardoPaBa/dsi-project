@@ -25,6 +25,7 @@ class Listado extends Component
     public function render()
     {
         $this->categorias = Categoria::all();
+        $this->subcategoriass= SubCategoria::all();
         return view('livewire.subcategoria.listado', [
             'subcategorias' => SubCategoria::where('name', 'like', '%' . $this->search . '%')->paginate(5),
         ]);
