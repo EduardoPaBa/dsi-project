@@ -17,6 +17,7 @@ class Catalogo extends Migration
         Schema::create('catalogos', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

@@ -5,13 +5,17 @@ namespace App\Http\Livewire\Catalogo;
 use Livewire\Component;
 use App\Models\Catalogo;
 use Livewire\WithPagination;
+#use Illuminate\Support\Facades\File;
+#use File;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class Listado extends Component
 {
     //public $catalogos;
     public $search,
         $name, $selectedCatalogo, $editname, $deleteCatalodo_id;
-        
+
     use WithPagination;
     public function mount()
     {
@@ -30,7 +34,7 @@ class Listado extends Component
         $this->selectedCatalogo=Catalogo::find($value);
         $this->editname = Catalogo::find($value)->name;
         //dd($this->editname);
-        
+
     }
     public function save_edit()
     {
@@ -44,6 +48,8 @@ class Listado extends Component
     }
     public function delete_now()
     {
+        $file = File::where('id', $this->deleteCatalodo_id)->first();
+        dd($file);
         Catalogo::find($this->deleteCatalodo_id)->delete();
     }
 
@@ -51,5 +57,5 @@ class Listado extends Component
     {
         $this->name = '';
     }
-        
+
 }
