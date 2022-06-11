@@ -8,6 +8,9 @@
         </div>
         <div class="col-8">
             <div class="card">
+                <div class="card-header">
+                    GESTIONAR CATÁLOGO
+                </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col mb-2">
