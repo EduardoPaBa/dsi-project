@@ -4,8 +4,9 @@ namespace App\Http\Livewire\Producto;
 
 use Livewire\Component;
 use App\Models\Producto;
+use App\Models\SubCategoria;
 use Producto as GlobalProducto;
-use SubCategoria;
+
 use App\Models\ProductoFoto;
 use Livewire\WithFileUploads;
 
@@ -16,7 +17,14 @@ class Productos extends Component
     public $modal = false;
     use WithFileUploads;
     protected $rules = [
-        'image' => 'image',
+        'image' => 'required',
+        'name' => 'required',
+        'description' => 'required',
+        'subcategoria_id' => 'required',
+        'talla' => 'required',
+        'precio' => 'required',
+        'disponibilidad' => 'required',
+        'color' => 'required',
     ];
 
     public function mount()
@@ -27,6 +35,7 @@ class Productos extends Component
     public function render()
     {
         $this->productos = Producto::all();
+        $this->subcategor = SubCategoria::all();
         return view('livewire.producto.productos');
     }
 
@@ -69,10 +78,12 @@ class Productos extends Component
         $this->color=$productos->color;
         $this->abrirModal();
     }
-    public function eliminar($id)
+    public function borrar($id)
     {
         Producto::find($id)->delete();
+        return session()->flash("success", "Se elimino correctamente");
     }
+
     public function guardar()
     {
         //dd($this->producto_id);
@@ -99,8 +110,8 @@ class Productos extends Component
             'image'=> $image,
         ]);
         $newValue->save();
-
-
+        //$this->cerrarModal();
+        return session()->flash("success", "This is success message");
     }
 
 
