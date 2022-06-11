@@ -96,26 +96,36 @@
                         
                         <div class="form-group">
                             <label for="link">Link de Shein:</label>
-                            <input type="url" name="url" class="form-control" id="link" placeholder="https://www.shein.com/" wire:model="link" pattern="http://www\.shein\.com\/(.+)|https://www\.shein\.com\/(.+)" title="Include http://shein" size="255" minlength="10" maxlength="255" required>
-                                @error('link') <span class="mt-1 error">{{ $message }}</span> @enderrorr
+                            <input type="url" name="url" class="form-control" id="link" placeholder="https://www.shein.com/" pattern="http://www\.shein\.com\/(.+)|https://www\.shein\.com\/(.+)" size="255" minlength="10" maxlength="255" wire:model="link" >
+                                @error('link') <span class="mt-1 error">{{ $message }}</span> @enderror
                         </div>
                         <div class="form-group">
                             <label for="description">Descripción (Talla, Color):</label>
-                            <input type="text" class="form-control" id="description" placeholder="Ingresar descripcion" wire:model="description" required>
+                            <input type="text" class="form-control" id="description" placeholder="Ingresar descripcion" wire:model="description" >
                             @error('description') <span class="mt-1 error">{{ $message }}</span> @enderror
                             
                         </div>
                         <div class="form-group">
                             <label for="direccion">Dirección:</label>
-                            <input type="text" class="form-control" id="direccion" placeholder="Ingresar dirección" wire:model="direccion" required>
+                            <input type="text" class="form-control" id="direccion" placeholder="Ingresar dirección" wire:model="direccion" >
                             @error('direccion') <span class="mt-1 error">{{ $message }}</span> @enderror
                         </div>
                         <div class="form-group">
                             <label for="departamento">Departamento:</label>
                             <select name="departamento" id="departamento" wire:model="departamento">
                                 <option value="" selected>Seleccione el departamento</option>
-                                @foreach ($departamentos as $departamento)
-                                    <option value="{{ $departamento->id }}">{{ $departamento->DepName }}</option>
+                                @foreach ($departamentos as $depart)
+                                    <option value="{{ $depart->id }}" 
+                                        @foreach ($soliespecial as $soli)
+                                            @if ($soli->departamento == $depart->id)
+                                            {{'selected="selected"'}}
+                                            @endif 
+                                         @endforeach>
+
+                                        
+                                        {{ $depart->DepName }}
+                                    
+                                    </option>
                                 @endforeach
                             </select>
                             <br>
@@ -126,8 +136,13 @@
                             <label for="municipio">Municipio:</label>
                             <select name="municipio" id="municipio" wire:model="municipio">
                                 <option value="" selected>Seleccione el municipio</option>
-                                @foreach ($municipios as $municipio)
-                                    <option value="{{ $municipio->id }}">{{ $municipio->MunName }}</option>
+                                @foreach ($municipios as $muni)
+                                    <option value="{{ $muni->id }}"
+                                        @foreach ($soliespecial as $soli)
+                                            @if ($soli->municipio == $muni->id)
+                                            {{'selected="selected"'}}
+                                            @endif 
+                                         @endforeach>{{ $muni->MunName }}</option>
                                 @endforeach
                             </select>
                             <br>
@@ -136,22 +151,22 @@
                         @endif
                         <div class="form-group">
                             <label for="puntoReferencia">Punto de referencia:</label>
-                            <input type="text" class="form-control" id="puntoReferencia" placeholder="Ingresar punto de referencia" wire:model="punto_referencia" required>
+                            <input type="text" class="form-control" id="puntoReferencia" placeholder="Ingresar punto de referencia" wire:model="punto_referencia" >
                             @error('punto_referencia') <span class="mt-1 error">{{ $message }}</span> @enderror
                         </div>
                          <div class="form-group">
                             <label for="nombre">Nombres:</label>
-                            <input type="text" class="form-control" id="nombre" placeholder="Ingresar nombres" wire:model="nombre_adicional" required>
+                            <input type="text" class="form-control" id="nombre" placeholder="Ingresar nombres" wire:model="nombre_adicional" >
                             @error('nombre_adicional') <span class="mt-1 error">{{ $message }}</span> @enderror
                         </div>
                         <div class="form-group mb-3">
                             <label for="apellido">Apellidos:</label>
-                            <input type="text" class="form-control" id="apellido" placeholder="Ingresar apellidos" wire:model="apellido_adicional" required>
+                            <input type="text" class="form-control" id="apellido" placeholder="Ingresar apellidos" wire:model="apellido_adicional" >
                             @error('apellido_adicional') <span class="mt-1 error">{{ $message }}</span> @enderror
                         </div>
                         <div class="form-group mb-3">
                             <label for="telefono">Telefono:</label>
-                            <input type="text" class="form-control" id="telefono" placeholder="Ingresar teléfono" wire:model="telefono" required>
+                            <input type="text" class="form-control" id="telefono" placeholder="Ingresar teléfono" wire:model="telefono">
                             @error('telefono') <span class="mt-1 error">{{ $message }}</span> @enderror
                         </div>
         
@@ -223,3 +238,4 @@
         color: red;
     }
 </style>
+

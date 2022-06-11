@@ -14,20 +14,22 @@
         <div class="col-7">
             <div class="card">
                 <div class="card-body">
+                    <a href="{{ route('listSolicitudEspecial') }}"> <button type="button" class="btn btn-outline-secondary"
+                        style="float: right;">Volver</button> </a> <br>
                     <div class="form-group mb-3">
                         <label for="link">Link de Shein:</label>
-                        <input type="url" name="url" class="form-control" id="link" placeholder="https://www.shein.com/" wire:model="link" pattern="http://www\.shein\.com\/(.+)|https://www\.shein\.com\/(.+)" title="Include http://shein" size="255" minlength="10" maxlength="255" required>
+                        <input type="url" name="url" class="form-control" id="link" placeholder="https://www.shein.com/" pattern="http://www\.shein\.com\/(.+)|https://www\.shein\.com\/(.+)" size="255" minlength="10" maxlength="255" wire:model="link"  title="Include http://shein">
  
-                         @error('link') <span class="mt-1 error">{{ $message }}</span> @enderrorr
+                         @error('link') <span class="mt-1 error">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group mb-3">
                         <label for="description">Descripción (Talla, Color):</label>
-                        <input type="text" class="form-control" id="description" placeholder="Ingresar descripcion" wire:model="description" required>
+                        <input type="text" class="form-control" id="description" placeholder="Ingresar descripcion" wire:model="description" >
                          @error('description') <span class="mt-1 error">{{ $message }}</span> @enderror
                     </div>          
                     <div class="form-group mb-3">
                         <label for="direccion">Dirección:</label>
-                        <input type="text" class="form-control" id="direccion" placeholder="Ingresar dirección" wire:model="direccion" required>
+                        <input type="text" class="form-control" id="direccion" placeholder="Ingresar dirección" wire:model="direccion" >
                          @error('direccion') <span class="mt-1 error">{{ $message }}</span> @enderror
                     </div>
 
@@ -59,30 +61,30 @@
         
                     <div class="form-group mb-3">
                         <label for="puntoReferencia">Punto de referencia:</label>
-                        <input type="text" class="form-control" id="puntoReferencia" placeholder="Ingresar punto de referencia" wire:model="punto_referencia" required>
+                        <input type="text" class="form-control" id="puntoReferencia" placeholder="Ingresar punto de referencia" wire:model="punto_referencia" >
                          @error('punto_referencia') <span class="mt-1 error">{{ $message }}</span> @enderror
                     </div>
         
                     <div class="form-group mb-3">
                         <label for="nombre">Nombres:</label>
-                        <input type="text" class="form-control" id="nombre" placeholder="Ingresar nombres" wire:model="nombre_adicional" required>
+                        <input type="text" class="form-control" id="nombre" placeholder="Ingresar nombres" wire:model="nombre_adicional" >
                         @error('nombre_adicional') <span class="mt-1 error">{{ $message }}</span> @enderror
                     </div>
         
                     <div class="form-group mb-3">
                         <label for="apellido">Apellidos:</label>
-                        <input type="text" class="form-control" id="apellido" placeholder="Ingresar apellidos" wire:model="apellido_adicional" required>
+                        <input type="text" class="form-control" id="apellido" placeholder="Ingresar apellidos" wire:model="apellido_adicional" >
                         @error('apellido_adicional') <span class="mt-1 error">{{ $message }}</span> @enderror
                     </div>
         
                     <div class="form-group mb-3">
                         <label for="telefono">Telefono:</label>
-                        <input type="numeric" class="form-control" id="telefono" placeholder="Ingresar teléfono" wire:model="telefono" required>
+                        <input type="text" class="form-control" id="telefono" placeholder="Ingresar teléfono" wire:model="telefono" >
                          @error('telefono') <span class="mt-1 error">{{ $message }}</span> @enderror
                     </div>
         
                     <div class="d-grid gap-2">
-                        <button type="button" wire:click="save()" class="btn btn-primary">Enviar solicitud</button>
+                        <button type="button" wire:click="save()" class="btn btn-primary">Enviar</button>
                     </div>
                 </div>
             </div>

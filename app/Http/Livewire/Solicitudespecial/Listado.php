@@ -19,8 +19,7 @@ class Listado extends Component
 
     // Validation Rules
     protected $rules = [
-        'usuario_id'=>'required',
-        'estado'=>'required',
+        
         'link'=>'required',
         'description'=>'required',
         'direccion'=>'required',
@@ -35,7 +34,10 @@ class Listado extends Component
      use WithPagination;
     public function render()
     {   $this->departamentos = Departamento::all();
+        $this->municipios = Municipio::all();
         $this->soliespeciales= SolicitudEspecial::all();
+        $this->soliespecial= SolicitudEspecial::all();
+
         return view('livewire.solicitudespecial.listado', [
             'soliespeciales' => SolicitudEspecial::where('id', 'like', '%' . $this->search . '%')->paginate(5),
         ]);

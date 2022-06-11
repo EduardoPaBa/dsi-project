@@ -16,8 +16,7 @@ class Agregar extends Component
 
     // Validation Rules
     protected $rules = [
-        'usuario_id'=>'required',
-        'estado'=>'required',
+        
         'link'=>'required',
         'description'=>'required',
         'direccion'=>'required',
@@ -39,7 +38,7 @@ class Agregar extends Component
         $this->municipios = Municipio::where('DEPSV_ID', $departamento_id)->get();
     }
     public function save() {
-         $this->validate();
+            $this->validate();
             $newValue = SolicitudEspecial::create([
             'usuario_id'=>auth()->id(),
             'estado'=>$this->estado,
