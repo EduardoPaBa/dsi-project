@@ -38,15 +38,28 @@
                     
                                     
                                     <td>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal"
-                                            data-target="#exampleModal" data-whatever="@mdo"
-                                            wire:click="edit({{ $value->id }})">Editar</button>
                                         
-                                    <button type="button" class="btn btn-danger" data-toggle="modal"
-                                        data-target="#exampleModal2"
-                                        wire:click="delete({{ $value->id  }})">Eliminar</button>
+                                         @if ($value->estado !== "APROBADA" && $value->estado !== "DENEGADA")
+                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#exampleModal" data-whatever="@mdo"
+                                                wire:click="edit({{ $value->id }})" >Editar</button>
+                                            
+                                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                                            data-target="#exampleModal2"
+                                            wire:click="delete({{ $value->id  }})">Eliminar</button>
+                                        
+                                        @else($value->estado == "APROBADA" && $value->estado == "DENEGADA")
+                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#exampleModal" data-whatever="@mdo"
+                                                wire:click="edit({{ $value->id }})"disabled="true" >Editar</button>
+                                            
+                                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                                            data-target="#exampleModal2"
+                                            wire:click="delete({{ $value->id  }})" disabled="true">Eliminar</button>
+                                        @endif
+                                         
                                     </td>
-
+                                   
                                 </tr>
                             @endforeach
 
