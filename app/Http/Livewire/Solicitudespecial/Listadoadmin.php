@@ -20,6 +20,11 @@ class Listadoadmin extends Component
     public $departamentos, $municipios,$selectedSoliEspecial;
 
     protected $rules = ['valor_checkbox' => 'boolean'];
+
+    public function mount() {
+       
+        $this->valor_checkbox = [];
+    }
     use WithPagination;
     public function render()
 
@@ -28,13 +33,23 @@ class Listadoadmin extends Component
         $this->municipios = Municipio::all();
         $this->soliespeciales= SolicitudEspecial::all();
         $this->soliespecial= SolicitudEspecial::all();
+
+        foreach($this->soliespeciales as $solicitud) {
+            if($solicitud->estado == "APROBADA") {
+                $this->valor_checkbox[$solicitud->id] = true;
+            } elseif($solicitud->estado == "DENEGADA") {
+                $this->valor_checkbox[$solicitud->id] = false;
+            }
+        }
+
+
         return view('livewire.solicitudespecial.listadoadmin', [
             'soliespeciales' => SolicitudEspecial::where('id', 'like', '%' . $this->search . '%')->paginate(5),
         ]);
     }
     public function show($value)
     {
-        //dd($value);
+        
         
         $this->selectedSoliEspecial=SolicitudEspecial::find($value);
         $this->link = SolicitudEspecial::find($value)->link;
@@ -55,8 +70,13 @@ class Listadoadmin extends Component
 
     public function saveEstado($value) {
         $solicitud = SolicitudEspecial::findOrFail($value);
-        $solicitud->estado = $this->valor_checkbox ? "APROBADA":"DENEGADA";
+        
+        $solicitud->estado = $this->valor_checkbox[$value] ? "APROBADA":"DENEGADA";
         $solicitud->save();
         return session()->flash("success", "Se actualizo cambio el estado correctamente");
+    }
+    public function getEstado($value) {
+        $this->solicitud = SolicitudEspecial::findOrFail($value);
+        $this->valor_checkbox[$value] = $this->solicitud->estado;
     }
 }
