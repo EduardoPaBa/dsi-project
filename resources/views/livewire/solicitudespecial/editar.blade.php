@@ -9,7 +9,16 @@
         <div class="col-7">
             <div class="card">
                 <div class="card-body">
-                        
+                    <div class="form-group mb-3">
+                        <label for="link">Link de Shein:</label>
+                        <input type="text" class="form-control @error('link') is-invalid @enderror" id="link" placeholder="Ingresar Link de Shein" wire:model="link">
+                        @error('link') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="description">Descripción (Talla, Color):</label>
+                        <input type="text" class="form-control @error('description') is-invalid @enderror" id="description" placeholder="Ingresar descripcion" wire:model="description">
+                        @error('description') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>          
                     <div class="form-group mb-3">
                         <label for="direccion">Dirección:</label>
                         <input type="text" class="form-control @error('direccion') is-invalid @enderror" id="direccion" placeholder="Ingresar dirección" wire:model="direccion">
@@ -19,7 +28,7 @@
                     <div class="form-group mb-3">
                         <label for="departamento">Departamento:</label>
                         <select name="departamento" id="departamento" wire:model="departamento">
-                            <option value="" selected></option>
+                            <option value="" selected>Seleccione el departamento</option>
                             @foreach ($departamentos as $departamento)
                                 <option value="{{ $departamento->id }}">{{ $departamento->DepName }}</option>
                             @endforeach
@@ -30,7 +39,7 @@
                     <div class="form-group mb-3">
                         <label for="municipio">Municipio:</label>
                         <select name="municipio" id="municipio" wire:model="municipio">
-                            <option value="" selected></option>
+                            <option value="" selected>Seleccione el municipio</option>
                             @foreach ($municipios as $municipio)
                                 <option value="{{ $municipio->id }}">{{ $municipio->MunName }}</option>
                             @endforeach
@@ -64,9 +73,6 @@
         
                     <div class="d-grid gap-2">
                         <button type="button" wire:click="save()" class="btn btn-primary">Enviar solicitud</button>
-                        <a href="{{ route('editSolicitud') }}">
-                            <button type="button" class="btn btn-primary">Ver mis solicitudes</button>
-                        </a>
                     </div>
                 </div>
             </div>

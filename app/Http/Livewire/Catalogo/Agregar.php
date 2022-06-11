@@ -5,19 +5,22 @@ namespace App\Http\Livewire\Catalogo;
 use Livewire\Component;
 use App\Models\Catalogo;
 use Livewire\WithFileUploads;
+use Illuminate\Http\Request;
 
 class Agregar extends Component
 {
     use WithFileUploads;
-    public $name, $valueidCata, $image;
+    public $name, $valueidCata, $image, $idFile;
 
     protected $rules = [
-        'image' => 'image'
+        'image' => 'image',
+        'name' => 'string',
     ];
 
 
     public function mount()
     {
+        $this->idFile= rand();
     }
     public function render()
     {
@@ -25,6 +28,7 @@ class Agregar extends Component
     }
     public function save()
     {
+        $this->validate();
         $image = $this->image->store('catalogo');
         $newValue = Catalogo::create([
             'name' => $this->name,
@@ -32,10 +36,15 @@ class Agregar extends Component
         ]);
         $newValue->save();
         $this->clear();
+        return session()->flash("success", "This is success message");
+
     }
 
     public function clear()
     {
         $this->name = '';
+        $this->image=null;
+        $this->reset(['image',]);
+        $this->idFile= rand();
     }
 }

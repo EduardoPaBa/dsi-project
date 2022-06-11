@@ -3,6 +3,11 @@
     {{-- A good traveler has no fixed plans and is not intent upon arriving. --}}
     {{-- <h1>Hola dentro de la carpeta catalogo</h1> --}}
 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css">
+
+
 
     <div class="row">
         <div class="col">
@@ -23,10 +28,14 @@
 
                         <div class="form-group">
                         <label for="">Nombre del Catálogo</label>
-                        <input type="text" class="form-control" id="" placeholder="Nombre Catálogo" wire:model="name">
+                        <input type="text" class="form-control" id="" placeholder="Nombre Catálogo"
+                        wire:model="name">
+                        @error('name') <span class="mt-1 error">{{ $message }}</span> @enderror
                     </div>
-                    <div>
-                        <input type="file" wire:model="image" name="" id="">
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Seleccione una foto</label>
+                        <input type="file" wire:model="image" class="form-control-file" id="{{$idFile}}">
+                        @error('image') <span class="mt-1 error">{{ $message }}</span> @enderror
                     </div>
                     <button type="button" wire:loading.attr="disabled" wire:target="save, image" class="mt-3 btn btn-outline-primary" wire:click="save()">Guardar</button>
 
@@ -37,9 +46,18 @@
         </div>
     </div>
 
-
+    @if(Session::has('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Great!',
+                text: '{{ Session::get("success") }}'
+            })
+        </script>
+    @endif
 
 </div>
+
 
 <style>
     .content-centrado {
@@ -57,6 +75,9 @@
 
     .form-control {
         color: black;
+    }
+    .error{
+        color: red;
     }
 
 </style>

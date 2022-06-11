@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Producto\Productos;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,7 +45,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::view('/agregarProducto/{valuesidProducto}', 'producto.agregar')->name('addProducto');
+    Route::get('/productos',Productos::class)->name('productos');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -60,4 +61,22 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('/listadoSubCategoria', 'subcategoria.listado')->name('listSubCate');
+});
+
+
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::view('/agregarSolicitudEspecial/{valueidSoliEspecial?}', 'solicitudespecial.agregar')->name('addSoliEspecial');
+});
+
+/*Route::middleware(['auth', 'verified'])->group(function () {
+    Route::view('/editarSolicitudEspecial/{valueidSoliEspecial?}', 'solicitudespecial.editar')->name('editSoliEspecial');
+});*/
+
+Route::middleware(['auth', 'verified'])->group(function () {
+     Route::view('/listadoSolicitudEspecial', 'solicitudespecial.listado')->name('listSolicitudEspecial');
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::view('/listadoSolicitudEspecialAdmin', 'solicitudespecial.listadoadmin')->name('listSoliEspecialAdmin');
 });
