@@ -34,7 +34,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlFile1">Seleccione una foto</label>
-                        <input type="file" wire:model="image" class="form-control-file" id="">
+                        <input type="file" wire:model="image" class="form-control-file" id="{{$idFile}}">
                         @error('image') <span class="mt-1 error">{{ $message }}</span> @enderror
                     </div>
                     <button type="button" wire:loading.attr="disabled" wire:target="save, image" class="mt-3 btn btn-outline-primary" wire:click="save()">Guardar</button>

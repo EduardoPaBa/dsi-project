@@ -24,8 +24,9 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Nombre</th>
+                                <th scope="col">Imagen</th>
                                 <th scope="col">Acciones</th>
-                                <th scope="col">foto</th>
+
 
                             </tr>
                         </thead>
@@ -35,6 +36,9 @@
                                     <th scope="row">{{ $key + 1 }}</th>
                                     <td>{{ $value->name }}</td>
                                     <td>
+                                        <img src="{{ asset( 'storage/'.$value->image ) }}" width="100" height="100"/>
+                                    </td>
+                                    <td>
                                         <button type="button" class="btn btn-primary" data-toggle="modal"
                                             data-target="#exampleModal" data-whatever="@mdo"
                                             wire:click="edit({{ $value->id }})">Editar</button>
@@ -42,9 +46,7 @@
                                         data-target="#exampleModal2"
                                         wire:click="delete({{ $value->id  }})">Eliminar</button>
                                     </td>
-                                    <td>
-                                        <img src="{{ asset( 'storage/'.$value->image ) }}" width="100" height="100"/>
-                                    </td>
+
                                 </tr>
                             @endforeach
 
