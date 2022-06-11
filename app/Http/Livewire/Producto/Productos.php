@@ -6,19 +6,30 @@ use Livewire\Component;
 use App\Models\Producto;
 use Producto as GlobalProducto;
 use SubCategoria;
+use App\Models\ProductoFoto;
+use Livewire\WithFileUploads;
 
 class Productos extends Component
 {
-    public $name,$description,$subcategoria_id,$talla,$precio,$disponibilidad,$color;
+    public $name,$description,$subcategoria_id,$talla,$precio,$disponibilidad,$color,$image,$producto_id,$productoFoto;
     public $productos;
     public $modal = false;
+    use WithFileUploads;
+    protected $rules = [
+        'image' => 'image',
+    ];
+
+    public function mount()
+    {
+        $this->productoFoto= ProductoFoto::all();
+    }
 
     public function render()
     {
         $this->productos = Producto::all();
         return view('livewire.producto.productos');
     }
-     
+
     public function crear(){
         $this->limpiarCampos();
         $this->abrirModal();
@@ -41,15 +52,17 @@ class Productos extends Component
 
     public function cerrarModal()
     {
+        $this->producto_id=null;
         $this->modal = false;
     }
     public function editar($id)
-    {   
+    {
         $productos = Producto::findOrFail($id);
-        $this->id = $productos->id;
+        //dd($productos);
+        $this->producto_id = $productos->id;
         $this->name=$productos->name;
         $this->description=$productos->description;
-        $this->subcategoria_id =$productos->subcategoria_id;
+        $this->subcategoria_id =$productos->subcategorias_id;
         $this->talla =$productos->talla;
         $this->precio=$productos->precio;
         $this->disponibilidad=$productos->disponibilidad;
@@ -60,17 +73,35 @@ class Productos extends Component
     {
         Producto::find($id)->delete();
     }
-    public function guardar($id)
+    public function guardar()
     {
-        Producto::updateOrCreate(['id'=> $this->id_producto],
+        //dd($this->producto_id);
+        $id=$this->producto_id;
+        $productoNew = Producto::updateOrCreate(['id'=> $id],
         [
+
             'name' => $this->name,
             'description' =>$this->description,
-            'subcategoria_id'=>$this->subcategoria_id,
+            'subcategorias_id'=>$this->subcategoria_id,
+            'precio'=>$this->precio,
+            'disponibilidad'=>$this->disponibilidad,
+            'color'=>$this->color,
             'talla'=>$this->talla,
-            
         ]);
+
+
+
+        //dd($productoNew);
+        $this->validate();
+        $image = $this->image->store('producto');
+        $newValue = ProductoFoto::create([
+            'producto_id' => $productoNew->id,
+            'image'=> $image,
+        ]);
+        $newValue->save();
+
+
     }
 
-    
+
 }

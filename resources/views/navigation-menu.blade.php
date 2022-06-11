@@ -252,7 +252,8 @@
                         <li><a href="{{ route('listCatalog') }}">Catálogos</a></li>
                         <li><a href="{{ route('listCategor') }}">Categorías</a></li>
                         <li><a href="{{ route('listSubCate') }}">SubCategorias</a></li>
-                        
+                        <li><a href="{{ route('productos') }}">Productos</a></li>
+
                         <li><a href="#">contact</a></li>
                     </ul>
                 </nav>

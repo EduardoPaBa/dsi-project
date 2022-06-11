@@ -45,7 +45,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/productos',Productos::class);
+    Route::get('/productos',Productos::class)->name('productos');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {

@@ -36,11 +36,12 @@
                         <div class="col">
 
                             <button wire:click="crear()" type="button" class="btn btn-success"style="float: right;">Nuevo</button>
-                            @if ($modal)
-                                @include('livewire\producto.crear')
-                            @endif
+
                         </div>
                     </div>
+                    @if ($modal)
+                                @include('livewire\producto.crear')
+                            @endif
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -52,6 +53,7 @@
                                 <th scope="col">Precio</th>
                                 <th scope="col">Disponibilidad</th>
                                 <th scope="col">Color</th>
+                                <th scope="col">foto</th>
                                 <th scope="col">Opciones</th>
 
                             </tr>
@@ -68,6 +70,16 @@
                                     <td class="border px-4 py-2">{{ $producto->precio}}</td>
                                     <td class="border px-4 py-2">{{ $producto->disponibilidad}}</td>
                                     <td class="border px-4 py-2">{{ $producto->color}}</td>
+                                    <td class="border px-4 py-2">
+
+                                        @foreach ($productoFoto as $item)
+                                            @if ($item->producto_id == $producto->id)
+                                                <img src="{{ asset( 'storage/'.$item->image ) }}" width="100" height="100"/> <br>
+                                            @endif
+                                        @endforeach
+
+
+                                    </td>
                                     <td>
                                         <button wire:click="editar({{ $producto->id }})" type="button" class="btn btn-primary" data-toggle="modal"
                                             data-target="#exampleModal">Editar</button>
