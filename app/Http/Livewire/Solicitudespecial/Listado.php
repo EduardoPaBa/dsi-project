@@ -33,7 +33,9 @@ class Listado extends Component
 
      use WithPagination;
     public function render()
-    {   $this->departamentos = Departamento::all();
+    {   
+       
+        $this->departamentos = Departamento::all();
         $this->municipios = Municipio::all();
         $this->soliespeciales= SolicitudEspecial::all();
         $this->soliespecial= SolicitudEspecial::all();
