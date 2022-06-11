@@ -40,7 +40,7 @@ class Agregar extends Component
     public function save() {
         $newValue = Solicitud::create([
             'usuario_id'=>auth()->id(),
-            'estado'=>$this->estado,
+            'estado'=>"DENEGADA",
             'direccion'=>$this->direccion,
             'departamento'=>$this->departamento,
             'municipio'=>$this->municipio,

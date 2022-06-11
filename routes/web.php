@@ -50,6 +50,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('/agregarSolicitud', 'solicitud.agregar')->name('addSolicitud');
     Route::view('/listadoSolicitud', 'solicitud.listado')->name('listSolicitud');
+    Route::view('/editarSolicitud', 'solicitud.editar')->name('editSolicitud');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {

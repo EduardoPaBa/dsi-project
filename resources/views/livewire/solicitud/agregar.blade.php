@@ -63,6 +63,9 @@
         
                     <div class="d-grid gap-2">
                         <button type="button" wire:click="save()" class="btn btn-primary">Enviar solicitud</button>
+                        <a href="{{ route('editSolicitud') }}">
+                            <button type="button" class="btn btn-primary">Ver mis solicitudes</button>
+                        </a>
                     </div>
                 </div>
             </div>

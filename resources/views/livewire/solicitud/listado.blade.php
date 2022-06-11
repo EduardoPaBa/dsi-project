@@ -24,7 +24,7 @@
                                     </td>
                                     <td>
                                         <label class="switch">
-                                            <input id="{{ $solicitud->id }}" type="checkbox" wire:model="valor_checkbox" wire:click="saveEstado({{ $solicitud->id }})">
+                                            <input type="checkbox" wire:model="valor_checkbox.{{ $solicitud->id }}" wire:click="saveEstado({{ $solicitud->id }})">
                                             <span class="slider round"></span> 
                                         </label>
                                     </td>
@@ -45,7 +45,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="solicitudModalLabel">Detalles de la solicitud: {{ $solicitud->estado }}</h5>
+                <h5 class="modal-title" id="solicitudModalLabel">Detalles de la solicitud: {{ $estado }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -55,7 +55,7 @@
                     <div class="form-group">
                         <div class="form-group mb-3">
                             <label>Dirección:</label>
-                            <input type="text" class="form-control" value="{{ $solicitud->direccion }}" disabled>
+                            <input type="text" class="form-control" value="{{ $direccion }}" disabled>
                         </div>
                     </div>
                     <div class="form-group">
@@ -75,25 +75,25 @@
                     <div class="form-group">
                         <div class="form-group mb-3">
                             <label>Punto de referencia:</label>
-                            <input type="text" class="form-control" value="{{ $solicitud->punto_referencia }}" disabled>
+                            <input type="text" class="form-control" value="{{ $punto_referencia }}" disabled>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="form-group mb-3">
                             <label>Nombres:</label>
-                            <input type="text" class="form-control" value="{{ $solicitud->nombre_adicional }}" disabled>
+                            <input type="text" class="form-control" value="{{ $nombre_adicional }}" disabled>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="form-group mb-3">
                             <label>Apellidos:</label>
-                            <input type="text" class="form-control" value="{{ $solicitud->apellido_adicional }}" disabled>
+                            <input type="text" class="form-control" value="{{ $apellido_adicional }}" disabled>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="form-group mb-3">
                             <label>Teléfono:</label>
-                            <input type="text" class="form-control" value="{{ $solicitud->telefono }}" disabled>
+                            <input type="text" class="form-control" value="{{ $telefono }}" disabled>
                         </div>
                     </div>
                 </form>
