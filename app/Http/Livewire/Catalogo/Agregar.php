@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Catalogo;
 use Livewire\Component;
 use App\Models\Catalogo;
 use Livewire\WithFileUploads;
+use Illuminate\Http\Request;
 
 class Agregar extends Component
 {
@@ -12,7 +13,8 @@ class Agregar extends Component
     public $name, $valueidCata, $image;
 
     protected $rules = [
-        'image' => 'image'
+        'image' => 'image',
+        'name' => 'string',
     ];
 
 
@@ -25,6 +27,7 @@ class Agregar extends Component
     }
     public function save()
     {
+        $this->validate();
         $image = $this->image->store('catalogo');
         $newValue = Catalogo::create([
             'name' => $this->name,
@@ -32,6 +35,8 @@ class Agregar extends Component
         ]);
         $newValue->save();
         $this->clear();
+        return session()->flash("success", "This is success message");
+
     }
 
     public function clear()
