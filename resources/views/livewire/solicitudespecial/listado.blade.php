@@ -35,10 +35,18 @@
                         </thead>
                         <tbody>
                             @foreach ($soliespeciales as $key => $value)
+                            
                                 <tr>
                                     <th scope="row">{{ $key + 1 }}</th>
                                     <td>{{ $value->description }}</td>
-                                    <td ><a href="{{ $value->link }}">{{ $value->link }}</a></td>
+                                    <td >
+                                    
+                                    <a target="_blank" href="https://{{ $value->link }}" >
+                                    
+                                        {{ $value->link }}
+                                    </a>
+                                
+                                    </td>
                                     <td>{{ $value->estado }}</td>
                     
                                     
@@ -96,7 +104,7 @@
                         
                         <div class="form-group">
                             <label for="link">Link de Shein:</label>
-                            <input type="url" name="url" class="form-control" id="link" placeholder="https://www.shein.com/" pattern="http://www\.shein\.com\/(.+)|https://www\.shein\.com\/(.+)" size="255" minlength="10" maxlength="255" wire:model="link" >
+                            <input type="url" name="url" class="form-control" id="link" placeholder="https://www.shein.com/" pattern="https:\/\/[a-zA-Z\.\/-]+" size="255" minlength="10" maxlength="255" wire:model="link" >
                                 @error('link') <span class="mt-1 error">{{ $message }}</span> @enderror
                         </div>
                         <div class="form-group">

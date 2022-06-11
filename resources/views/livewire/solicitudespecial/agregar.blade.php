@@ -18,7 +18,7 @@
                         style="float: right;">Volver</button> </a> <br>
                     <div class="form-group mb-3">
                         <label for="link">Link de Shein:</label>
-                        <input type="url" name="url" class="form-control" id="link" placeholder="https://www.shein.com/" pattern="http://www\.shein\.com\/(.+)|https://www\.shein\.com\/(.+)" size="255" minlength="10" maxlength="255" wire:model="link"  title="Include http://shein">
+                        <input type="url" name="url" class="form-control" id="link" placeholder="https://www.shein.com/" pattern="https:\/\/[a-zA-Z\.\/-]+" size="255" minlength="10" maxlength="255" wire:model="link"  title="Include http://shein">
  
                          @error('link') <span class="mt-1 error">{{ $message }}</span> @enderror
                     </div>
