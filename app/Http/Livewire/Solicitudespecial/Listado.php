@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Departamento;
 use App\Models\Municipio;
 use Livewire\WithPagination;
+use Illuminate\Http\Request;
 
 class Listado extends Component
 {
@@ -60,8 +61,8 @@ class Listado extends Component
         
     }
     public function save_edit()
-    {
-        $this->selectedSoliEspecial->update([
+    {       $this->validate();
+            $this->selectedSoliEspecial->update([
             'link'=>$this->link,
             'description'=>$this->description,
             'direccion'=>$this->direccion,
@@ -72,6 +73,7 @@ class Listado extends Component
             'apellido_adicional'=>$this->apellido_adicional,
             'telefono'=>$this->telefono,
         ]);
+        return session()->flash("success", "Se actualizo correctamente");
     }
 
     public function delete($value)
@@ -80,7 +82,8 @@ class Listado extends Component
     }
     public function delete_now()
     {
-        SubCategoria::find($this->deleteSoliEspecial_id)->delete();
+        SolicitudEspecial::find($this->deleteSoliEspecial_id)->delete();
+        return session()->flash("success", "Se elimino correctamente");
     }
 
 

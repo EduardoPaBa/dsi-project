@@ -7,6 +7,7 @@ use App\Models\SolicitudEspecial;
 use App\Models\User;
 use App\Models\Departamento;
 use App\Models\Municipio;
+use Illuminate\Http\Request;
 
 class Agregar extends Component
 {
@@ -38,7 +39,8 @@ class Agregar extends Component
         $this->municipios = Municipio::where('DEPSV_ID', $departamento_id)->get();
     }
     public function save() {
-        $newValue = SolicitudEspecial::create([
+         $this->validate();
+            $newValue = SolicitudEspecial::create([
             'usuario_id'=>auth()->id(),
             'estado'=>$this->estado,
             'link'=>$this->link,
@@ -53,6 +55,7 @@ class Agregar extends Component
         ]);
         $newValue->save();
         $this->clear();
+        return session()->flash("success", "Se guardo correctamente");
     }
     public function clear() {
         $this->usuario_id = '';

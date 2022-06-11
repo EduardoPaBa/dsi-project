@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\SubCategoria;
 use App\Models\Categoria;
 use Livewire\WithPagination;
+use Illuminate\Http\Request;
 
 class Listado extends Component
 {
@@ -41,11 +42,12 @@ class Listado extends Component
         
     }
     public function save_edit()
-    {
+    {   $this->validate();
         $this->selectedSubCategoria->update([
             'name' => $this->name,
             'categoria_id'=> $this->categoria_id,
         ]);
+        return session()->flash("success", "Se actualizo correctamente");
     }
     public function delete($value)
     {
@@ -54,6 +56,7 @@ class Listado extends Component
     public function delete_now()
     {
         SubCategoria::find($this->deleteSubCate_id)->delete();
+        return session()->flash("success", "Se elimino correctamente");
     }
 
     public function clear()

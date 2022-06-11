@@ -1,9 +1,14 @@
-<div style="float: center; margin: 1rem">
-     {{-- Success is as dangerous as failure. --}}
+<div class="" style="float: center; margin: 1rem">
+    
     <br><br>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css">
 
     <div class="row" style="padding-bottom: 15px">
         <div class="col">
+
         </div>
         
         <div class="col-7">
@@ -11,19 +16,19 @@
                 <div class="card-body">
                     <div class="form-group mb-3">
                         <label for="link">Link de Shein:</label>
-                        <input type="url" name="url" class="form-control @error('link') is-invalid @enderror" id="link" placeholder="https://www.shein.com/" wire:model="link" pattern="http://www\.shein\.com\/(.+)|https://www\.shein\.com\/(.+)" title="Include http://shein" size="255" minlength="10" maxlength="255" required>
+                        <input type="url" name="url" class="form-control" id="link" placeholder="https://www.shein.com/" wire:model="link" pattern="http://www\.shein\.com\/(.+)|https://www\.shein\.com\/(.+)" title="Include http://shein" size="255" minlength="10" maxlength="255" required>
  
-                        @error('link') <span class="text-danger">{{ $message }}</span> @enderror
+                         @error('link') <span class="mt-1 error">{{ $message }}</span> @enderrorr
                     </div>
                     <div class="form-group mb-3">
                         <label for="description">Descripción (Talla, Color):</label>
-                        <input type="text" class="form-control @error('description') is-invalid @enderror" id="description" placeholder="Ingresar descripcion" wire:model="description" required>
-                        @error('description') <span class="text-danger">{{ $message }}</span> @enderror
+                        <input type="text" class="form-control" id="description" placeholder="Ingresar descripcion" wire:model="description" required>
+                         @error('description') <span class="mt-1 error">{{ $message }}</span> @enderror
                     </div>          
                     <div class="form-group mb-3">
                         <label for="direccion">Dirección:</label>
-                        <input type="text" class="form-control @error('direccion') is-invalid @enderror" id="direccion" placeholder="Ingresar dirección" wire:model="direccion" required>
-                        @error('direccion') <span class="text-danger">{{ $message }}</span> @enderror
+                        <input type="text" class="form-control" id="direccion" placeholder="Ingresar dirección" wire:model="direccion" required>
+                         @error('direccion') <span class="mt-1 error">{{ $message }}</span> @enderror
                     </div>
 
                     <div class="form-group mb-3">
@@ -34,6 +39,8 @@
                                 <option value="{{ $departamento->id }}">{{ $departamento->DepName }}</option>
                             @endforeach
                         </select>
+                        <br>
+                        @error('departamento') <span class="mt-1 error">{{ $message }}</span> @enderror
                     </div>
                     
                     @if (!is_null($municipios))
@@ -45,31 +52,33 @@
                                 <option value="{{ $municipio->id }}">{{ $municipio->MunName }}</option>
                             @endforeach
                         </select>
+                        <br>
+                        @error('municipio') <span class="mt-1 error">{{ $message }}</span> @enderror
                     </div>
                     @endif
         
                     <div class="form-group mb-3">
                         <label for="puntoReferencia">Punto de referencia:</label>
-                        <input type="text" class="form-control @error('puntoReferencia') is-invalid @enderror" id="puntoReferencia" placeholder="Ingresar punto de referencia" wire:model="punto_referencia" required>
-                        @error('puntoReferencia') <span class="text-danger">{{ $message }}</span> @enderror
+                        <input type="text" class="form-control" id="puntoReferencia" placeholder="Ingresar punto de referencia" wire:model="punto_referencia" required>
+                         @error('punto_referencia') <span class="mt-1 error">{{ $message }}</span> @enderror
                     </div>
         
                     <div class="form-group mb-3">
                         <label for="nombre">Nombres:</label>
-                        <input type="text" class="form-control @error('nombres') is-invalid @enderror" id="nombre" placeholder="Ingresar nombres" wire:model="nombre_adicional" required>
-                        @error('nombres') <span class="text-danger"> {{ $message }} </span> @enderror
+                        <input type="text" class="form-control" id="nombre" placeholder="Ingresar nombres" wire:model="nombre_adicional" required>
+                        @error('nombre_adicional') <span class="mt-1 error">{{ $message }}</span> @enderror
                     </div>
         
                     <div class="form-group mb-3">
                         <label for="apellido">Apellidos:</label>
-                        <input type="text" class="form-control @error('apellido') is-invalid @enderror" id="apellido" placeholder="Ingresar apellidos" wire:model="apellido_adicional" required>
-                        @error('apellido') <span class="text-danger"> {{ $message }} </span> @enderror
+                        <input type="text" class="form-control" id="apellido" placeholder="Ingresar apellidos" wire:model="apellido_adicional" required>
+                        @error('apellido_adicional') <span class="mt-1 error">{{ $message }}</span> @enderror
                     </div>
         
                     <div class="form-group mb-3">
                         <label for="telefono">Telefono:</label>
-                        <input type="numeric" class="form-control @error('telefono') is-invalid @enderror" id="telefono" placeholder="Ingresar teléfono" wire:model="telefono" required>
-                        @error('telefono') <span class="text-danger"> {{ $message }} </span> @enderror
+                        <input type="numeric" class="form-control" id="telefono" placeholder="Ingresar teléfono" wire:model="telefono" required>
+                         @error('telefono') <span class="mt-1 error">{{ $message }}</span> @enderror
                     </div>
         
                     <div class="d-grid gap-2">
@@ -78,8 +87,38 @@
                 </div>
             </div>
         </div>
-
         <div class="col">
         </div>
     </div>
+    @if(Session::has('success'))
+        <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Felicidades!',
+                    text: '{{ Session::get("success") }}'
+                })
+        </script>
+    @endif
 </div>
+<style>
+    .content-centrado {
+        background-color: #fafafa;
+        margin: 1rem;
+        padding: 1rem;
+        /* border: 2px solid #ccc; */
+        /* IMPORTANTE */
+        text-align: center;
+    }
+
+    .campo:last-child {
+        justify-content: flex-end;
+    }
+
+    .form-control {
+        color: black;
+    }
+    .error{
+        color: red;
+    }
+
+</style>
