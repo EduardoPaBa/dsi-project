@@ -11,14 +11,14 @@ class Producto extends Model
     protected $fillable = [
         'name',
         'description',
-        'subcategoria_id',
+        'subcategorias_id', //una s F
         'talla',
         'precio',
         'disponibilidad',
         'color',
-        
+
     ];
-    public function subcategoria()
+    public function subcategorias()
     {
         return $this->belongsTo(SubCategoria::class);
     }

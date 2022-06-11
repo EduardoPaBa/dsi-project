@@ -18,7 +18,7 @@
             @endforeach
         </tbody>
     </table>--}}
-    
+
     <br>
     <br>
     {{-- The whole world belongs to you. --}}
@@ -59,11 +59,11 @@
                         <tbody>
                             @foreach ($productos as $producto)
                                 <tr>
-                                    
+
                                     <td class="border px-4 py-2">{{ $producto->id}}</td>
                                     <td class="border px-4 py-2">{{ $producto->name}}</td>
                                     <td class="border px-4 py-2">{{ $producto->description}}</td>
-                                    <td class="border px-4 py-2">{{ $producto->subcategoria_id}}</td>
+                                    <td class="border px-4 py-2">{{ $producto->subcategorias->name}}</td>
                                     <td class="border px-4 py-2">{{ $producto->talla}}</td>
                                     <td class="border px-4 py-2">{{ $producto->precio}}</td>
                                     <td class="border px-4 py-2">{{ $producto->disponibilidad}}</td>
@@ -75,7 +75,7 @@
                                             data-target="#exampleModal2">Borrar</button>
 
                                     </td>
-                                    
+
 
                                    {{-- <td>
                                         <button type="button" class="btn btn-primary" data-toggle="modal"
@@ -90,7 +90,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    
+
 
                 </div>
             </div>
