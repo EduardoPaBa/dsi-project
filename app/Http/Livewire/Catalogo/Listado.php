@@ -5,8 +5,7 @@ namespace App\Http\Livewire\Catalogo;
 use Livewire\Component;
 use App\Models\Catalogo;
 use Livewire\WithPagination;
-#use Illuminate\Support\Facades\File;
-#use File;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
@@ -48,9 +47,20 @@ class Listado extends Component
     }
     public function delete_now()
     {
-        $file = File::where('id', $this->deleteCatalodo_id)->first();
-        dd($file);
-        Catalogo::find($this->deleteCatalodo_id)->delete();
+        $cataladoDelete = Catalogo::find($this->deleteCatalodo_id);
+        if(Storage::exists($cataladoDelete->image)){
+            //dd("hellou");
+            Storage::delete($cataladoDelete->image);
+            /*
+                Delete Multiple files this way
+                Storage::delete(['upload/test.png', 'upload/test2.png']);
+            */
+        }else{
+            //dd('File does not exist.');
+        }
+        $cataladoDelete->delete();
+
+
     }
 
     public function clear()
