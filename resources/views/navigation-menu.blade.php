@@ -313,7 +313,7 @@
                     <div></div>
                 </div>
             </div>
-            <div class="logo menu_mm"><a href="#">Wish</a></div>
+            <div class="logo menu_mm"><a href="#">Tiana´s Boutique</a></div>
             <div class="search">
                 <form action="#">
                     <input type="search" class="search_input menu_mm" required="required">

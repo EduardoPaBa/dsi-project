@@ -15,6 +15,9 @@
         </div>
         <div class="col-6">
             <div class="card">
+                <div class="card-header">
+                    GESTIONAR CATÁLOGO
+                </div>
                 <div class="card-body">
                     <a href="{{ route('listCatalog') }}"> <button type="button" class="btn btn-outline-secondary"
                         style="float: right;">Volver</button> </a> <br>

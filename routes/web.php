@@ -41,6 +41,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
+    Route::view('/agregarCategoria/{valueidCate?}', 'categoria.agregar')->name('addCategor');
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('/listadoCategoria', 'categoria.listado')->name('listCategor');
 });
 

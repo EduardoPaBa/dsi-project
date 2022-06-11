@@ -17,7 +17,7 @@
                         </div>
                         <div class="col">
 
-                            <a href=""><button type="button" class="btn btn-success"
+                            <a href="{{ route('addCategor') }}"><button type="button" class="btn btn-success"
                                     style="float: right;">Nuevo</button></a>
                         </div>
                     </div>

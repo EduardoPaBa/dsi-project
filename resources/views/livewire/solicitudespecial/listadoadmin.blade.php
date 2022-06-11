@@ -57,7 +57,7 @@
                                     <td>
 
                                     <label class="switch">
-                                            <input  type="checkbox" wire:model="valor_checkbox" wire:click="saveEstado({{ $value->id }})">
+                                            <input type="checkbox" wire:model="valor_checkbox.{{ $value->id }}" wire:click="saveEstado({{ $value->id }})">
                                             <span class="slider round"></span> 
                                         </label>
                                     </td>
@@ -82,7 +82,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Editando</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Consultado</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
