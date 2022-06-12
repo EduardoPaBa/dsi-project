@@ -20,7 +20,7 @@ class SolicitudespecialSeeder extends Seeder
         //
 
         DB::table('solicitudespeciales')->insert([
-            'id' => 1,            
+                        
             'usuario_id' => 1, 
             'estado'=>'APROBADA',
             'link'=>'https://www.shein.com/Men-Button-Through-Solid-Shirt-p-3707106-cat-1979.html?',
@@ -35,7 +35,7 @@ class SolicitudespecialSeeder extends Seeder
         ]);
 
         DB::table('solicitudespeciales')->insert([
-            'id' => 1,            
+                     
             'usuario_id' => 2, 
             'estado'=>'PENDIENTE',
             'link'=>'https://www.shein.com/Men-Letter-Graphic-Breathable-Running-Shoes-p-10428515-cat-2093.html?',
