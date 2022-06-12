@@ -21,12 +21,15 @@
 
     <br>
     <br>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css">
     {{-- The whole world belongs to you. --}}
     {{-- Hola --}}
     <div class="row">
         <div class="col">
         </div>
-        <div class="col-10">
+        <div class="col-11">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -110,12 +113,35 @@
         <div class="col">
         </div>
     </div>
-
+    @if(Session::has('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Great!',
+                text: '{{ Session::get("success") }}'
+            })
+        </script>
+    @endif
 </div>
 <style>
-    .form-control {
-        color: black;
-    }
+    .content-centrado {
+       background-color: #fafafa;
+       margin: 1rem;
+       padding: 1rem;
+       /* border: 2px solid #ccc; */
+       /* IMPORTANTE */
+       text-align: center;
+   }
 
+   .campo:last-child {
+       justify-content: flex-end;
+   }
+
+   .form-control {
+       color: black;
+   }
+   .error{
+       color: red;
+   }
 </style>
 
