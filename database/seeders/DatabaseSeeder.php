@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             CategoriaSeeder::class,
             CatalogoCategoriaSeeder::class,
             SubCategoriaSeeder::class,
+            SolicitudespecialSeeder::class,
         ]);
     }
 }
