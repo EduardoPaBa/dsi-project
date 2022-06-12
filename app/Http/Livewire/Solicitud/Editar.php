@@ -11,7 +11,7 @@ use Livewire\WithPagination;
 class Editar extends Component
 {
     public $usuario_id, $estado, $direccion, $departamento = null, $municipio = null, $punto_referencia, $nombre_adicional, $apellido_adicional, $telefono;
-    public $solicitudes, $solicitud;
+    public $solicitudes, $solicitud, $solicitud_id;
     public $nombre_departamento, $dep_id, $nombre_municipio, $mun_id;
     public $viendoDetalle = false, $editandoSolicitud = false;
     public $departamentos, $municipios;
@@ -19,8 +19,8 @@ class Editar extends Component
 
     // Validation Rules
     protected $rules = [
-        'usuario_id'=>'required',
-        'estado'=>'required',
+        //'usuario_id'=>'required',
+        //'estado'=>'required',
         'direccion'=>'required',
         'departamento'=>'required',
         'municipio'=>'required',
@@ -76,23 +76,24 @@ class Editar extends Component
 
     public function edit($solicitud_id) {
         $this->editandoSolicitud = true;
+        $this->clear();
         $this->solicitud = Solicitud::findOrFail($solicitud_id);
-        $this->estado = $this->solicitud->estado;
-        $this->direccion = $this->solicitud->direccion;
-        $this->departamento = $this->solicitud->departamento;
+        $this->estado = Solicitud::findOrFail($solicitud_id)->estado;
+        $this->direccion = Solicitud::findOrFail($solicitud_id)->direccion;
+        $this->departamento = Solicitud::findOrFail($solicitud_id)->departamento;
         $this->municipios = Municipio::where('DEPSV_ID', $this->departamento)->get();
         $this->nombre_departamento = Departamento::findOrFail($this->departamento);
-        $this->municipio = $this->solicitud->municipio;
+        $this->municipio = Solicitud::findOrFail($solicitud_id)->municipio;
         $this->nombre_municipio = Municipio::findOrFail($this->municipio);
-        $this->punto_referencia = $this->solicitud->punto_referencia;
-        $this->nombre_adicional = $this->solicitud->nombre_adicional;
-        $this->apellido_adicional = $this->solicitud->apellido_adicional;
-        $this->telefono = $this->solicitud->telefono;
+        $this->punto_referencia = Solicitud::findOrFail($solicitud_id)->punto_referencia;
+        $this->nombre_adicional = Solicitud::findOrFail($solicitud_id)->nombre_adicional;
+        $this->apellido_adicional = Solicitud::findOrFail($solicitud_id)->apellido_adicional;
+        $this->telefono = Solicitud::findOrFail($solicitud_id)->telefono;
     }
 
     public function update() {
-        $this->editandoSolicitud = false;
-        Solicitud::find($this->solicitud->id)->fill([
+        $this->validate();
+        $this->solicitud->update([
             'usuario_id'=>auth()->id(),
             'estado'=>$this->estado,
             'direccion'=>$this->direccion,
@@ -102,8 +103,8 @@ class Editar extends Component
             'nombre_adicional'=>$this->nombre_adicional,
             'apellido_adicional'=>$this->apellido_adicional,
             'telefono'=>$this->telefono
-        ])->save();
-        $this->cancel();
+        ]);
+        return session()->flash("success", "Solicitud actualizada correctamente");
     }
 
     public function cancel() {
@@ -111,8 +112,13 @@ class Editar extends Component
         $this->clear();
     }
 
-    public function destroy($solicitud_id) {
-        Solicitud::find($solicitud_id)->delete();
+    public function delete($solicitud_id) {
+        $this->solicitud_id = $solicitud_id;
+    }
+
+    public function delete_now() {
+        Solicitud::find($this->solicitud_id)->delete();
+        return session()->flash("success", "Solicitud eliminada correctamente");
     }
 
     public function clear() {

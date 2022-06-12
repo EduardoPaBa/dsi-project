@@ -1,6 +1,11 @@
 <div>
     {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
     <br><br>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css">
+
     <div class="row" style="padding-bottom: 15px">
         <div class="col">
         </div> 
@@ -27,7 +32,7 @@
                                         <td>{{ $solicitud->estado }}</td>
                                         <td>
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editarModal" wire:click="edit({{ $solicitud->id }})">Editar</button>
-                                            <button type="button" class="btn btn-danger" onclick="deleteSolicitud({{$solicitud->id}})">Eliminar</button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#eliminarSolicitud" wire:click="delete({{ $solicitud->id }})">Eliminar</button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -35,14 +40,8 @@
                     </table>
                 </div>
             </div>
-            <script>
-                function deleteSolicitud(id){
-                    if(confirm("¿Está seguro que desea eliminar la solicitud?"))
-                        window.livewire.emit('deleteSolicitud',id);
-                }
-            </script>
         </div>
-        
+
         <div class="col">
         </div>
     </div>
@@ -190,4 +189,36 @@
             </div>
         </div>
     </div>
+    
+    <!-- MODAL ELIMINAR SOLICITUD -->
+    <div wire:ignore.self class="modal fade" id="eliminarSolicitud" tabindex="-1" role="dialog"
+        aria-labelledby="eliminarSolicitudLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="eliminarSolicitudLabel">Confirmar eliminación</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true close-btn">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>¿Está seguro que desea eliminar la solicitud?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Cerrar</button>
+                    <button type="button" wire:click.prevent="delete_now()" class="btn btn-danger close-modal"
+                        data-dismiss="modal">Sí, eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @if(Session::has('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Felicidades!',
+                text: '{{ Session::get("success") }}'
+            })
+        </script>
+    @endif
 </div>

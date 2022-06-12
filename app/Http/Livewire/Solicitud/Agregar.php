@@ -15,8 +15,8 @@ class Agregar extends Component
 
     // Validation Rules
     protected $rules = [
-        'usuario_id'=>'required',
-        'estado'=>'required',
+        //'usuario_id'=>'required',
+        //'estado'=>'required',
         'direccion'=>'required',
         'departamento'=>'required',
         'municipio'=>'required',
@@ -38,6 +38,7 @@ class Agregar extends Component
     }
 
     public function save() {
+        $this->validate();
         $newValue = Solicitud::create([
             'usuario_id'=>auth()->id(),
             'estado'=>"DENEGADA",
@@ -51,6 +52,7 @@ class Agregar extends Component
         ]);
         $newValue->save();
         $this->clear();
+        return session()->flash("success", "Solicitud guardada correctamente");
     }
 
     public function clear() {
