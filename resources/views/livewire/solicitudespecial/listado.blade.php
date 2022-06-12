@@ -41,7 +41,7 @@
                                     <td>{{ $value->description }}</td>
                                     <td >
                                     
-                                    <a target="_blank" href="https://{{ $value->link }}" >
+                                    <a target="_blank" href="{{ $value->link }}" >
                                     
                                         {{ $value->link }}
                                     </a>
