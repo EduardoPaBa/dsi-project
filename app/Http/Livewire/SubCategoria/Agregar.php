@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Subcategoria;
+namespace App\Http\Livewire\SubCategoria;
 
 use Livewire\Component;
 use App\Models\SubCategoria;
@@ -10,11 +10,11 @@ use Illuminate\Http\Request;
 
 class Agregar extends Component
 {
-    public $name, $categoria_id, $categorias; 
+    public $name, $categoria_id, $categorias;
     protected $rules = [
         'name'=>'required',
         'categoria_id'=>'required'
-        
+
     ];
 
      public function mount()
@@ -25,7 +25,7 @@ class Agregar extends Component
         $this->categorias = Categoria::all();
         return view('livewire.subcategoria.agregar');
     }
-    
+
 
     public function save()
     {   $this->validate();
@@ -42,6 +42,6 @@ class Agregar extends Component
         $this->name = '';
         $this->categoria_id = '';
     }
-    
+
 }
 
