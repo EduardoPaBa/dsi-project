@@ -6,10 +6,11 @@
                 <nav class="footer_nav">
                     <ul>
                         <li><a href="#">home</a></li>
-                        <li><a href="#">clothes</a></li>
-                        <li><a href="#">accessories</a></li>
-                        <li><a href="#">lingerie</a></li>
-                        <li><a href="contact.html">contact</a></li>
+                        <li><a href="{{ route('listCatalog') }}">Catálogos</a></li>
+                        <li><a href="{{ route('listCategor') }}">Categorías</a></li>
+                        <li><a href="{{ route('listSubCate') }}">SubCategorias</a></li>
+                        <li><a href="{{ route('productos') }}">Productos</a></li>
+                        <!--<li><a href="contact.html">contact</a></li>-->
                     </ul>
                 </nav>
                 <div class="footer_social">

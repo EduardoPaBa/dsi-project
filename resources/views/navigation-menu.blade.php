@@ -248,13 +248,11 @@
                 <nav class="main_nav">
                     <ul>
                         <li><a href="{{ route('dashboard') }}">home</a></li>
-                        <li><a href="{{ route('example') }}">example</a></li>
+                        
                         <li><a href="{{ route('listCatalog') }}">Catálogos</a></li>
                         <li><a href="{{ route('listCategor') }}">Categorías</a></li>
                         <li><a href="{{ route('listSubCate') }}">SubCategorias</a></li>
                         <li><a href="{{ route('productos') }}">Productos</a></li>
-
-                        <li><a href="#">contact</a></li>
                     </ul>
                 </nav>
                 <div class="header_content ml-auto">
@@ -277,17 +275,7 @@
                                 </div>
                             </div>
                         </a>
-                        <!-- Star -->
-                        <a href="#">
-                            <div class="star">
-                                <img src="images/star.svg" alt="">
-                                <div class="star_num_container">
-                                    <div class="star_num_inner">
-                                        <div class="star_num">0</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
+                      
                         <!-- Avatar -->
                         <a href="#">
                             <div class="avatar">
@@ -314,20 +302,14 @@
                 </div>
             </div>
             <div class="logo menu_mm"><a href="#">Tiana´s Boutique</a></div>
-            <div class="search">
-                <form action="#">
-                    <input type="search" class="search_input menu_mm" required="required">
-                    <button type="submit" id="search_button_menu" class="search_button menu_mm"><img
-                            class="menu_mm" src="images/magnifying-glass.svg" alt=""></button>
-                </form>
-            </div>
+            
             <nav class="menu_nav">
                 <ul class="menu_mm">
-                    <li class="menu_mm"><a href="#">home</a></li>
-                    <li class="menu_mm"><a href="#">clothes</a></li>
-                    <li class="menu_mm"><a href="#">accessories</a></li>
-                    <li class="menu_mm"><a href="#">lingerie</a></li>
-                    <li class="menu_mm"><a href="#">contact</a></li>
+                    <li class="menu_mm"><a href="{{ route('dashboard') }}">home</a></li>
+                    <li><a href="{{ route('listCatalog') }}">Catálogos</a></li>
+                    <li><a href="{{ route('listCategor') }}">Categorías</a></li>
+                    <li><a href="{{ route('listSubCate') }}">SubCategorias</a></li>
+                    <li><a href="{{ route('productos') }}">Productos</a></li>
                 </ul>
             </nav>
         </div>
