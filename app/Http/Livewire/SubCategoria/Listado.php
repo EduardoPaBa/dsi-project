@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Subcategoria;
+namespace App\Http\Livewire\SubCategoria;
 
 use Livewire\Component;
 use App\Models\SubCategoria;
@@ -16,7 +16,7 @@ class Listado extends Component
      protected $rules = [
         'name'=>'required',
         'categoria_id'=>'required'
-        
+
     ];
     use WithPagination;
     public function mount()
@@ -39,7 +39,7 @@ class Listado extends Component
         $this->name = SubCategoria::find($value)->name;
         $this->categoria_id = SubCategoria::find($value)->categoria_id;
         //dd($this->editname);
-        
+
     }
     public function save_edit()
     {   $this->validate();
