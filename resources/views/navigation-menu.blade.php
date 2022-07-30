@@ -263,6 +263,8 @@
                                     src="images/magnifying-glass.svg" alt=""></button>
                         </form>
                     </div>
+
+                  
                     <div class="shopping">
                         <!-- Cart -->
                         <a href="#">
@@ -275,6 +277,7 @@
                                 </div>
                             </div>
                         </a>
+                    
                       
                         <!-- Avatar -->
                         <a href="#">

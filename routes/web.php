@@ -28,6 +28,19 @@ Route::middleware([
     })->name('dashboard');
 });
 
+
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboardU', function () {
+        return view('dashboardU');
+    })->name('dashboardU');
+});
+
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('/example', 'example')->name('example');
 });
