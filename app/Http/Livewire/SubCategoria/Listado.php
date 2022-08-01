@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\SubCategoria;
+namespace App\Http\Livewire\Subcategoria;
 
 use Livewire\Component;
 use App\Models\SubCategoria;
