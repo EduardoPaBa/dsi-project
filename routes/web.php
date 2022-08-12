@@ -45,21 +45,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('/example', 'example')->name('example');
 });
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::view('/agregarCatalogo/{valueidCata?}', 'catalogo.agregar')->name('addCatalog');
-});
-
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::view('/listadoCatalogo', 'catalogo.listado')->name('listCatalog');
-});
+    Route::view('/agregarCatalogo/{valueidCata?}', 'catalogo.agregar')->name('addCatalog');
 
-Route::middleware(['auth', 'verified'])->group(function () {
+    Route::view('/listadoCategoria', 'categoria.listado')->name('listCategor');
     Route::view('/agregarCategoria/{valueidCate?}', 'categoria.agregar')->name('addCategor');
 });
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::view('/listadoCategoria', 'categoria.listado')->name('listCategor');
-});
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/productos',Productos::class)->name('productos');

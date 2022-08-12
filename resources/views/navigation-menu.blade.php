@@ -1,4 +1,4 @@
-{{-- <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+ <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -20,6 +20,30 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('example') }}" :active="request()->routeIs('example')">
                         {{ __('Example') }}
+                    </x-jet-nav-link>
+                </div>
+                @if (Auth::user()->role_id == 1) 
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('listCatalog') }}" :active="request()->routeIs('listCatalog')">
+                        {{ __('Catalogos') }}
+                    </x-jet-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('listCategor') }}" :active="request()->routeIs('listCategor')">
+                        {{ __('Categoria') }}
+                    </x-jet-nav-link>
+                </div>
+                @endif
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('listSubCate') }}" :active="request()->routeIs('listSubCate')">
+                        {{ __('Sub Categoria') }}
+                    </x-jet-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('productos') }}" :active="request()->routeIs('productos')">
+                        {{ __('Productos') }}
                     </x-jet-nav-link>
                 </div>
             </div>
@@ -146,6 +170,25 @@
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
+            @if (Auth::user()->role_id == 1) 
+            <x-jet-responsive-nav-link href="{{ route('listCatalog') }}" :active="request()->routeIs('listCatalog')">
+                {{ __('Catalogos') }}
+            </x-jet-responsive-nav-link>
+            
+
+            
+            <x-jet-responsive-nav-link href="{{ route('listCategor') }}" :active="request()->routeIs('listCategor')">
+                {{ __('Categoria') }}
+            </x-jet-responsive-nav-link>
+            @endif
+
+            <x-jet-responsive-nav-link href="{{ route('listSubCate') }}" :active="request()->routeIs('listSubCate')">
+                {{ __('Sub Categoria') }}
+            </x-jet-responsive-nav-link>
+
+            <x-jet-responsive-nav-link href="{{ route('productos') }}" :active="request()->routeIs('productos')">
+                {{ __('Productos') }}
+            </x-jet-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
@@ -218,13 +261,13 @@
             </div>
         </div>
     </div>
-</nav> --}}
+</nav> 
 
 
 
 
 
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -326,4 +369,4 @@
     <script src="plugins/parallax-js-master/parallax.min.js"></script>
     <script src="plugins/colorbox/jquery.colorbox-min.js"></script>
     <script src="js/custom.js"></script>
-</body>
+</body> --}}

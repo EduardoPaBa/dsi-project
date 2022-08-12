@@ -15,6 +15,9 @@
     <link rel="stylesheet" type="text/css" href="styles/responsive.css">
 
    <!-- Home -->
+   @if (Session::has('message'))
+   <div class="alert alert-info">{{ Session::get('message') }}</div>
+   @endif
 
 	<div class="home">
 		

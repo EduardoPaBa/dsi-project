@@ -2,6 +2,9 @@
     {{-- Do your work, then step back. --}}
     <br><br>
     {{-- <h1>hellou</h1> --}}
+    @if (Session::has('message'))
+    <div class="alert alert-info">{{ Session::get('message') }}</div>
+    @endif
     <div class="row">
         <div class="col">
         </div>
