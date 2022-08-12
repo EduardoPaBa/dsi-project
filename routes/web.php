@@ -45,34 +45,38 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('/example', 'example')->name('example');
 });
 
+
+/* -------------- VISTAS DEL ADMIN ---------------------- */
 Route::middleware(['auth', 'isAdmin'])->group(function () {
+    /* CATALOGO */
     Route::view('/listadoCatalogo', 'catalogo.listado')->name('listCatalog');
     Route::view('/agregarCatalogo/{valueidCata?}', 'catalogo.agregar')->name('addCatalog');
 
+    /* CATRGORIA */
     Route::view('/listadoCategoria', 'categoria.listado')->name('listCategor');
     Route::view('/agregarCategoria/{valueidCate?}', 'categoria.agregar')->name('addCategor');
-});
 
-
-Route::middleware(['auth', 'verified'])->group(function () {
+    /* PRODUCTOS */
     Route::get('/productos',Productos::class)->name('productos');
+
+    /* SUB CATEGORIA */
+    Route::view('/listadoSubCategoria', 'subcategoria.listado')->name('listSubCate');
+    Route::view('/agregarSubCategoria/{valueidSubCate?}', 'subcategoria.agregar')->name('addSubCate');
+
+    /* SOLICITUD */
+    Route::view('/listadoSolicitud', 'solicitud.listado')->name('listSolicitud');
+
+    /* SOLICITUD ESPECIAL */
+    Route::view('/listadoSolicitudEspecialAdmin', 'solicitudespecial.listadoadmin')->name('listSoliEspecialAdmin');
+
 });
+
+
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('/agregarSolicitud', 'solicitud.agregar')->name('addSolicitud');
-    Route::view('/listadoSolicitud', 'solicitud.listado')->name('listSolicitud');
     Route::view('/editarSolicitud', 'solicitud.editar')->name('editSolicitud');
 });
-
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::view('/agregarSubCategoria/{valueidSubCate?}', 'subcategoria.agregar')->name('addSubCate');
-});
-
-
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::view('/listadoSubCategoria', 'subcategoria.listado')->name('listSubCate');
-});
-
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -87,6 +91,3 @@ Route::middleware(['auth', 'verified'])->group(function () {
      Route::view('/listadoSolicitudEspecial', 'solicitudespecial.listado')->name('listSolicitudEspecial');
 });
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::view('/listadoSolicitudEspecialAdmin', 'solicitudespecial.listadoadmin')->name('listSoliEspecialAdmin');
-});
