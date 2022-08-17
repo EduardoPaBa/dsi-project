@@ -52,7 +52,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::view('/listadoCatalogo', 'catalogo.listado')->name('listCatalog');
     Route::view('/agregarCatalogo/{valueidCata?}', 'catalogo.agregar')->name('addCatalog');
 
-    /* CATRGORIA */
+    /* CATERGORIA */
     Route::view('/listadoCategoria', 'categoria.listado')->name('listCategor');
     Route::view('/agregarCategoria/{valueidCate?}', 'categoria.agregar')->name('addCategor');
 
@@ -63,13 +63,30 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::view('/listadoSubCategoria', 'subcategoria.listado')->name('listSubCate');
     Route::view('/agregarSubCategoria/{valueidSubCate?}', 'subcategoria.agregar')->name('addSubCate');
 
-    /* SOLICITUD */
+    /* LISTADO DE SOLICITUDES */
     Route::view('/listadoSolicitud', 'solicitud.listado')->name('listSolicitud');
 
-    /* SOLICITUD ESPECIAL */
+    /* LISTADO DE SOLICITUDES ESPECIALES */
     Route::view('/listadoSolicitudEspecialAdmin', 'solicitudespecial.listadoadmin')->name('listSoliEspecialAdmin');
 
 });
+
+
+
+
+/* -------------- VISTAS DEL USUARIO ---------------------- */
+Route::middleware(['auth', 'isUser'])->group(function () {
+
+    /* SOLICITUD ESPECIAL */
+    Route::view('/agregarSolicitudEspecial/{valueidSoliEspecial?}', 'solicitudespecial.agregar')->name('addSoliEspecial');
+    Route::view('/listadoSolicitudEspecial', 'solicitudespecial.listado')->name('listSolicitudEspecial');
+  
+
+
+});
+
+
+
 
 
 
@@ -79,15 +96,5 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::view('/agregarSolicitudEspecial/{valueidSoliEspecial?}', 'solicitudespecial.agregar')->name('addSoliEspecial');
-});
 
-/*Route::middleware(['auth', 'verified'])->group(function () {
-    Route::view('/editarSolicitudEspecial/{valueidSoliEspecial?}', 'solicitudespecial.editar')->name('editSoliEspecial');
-});*/
-
-Route::middleware(['auth', 'verified'])->group(function () {
-     Route::view('/listadoSolicitudEspecial', 'solicitudespecial.listado')->name('listSolicitudEspecial');
-});
 

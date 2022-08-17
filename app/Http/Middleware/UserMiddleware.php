@@ -6,9 +6,9 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-       
 
-class AdminMiddleware
+
+class UserMiddleware
 {
     /**
      * Handle an incoming request.
@@ -21,7 +21,7 @@ class AdminMiddleware
     {
         if (Auth::check() ) {
             # code...
-            if (Auth::user()->role_id == 2) {
+            if (Auth::user()->role_id == 3) {
                 # code...
                 return $next($request);
             }
@@ -37,4 +37,8 @@ class AdminMiddleware
         }
         return $next($request);
     }
-}
+
+
+
+    }
+
