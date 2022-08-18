@@ -76,6 +76,7 @@
         <div class="col">
         </div>
     </div>
+    <br>
     {{-- MODAL --}}
     <div class="modal fade" id="exampleModal" wire:ignore.self tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -38,6 +38,7 @@
         <div class="col">
         </div>
     </div>
+    <br>
 
     <!-- MODAL -->
     <div class="modal fade" id="solicitudModal" wire:ignore.self tabindex="-1" role="dialog"

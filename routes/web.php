@@ -80,7 +80,13 @@ Route::middleware(['auth', 'isUser'])->group(function () {
     /* SOLICITUD ESPECIAL */
     Route::view('/agregarSolicitudEspecial/{valueidSoliEspecial?}', 'solicitudespecial.agregar')->name('addSoliEspecial');
     Route::view('/listadoSolicitudEspecial', 'solicitudespecial.listado')->name('listSolicitudEspecial');
-  
+
+    /* CONTACTO */
+    Route::view('/infoContacto', 'contacto.mostrar')->name('Contacto');
+
+    
+    
+    
 
 
 });

@@ -1,9 +1,11 @@
+
 <footer class="footer">
     <div class="container">
         <div class="row">
             <div class="col text-center">
                 <div class="footer_logo"><a href="#">Tiana´s Boutique</a></div>
                 <nav class="footer_nav">
+                @if (Auth::user()->role_id == 2) 
                     <ul>
                         <li><a href="#">home</a></li>
                         <li><a href="{{ route('listCatalog') }}">Catálogos</a></li>
@@ -12,6 +14,17 @@
                         <li><a href="{{ route('productos') }}">Productos</a></li>
                         <!--<li><a href="contact.html">contact</a></li>-->
                     </ul>
+                @endif
+                @if (Auth::user()->role_id == 3) 
+                    <ul>
+                        <li><a href="#">home</a></li>
+                        <li><a href="{{ route('listSolicitudEspecial') }}">Catálogos</a></li>
+                        <li><a href="{{ route('listSolicitudEspecial') }}">Solicitud Especial</a></li>
+                        <li><a href="{{ route('Contacto') }}">Contáctanos</a></li>
+                        
+                    </ul>
+                @endif
+
                 </nav>
                 <div class="footer_social">
                     <ul>

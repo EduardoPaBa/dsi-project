@@ -99,6 +99,7 @@
         </div>
     </div>
     <br>
+    
 
     <!-- Modal -->
     <div wire:ignore.self class="modal fade" id="exampleModal2" tabindex="-1" role="dialog"

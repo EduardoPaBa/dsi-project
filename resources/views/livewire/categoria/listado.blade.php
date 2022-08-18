@@ -68,6 +68,7 @@
         <div class="col">
         </div>
     </div>
+    <br>
 
 
     {{-- MODAL VER CATALOGOS --}}

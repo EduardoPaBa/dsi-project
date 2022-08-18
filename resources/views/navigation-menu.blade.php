@@ -1,17 +1,20 @@
  <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
+    <br>
+    <br>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
+                
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
                        <!-- <x-jet-application-mark class="block h-9 w-auto" />  -->
-                       <img src="{{url('/img/logo.jpeg')}}" width="50" height="50"/>
+                       <img src="{{url('/img/logo.jpeg')}}" width="60" height="60"/>
                     </a>
                 </div>
 
-                <!-- Navigation Links -->
+                <!-- Navigation Links ADMIN-->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
@@ -22,21 +25,21 @@
                         {{ __('Example') }}
                     </x-jet-nav-link>
                 </div> --}}
-                @if (Auth::user()->role_id == 1) 
+                @if (Auth::user()->role_id == 2) 
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-jet-nav-link href="{{ route('listCatalog') }}" :active="request()->routeIs('listCatalog')">
-                            {{ __('Catalogos') }}
+                            {{ __('Catálogos') }}
                         </x-jet-nav-link>
                     </div>
 
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-jet-nav-link href="{{ route('listCategor') }}" :active="request()->routeIs('listCategor')">
-                            {{ __('Categoria') }}
+                            {{ __('Categorias') }}
                         </x-jet-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-jet-nav-link href="{{ route('listSubCate') }}" :active="request()->routeIs('listSubCate')">
-                            {{ __('Sub Categoria') }}
+                            {{ __('Sub Categorias') }}
                         </x-jet-nav-link>
                     </div>
     
@@ -54,9 +57,32 @@
 
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-jet-nav-link href="{{ route('listSoliEspecialAdmin') }}" :active="request()->routeIs('listSoliEspecialAdmin')">
-                            {{ __('Solicitud Espec.') }}
+                            {{ __('Solicitud Especiales') }}
                         </x-jet-nav-link>
                     </div>
+                @endif
+
+                <!-- Navigation Links USER-->
+                @if (Auth::user()->role_id == 3) 
+                    
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('listSolicitudEspecial') }}" :active="request()->routeIs('listSolicitudEspecial')">
+                            {{ __('Catálogos') }}
+                        </x-jet-nav-link>
+                    </div>
+
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('listSolicitudEspecial') }}" :active="request()->routeIs('listSolicitudEspecial')">
+                            {{ __('Solicitud Especial') }}
+                        </x-jet-nav-link>
+                    </div>
+
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('Contacto') }}" :active="request()->routeIs('Contacto')">
+                            {{ __('Contáctanos') }}
+                        </x-jet-nav-link>
+                    </div>
+
                 @endif
                 
             </div>
