@@ -96,6 +96,7 @@ class Listado extends Component
                 $newValue->save();
             }
         }
+        return session()->flash("success", "Se guardo correctamente"); 
     }
 
     protected $listeners = ['postAdded' => 'incrementPostCount'];
@@ -115,6 +116,7 @@ class Listado extends Component
             'name'=> $this->editname,
         ]);
         $editCategoria->save();
+        return session()->flash("success", "Se actualizo correctamente");
     }
     public function delete($value)
     {
@@ -130,7 +132,7 @@ class Listado extends Component
 
         $categoriaDelete = Categoria::find($this->deleteCategoria_id);
         $categoriaDelete->delete();
-
+        return session()->flash("success", "Se eliminó correctamente");
 
 
     }

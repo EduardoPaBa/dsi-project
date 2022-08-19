@@ -18,38 +18,22 @@ class CatalogoSeeder extends Seeder
     {
         //
         DB::table('catalogos')->insert([
-            'name' => 'NOVEDADES',            
+            'name' => 'HOMBRE',            
         ]);
         DB::table('catalogos')->insert([
-            'name' => 'TENDENCIAS',            
+            'name' => 'MUJER',            
         ]);
         DB::table('catalogos')->insert([
-            'name' => 'MEJOR CALIFICADOS',            
+            'name' => 'NIÑOS',            
         ]);
         DB::table('catalogos')->insert([
-            'name' => 'REBAJAS',            
+            'name' => 'HOGAR',            
         ]);
+
         DB::table('catalogos')->insert([
-            'name' => 'ROPA',            
+            'name' => 'TECNOLOGÍA',            
         ]);
-        DB::table('catalogos')->insert([
-            'name' => 'TOPS',            
-        ]);
-        DB::table('catalogos')->insert([
-            'name' => 'VESTIDOS',            
-        ]);
-        DB::table('catalogos')->insert([
-            'name' => 'ROPA PLAYERA',            
-        ]);
-        DB::table('catalogos')->insert([
-            'name' => 'prueba',            
-        ]);
-        DB::table('catalogos')->insert([
-            'name' => 'datoX',            
-        ]);
-        DB::table('catalogos')->insert([
-            'name' => 'test',            
-        ]);
+       
 
     }
 }

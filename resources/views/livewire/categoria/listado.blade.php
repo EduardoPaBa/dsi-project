@@ -1,4 +1,7 @@
 <div class="" style="float: center; margin: 1rem; ">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css">
     {{-- Do your work, then step back. --}}
     <br><br>
     {{-- <h1>hellou</h1> --}}
@@ -180,6 +183,15 @@
             </div>
         </div>
     </div>
+    @if(Session::has('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Felicidades!',
+                text: '{{ Session::get("success") }}'
+            })
+        </script>
+    @endif
 
 </div>
 <style>

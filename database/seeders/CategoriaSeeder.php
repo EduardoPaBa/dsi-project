@@ -21,7 +21,35 @@ class CategoriaSeeder extends Seeder
             'name' => 'Zapatos',            
         ]);
         DB::table('categorias')->insert([
-            'name' => 'Camisa',            
+            'name' => 'PANTALONES',            
         ]);
+
+        DB::table('categorias')->insert([
+            'name' => 'BLUSAS',            
+        ]);
+
+        DB::table('categorias')->insert([
+            'name' => 'CAMISAS',            
+        ]);
+
+        DB::table('categorias')->insert([
+            'name' => 'ROPA INTERIOR Y DE DESCANSO',            
+        ]);
+
+        DB::table('categorias')->insert([
+            'name' => 'VESTIDOS',            
+        ]);
+
+        DB::table('categorias')->insert([
+            'name' => 'ROPA DE DEPORTE',            
+        ]);
+
+        DB::table('categorias')->insert([
+            'name' => 'ROPA PLAYERA',            
+        ]);
+
+
+
+
     }
 }
