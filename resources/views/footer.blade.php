@@ -18,8 +18,9 @@
                 @if (Auth::user()->role_id == 3) 
                     <ul>
                         <li><a href="#">home</a></li>
-                        <li><a href="{{ route('listSolicitudEspecial') }}">Catálogos</a></li>
+                        <li><a href="{{ route('CatalogosCliente') }}">Catálogos</a></li>
                         <li><a href="{{ route('listSolicitudEspecial') }}">Solicitud Especial</a></li>
+                        <li><a href="{{ route('listSolicitudEspecial') }}">Promociones</a></li>
                         <li><a href="{{ route('Contacto') }}">Contáctanos</a></li>
                         
                     </ul>

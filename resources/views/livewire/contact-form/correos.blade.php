@@ -1,5 +1,5 @@
 <div class="" style="float: center; margin: 1rem">
-    {{-- Because she competes with no one, no one can compete with her. --}}
+        {{-- Do your work, then step back. --}}
 
     <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
     <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -16,10 +16,10 @@
 
     <div class="super_container">
 	
-	
 
-	
-	
+
+
+
 	<!-- Contact Form -->
 
 	<div class="contact">
@@ -58,7 +58,7 @@
 						<div class="contact_title">Información de Contacto</div>
 						<div class="contact_info_content">
 							<ul>
-								
+
 								<li>
 									<div class="contact_info_icon"><img src="images/contact_info_2.png" alt=""></div>
 									<div class="contact_info_text">office@yourbusiness.com</div>
@@ -67,14 +67,16 @@
 									<div class="contact_info_icon"><img src="images/contact_info_3.png" alt=""></div>
 									<div class="contact_info_text">+503 7566-3613</div>
 								</li>
+								
+								
 							</ul>
 						</div>
 						<div class="contact_info_social">
 							<ul>
-								
-								
+
+
 								<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-								
+
 							</ul>
 						</div>
 					</div>
@@ -119,11 +121,9 @@
 		</div>
 	</div>
 
-	
 
-	
+
+
 </div>
 <br>
-
-
 </div>

@@ -2,6 +2,10 @@
 
 use App\Http\Livewire\Producto\Productos;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use App\Mail\ContactFormMailable;
+use Illuminate\Support\Facades\Mail;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -82,7 +86,11 @@ Route::middleware(['auth', 'isUser'])->group(function () {
     Route::view('/listadoSolicitudEspecial', 'solicitudespecial.listado')->name('listSolicitudEspecial');
 
     /* CONTACTO */
-    Route::view('/infoContacto', 'contacto.mostrar')->name('Contacto');
+
+    Route::view('/infoContacto', 'contact-form.correos')->name('Contacto');
+
+    /* CATALOGOS */
+    Route::view('/Catalogos', 'catalogo.catalogos-cliente')->name('CatalogosCliente');
 
     
     
