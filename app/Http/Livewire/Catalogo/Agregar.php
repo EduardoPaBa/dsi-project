@@ -29,7 +29,9 @@ class Agregar extends Component
     public function save()
     {
         $this->validate();
-        $image = $this->image->store('catalogo');
+        //dd( $this->image );
+        $image = $this->image->store('catalogo', 'public');
+        
         $newValue = Catalogo::create([
             'name' => $this->name,
             'image'=> $image,
