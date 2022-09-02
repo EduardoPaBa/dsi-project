@@ -10,27 +10,94 @@
     <div class="page-title-wrapper" aria-label="Catalogos">
         <div class="container">
             <!-- Breadcrumbs -->
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="mt-n1 mr-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></li>
-                <li class="breadcrumb-item">
-                        <a href="#">Inicio</a>
-                </li>
-                 <li class="breadcrumb-item">
-                        <a href="">Catálogos</a>
-                </li>
-                
-            </ol>
-        </nav>
-<!-- Breadcrumbs End -->
-            <h1 class="page-title">Catálogos</h1><span class="d-block mt-2 text-muted"></span>
+            <nav aria-label="breadcrumb">
+
+
+                <ul id="combibox">
+                    <li><a href="#">Services</a>
+                        <ul>
+                            <li><a href="#">Services-1</a></li>
+                            <li><a href="#">Services-2</a></li>
+                            <li><a href="#">SUB Services »</a>
+                                <ul>
+                                    <li><a href="#">Sub Services 1</a>
+                                    <li><a href="#">Sub Services 2</a>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+
+                <ol class="breadcrumb">
+                    @if ($CataSele==false && $CateSele==false && $SubCateSele==false)
+                        <li class="mt-n1 mr-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></li>
+                        <li class="breadcrumb-item">
+                                <a href="#">Inicio</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                                <a href="">{{$nameSelected}}</a>
+                        </li>
+                    @endif
+                    @if ($CataSele==true)
+                        <li class="mt-n1 mr-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></li>
+                        <li class="breadcrumb-item">
+                                <a href="#">Inicio</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="">Catálogos</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                                <a href="">{{$nameSelected}}</a>
+                        </li>
+                    @endif
+                    @if ($CateSele==true)
+                        <li class="mt-n1 mr-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></li>
+                        <li class="breadcrumb-item">
+                                <a href="#">Inicio</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="">Catálogos</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="">Categoría</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                                <a href="">{{$nameSelected}}</a>
+                        </li>
+                    @endif
+                    @if ($SubCateSele==true)
+                        <li class="mt-n1 mr-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></li>
+                        <li class="breadcrumb-item">
+                                <a href="#">Inicio</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="">Catálogos</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="">Categoría</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="">SubCategoría</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                                <a href="">{{$nameSelected}}</a>
+                        </li>
+                    @endif
+                </ol>
+
+
+            </nav>
+            <!-- Breadcrumbs End -->
+            <h1 class="page-title">{{$nameSelected}}</h1><span class="d-block mt-2 text-muted"></span>
             <hr class="mt-4">
         </div>
     </div>
     <div class="container pb-5 mb-sm-1">
         <!-- Categories grid-->
         <div class="row">
-                    <!-- Category-->
+            <!-- Category-->
+            @if($CataSele==false && $CateSele == false && $SubCateSele==false)
                 @foreach ($catalogos as $key => $value)
                     <div class="col-md-4 col-sm-6">
                         <div class="card border-0 mb-grid-gutter">
@@ -38,43 +105,176 @@
                                 <img class="img-fluid w-100" src="{{ asset( 'storage/'.$value->image ) }}" alt="{{ $value->name }}">
                             </a>
                             <div class="card-body border mt-n1 py-4 text-center">
-                                <a class="btn btn-pill btn-outline-primary btn-sm" href="">{{ $value->name }}</a>
+                            <button type="button" class="btn btn-primary"
+                                wire:click="catalogoSelected({{ $value->id }})"  >{{ $value->name }}</button>
                             </div>
                         </div>
                     </div>
                 @endforeach
+            @endif
+            @if ($CataSele==true && $SubCateSele==false)
+                {{-- <div>
+                    <button type="button" class="btn btn-primary"
+                        wire:click="volverCatalogos()"  >  Categorias</button> <br>
+                </div> --}}
+                <br>
+                    @foreach ($categorias as $key => $value)
+                        <div class="col-md-4 col-sm-6">
+                            <div class="card border-0 mb-grid-gutter">
+                                <a class="d-block" href="">
+                                    <img class="img-fluid w-100"  alt="{{ $value->name }}">
+                                </a>
+                                <div class="card-body border mt-n1 py-4 text-center">
+                                <button type="button" class="btn btn-primary"
+                                    wire:click="categoriaSelected({{$value->id}})"  >{{ $value->name }}</button>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+            @endif
+            @if ($CateSele == true && $SubCateSele==false)
+                {{-- <div>
+                    <button type="button" class="btn btn-primary"
+                        wire:click="volverCatalogos()"  >  Categorias</button> <br>
+                </div> --}}
+                <br>
+                @foreach ($cataCate as $key => $value)
+                    <div class="col-md-4 col-sm-6">
+                        <div class="card border-0 mb-grid-gutter">
+                            <a class="d-block" href="">
+                                <img class="img-fluid w-100"  alt="{{ $value->name }}">
+                            </a>
+                            <div class="card-body border mt-n1 py-4 text-center">
+                            <button type="button" class="btn btn-primary"
+                                wire:click="subCategoriaSelected({{$value->id}})"  >{{ $value->name }}</button>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            @endif
 
-                
+            @if ($SubCateSele== true)
+                {{-- <div>
+                    <button type="button" class="btn btn-primary"
+                        wire:click="volverCatalogos()"  >  Categorias</button> <br>
+                </div> --}}
+                <br>
+                @foreach ($productos as $key => $value)
+                    <div class="col-md-4 col-sm-6">
+                        <div class="card border-0 mb-grid-gutter">
+                            <a class="d-block" href="">
+                                <img class="img-fluid w-100"  alt="{{ $value->name }}">
+                            </a>
+                            <div class="card-body border mt-n1 py-4 text-center">
+                            <button type="button" class="btn btn-primary"
+                                wire:click="subCategoriaSelected({{$value->id}})"  >{{ $value->name }}</button>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            @endif
+
         </div>
-       
     </div>
 
     <!-- Pagination-->
 
     <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center justify-content-sm-start mb-0">
-            
-                <li class="page-item" aria-disabled="true" aria-label="« Previous">
-                    <span class="page-link" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-left"><polyline points="11 17 6 12 11 7"></polyline><polyline points="18 17 13 12 18 7"></polyline></svg></span>
-                </li>
-            
-                <li class="page-item d-sm-none"><span class="page-link page-link-static">1 / 2</span></li>
+            <li class="page-item" aria-disabled="true" aria-label="« Previous">
+                <span class="page-link" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-left"><polyline points="11 17 6 12 11 7"></polyline><polyline points="18 17 13 12 18 7"></polyline></svg></span>
+            </li>
 
-                <li class="page-item active d-none d-sm-block" aria-current="page"><span class="page-link">1<span class="sr-only">(current)</span></span></li>
-                <li class="page-item d-none d-sm-block"><a class="page-link" href="https://www.zonadigitalsv.com/product/family/enfriamiento-por-aire?page=2">2</a></li>
-                                                            
-            
-                <li class="page-item">
-                    <a class="page-link" href="https://www.zonadigitalsv.com/product/family/enfriamiento-por-aire?page=2" rel="next" aria-label="Next »">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-right"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg>
-                    </a>
-                </li>
+            <li class="page-item d-sm-none"><span class="page-link page-link-static">1 / 2</span></li>
+
+            <li class="page-item active d-none d-sm-block" aria-current="page"><span class="page-link">1<span class="sr-only">(current)</span></span></li>
+            <li class="page-item d-none d-sm-block"><a class="page-link" href="https://www.zonadigitalsv.com/product/family/enfriamiento-por-aire?page=2">2</a></li>
+
+
+            <li class="page-item">
+                <a class="page-link" href="https://www.zonadigitalsv.com/product/family/enfriamiento-por-aire?page=2" rel="next" aria-label="Next »">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-right"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg>
+                </a>
+            </li>
         </ul>
     </nav>
     <br>
-  
+
 </div>
 <style>
+
+
+#combibox {
+  list-style: none inside;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+#combibox li {
+  display: block;
+  position: relative;
+  float: left;
+  background: #426ecc;
+  /* menu background color */
+}
+
+#combibox li a {
+  display: block;
+  padding: 0;
+  text-decoration: none;
+  width: 200px;
+  /* this is the width of the menu items */
+  line-height: 35px;
+  /* this is the hieght of the menu items */
+  color: #3d3d3d;
+  /* list item font color */
+}
+
+#combibox li li a {
+  font-size: 80%;
+}
+
+
+/* smaller font size for sub menu items */
+
+#combibox li:hover {
+  background: #b9b9b9;
+}
+
+
+/* highlights current hovered list item and the parent list items when hovering over sub menues */
+
+#combibox ul {
+  position: absolute;
+  padding: 0;
+  left: 0;
+  display: none;
+  /* hides sublists */
+}
+
+#combibox li:hover ul ul {
+  display: none;
+}
+
+
+/* hides sub-sublists */
+
+#combibox li:hover ul {
+  display: block;
+}
+
+
+/* shows sublist on hover */
+
+#combibox li li:hover ul {
+  display: block;
+  /* shows sub-sublist on hover */
+  margin-left: 200px;
+  /* this should be the same width as the parent list item */
+  margin-top: -35px;
+  /* aligns top of sub menu with top of list item */
+
 
     .breadcrumb {
         background-color: transparent;
@@ -134,7 +334,7 @@
 
     .pb-5, .py-5 {
     padding-bottom: 3rem!important;
-    
+
     }
 
     .mb-sm-1, .my-sm-1 {
@@ -219,7 +419,7 @@
     z-index: 5;
     }
 
-    
+
 
 
 

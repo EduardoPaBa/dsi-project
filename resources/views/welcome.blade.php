@@ -35,7 +35,8 @@
                     @endauth
                 </div>
             @endif
-
+            
+            <img src="{{url('/img/logo.jpeg')}}" width="520" height="520"/>
            
         </div>
     </body>
