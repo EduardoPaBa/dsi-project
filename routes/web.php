@@ -92,6 +92,10 @@ Route::middleware(['auth', 'isUser'])->group(function () {
     /* CATALOGOS */
     Route::view('/Catalogos', 'catalogo.catalogos-cliente')->name('CatalogosCliente');
 
+
+    /* PRODUCTOS */
+
+    
     
     
     
