@@ -2,13 +2,13 @@
 
 namespace App\Http\Middleware;
 
+
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
-
-class UserMiddleware
+class EmpleadoMiddleware
 {
     /**
      * Handle an incoming request.
@@ -21,7 +21,7 @@ class UserMiddleware
     {
         if (Auth::check() ) {
             # code...
-            if (Auth::user()->role_id == 4) {
+            if (Auth::user()->role_id == 3) {
                 # code...
                 return $next($request);
             }
@@ -37,8 +37,4 @@ class UserMiddleware
         }
         return $next($request);
     }
-
-
-
-    }
-
+}
