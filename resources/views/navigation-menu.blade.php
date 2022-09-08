@@ -14,7 +14,7 @@
                     </a>
                 </div>
 
-                <!-- Navigation Links ADMIN-->
+               
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
@@ -25,7 +25,26 @@
                         {{ __('Example') }}
                     </x-jet-nav-link>
                 </div> --}}
-                @if (Auth::user()->role_id == 2) 
+
+                <!-- Navigation Links SUPER ADMIN O JEFE-->    
+                @if (Auth::user()->role_id == 1)
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('listEmplea') }}" :active="request()->routeIs('listEmplea')">
+                            {{ __('Gestionar Empleados') }}
+                        </x-jet-nav-link>
+                    </div>
+                
+                @endif
+
+                <!-- Navigation Links ADMIN O SUPERVISOR--> 
+                @if (Auth::user()->role_id == 2)
+                    
+                @endif
+
+
+
+                <!-- Navigation Links EMPLEADO O AGENTE DE VENTAS-->
+                @if (Auth::user()->role_id == 3) 
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-jet-nav-link href="{{ route('listCatalog') }}" :active="request()->routeIs('listCatalog')">
                             {{ __('Catálogos') }}
@@ -62,8 +81,8 @@
                     </div>
                 @endif
 
-                <!-- Navigation Links USER-->
-                @if (Auth::user()->role_id == 3) 
+                <!-- Navigation Links cliente-->
+                @if (Auth::user()->role_id == 4) 
                     
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-jet-nav-link href="{{ route('CatalogosCliente') }}" :active="request()->routeIs('CatalogosCliente')">
@@ -215,7 +234,7 @@
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
-            @if (Auth::user()->role_id == 1) 
+            @if (Auth::user()->role_id == 4) 
                 <x-jet-responsive-nav-link href="{{ route('listCatalog') }}" :active="request()->routeIs('listCatalog')">
                     {{ __('Catalogos') }}
                 </x-jet-responsive-nav-link>

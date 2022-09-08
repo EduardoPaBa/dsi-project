@@ -35,10 +35,16 @@ class UserSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'name' => 'client',
-            'email' => 'client@email.com',
+            'name' => 'empleado1',
+            'email' => 'empleado1@email.com',
             'password' => Hash::make('password'),
             'role_id' => 3
+        ]);
+        DB::table('users')->insert([
+            'name' => 'cliente',
+            'email' => 'cliente@email.com',
+            'password' => Hash::make('password'),
+            'role_id' => 4
         ]);
     }
 }

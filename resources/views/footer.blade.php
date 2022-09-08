@@ -5,7 +5,22 @@
             <div class="col text-center">
                 <div class="footer_logo"><a href="#">Tiana´s Boutique</a></div>
                 <nav class="footer_nav">
+                @if (Auth::user()->role_id == 1) 
+                    <ul>
+                        <li><a href="#">home</a></li>
+                        <li><a href="{{ route('listEmplea') }}">Gestionar Empleados</a></li>
+                        
+                       
+                    </ul>
+                @endif
                 @if (Auth::user()->role_id == 2) 
+                    <ul>
+                        <li><a href="#">home</a></li>
+                        
+                        
+                    </ul>
+                @endif    
+                @if (Auth::user()->role_id == 3) 
                     <ul>
                         <li><a href="#">home</a></li>
                         <li><a href="{{ route('listCatalog') }}">Catálogos</a></li>
@@ -15,7 +30,7 @@
                         <!--<li><a href="contact.html">contact</a></li>-->
                     </ul>
                 @endif
-                @if (Auth::user()->role_id == 3) 
+                @if (Auth::user()->role_id == 4) 
                     <ul>
                         <li><a href="#">home</a></li>
                         <li><a href="{{ route('CatalogosCliente') }}">Catálogos</a></li>

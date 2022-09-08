@@ -50,8 +50,25 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 
-/* -------------- VISTAS DEL ADMIN ---------------------- */
+/* -------------- VISTAS DE SUPER ADMIN o JEFE ---------------------- */
+Route::middleware(['auth', 'isSupAdmin'])->group(function () {
+
+    Route::view('/listadoEmpleado', 'empleados.listado')->name('listEmplea');
+    Route::view('/agregarEmpleado/{valueidEmplea?}', 'empleados.agregar')->name('addEmplea');
+
+});
+
+
+/* -------------- VISTAS DE  ADMIN O SUPERVISOR---------------------- */
 Route::middleware(['auth', 'isAdmin'])->group(function () {
+
+
+});
+
+
+
+/* -------------- VISTAS DE EMPLEADO O AGENTE DE VENTAS ---------------------- */
+Route::middleware(['auth', 'isEmpleado'])->group(function () {
     /* CATALOGO */
     Route::view('/listadoCatalogo', 'catalogo.listado')->name('listCatalog');
     Route::view('/agregarCatalogo/{valueidCata?}', 'catalogo.agregar')->name('addCatalog');
@@ -94,6 +111,10 @@ Route::middleware(['auth', 'isUser'])->group(function () {
     /* CATALOGOS */
     Route::view('/Catalogos', 'catalogo.catalogos-cliente')->name('CatalogosCliente');
 
+
+    /* PRODUCTOS */
+
+    
     
     
     

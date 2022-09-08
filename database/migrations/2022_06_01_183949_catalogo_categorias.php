@@ -13,6 +13,9 @@ class CatalogoCategorias extends Migration
      */
     public function up()
     {
+        Storage::deleteDirectory('catalogo');
+        Storage::disk('public')->deleteDirectory('catalogo');
+        
         Schema::create('catalogo_categorias', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('catalogo_id');

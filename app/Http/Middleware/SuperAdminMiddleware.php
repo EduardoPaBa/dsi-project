@@ -7,8 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
-
-class UserMiddleware
+class SuperAdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -21,7 +20,7 @@ class UserMiddleware
     {
         if (Auth::check() ) {
             # code...
-            if (Auth::user()->role_id == 4) {
+            if (Auth::user()->role_id == 1) {
                 # code...
                 return $next($request);
             }
@@ -36,9 +35,7 @@ class UserMiddleware
             return redirect('/login')->withErrors(['msg' => 'Acceso denegado, Inicia sesion primero ']);
         }
         return $next($request);
-    }
-
 
 
     }
-
+}
