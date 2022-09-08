@@ -61,7 +61,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::view('/agregarCategoria/{valueidCate?}', 'categoria.agregar')->name('addCategor');
 
     /* PRODUCTOS */
-    Route::get('/productos',Productos::class)->name('productos');
+    Route::view('/productos','producto.productos')->name('productos');
 
     /* SUB CATEGORIA */
     Route::view('/listadoSubCategoria', 'subcategoria.listado')->name('listSubCate');
@@ -73,6 +73,8 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
     /* LISTADO DE SOLICITUDES ESPECIALES */
     Route::view('/listadoSolicitudEspecialAdmin', 'solicitudespecial.listadoadmin')->name('listSoliEspecialAdmin');
 
+    /* LISTADO DE PROMOCIONES */
+    Route::view('/agregarPromocion', 'promociones.agregar')->name('addPromocion');
 });
 
 

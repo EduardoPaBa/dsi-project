@@ -1,8 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Listado producto') }}
+            {{ __('Agregar promoción') }}
         </h2>
     </x-slot>
-    @livewire('producto.productos')
+    @livewire('promociones.agregar')
 </x-app-layout>

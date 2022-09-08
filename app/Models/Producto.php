@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Producto extends Model
 {
+    protected $table = 'productos';
     use HasFactory;
     protected $fillable = [
         'name',
@@ -16,7 +17,6 @@ class Producto extends Model
         'precio',
         'disponibilidad',
         'color',
-
     ];
     public function subcategorias()
     {

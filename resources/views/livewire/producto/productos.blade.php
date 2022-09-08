@@ -18,9 +18,6 @@
             @endforeach
         </tbody>
     </table>--}}
-
-    <br>
-    <br>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css">
@@ -38,7 +35,14 @@
                         </div>
                         <div class="col">
 
-                            <button wire:click="crear()" type="button" class="btn btn-success"style="float: right;">Nuevo</button>
+                            <button wire:click="crear()" type="button" class="btn btn-success"style="float: right;" data-toggle="modal"
+                            data-target="#crearEditar">Nuevo</button>
+                            
+                            <a href="{{ route('addPromocion') }}">
+                                <button type="button" class="btn btn-primary">Agregar promoción</button>
+                            </a>
+                            
+
 
                         </div>
                     </div>
@@ -48,7 +52,8 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th scope="col">id</th>
+                                
+                                <th scope="col">#</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Descripcion</th>
                                 <th scope="col">Sub-Categoria</th>
@@ -85,7 +90,7 @@
                                     </td>
                                     <td>
                                         <button wire:click="editar({{ $producto->id }})" type="button" class="btn btn-primary" data-toggle="modal"
-                                            data-target="#exampleModal">Editar</button>
+                                            data-target="#crearEditar">Editar</button>
                                         <button wire:click="borrar({{ $producto->id }})" type="button" class="btn btn-danger" data-toggle="modal"
                                             data-target="#exampleModal2">Borrar</button>
 

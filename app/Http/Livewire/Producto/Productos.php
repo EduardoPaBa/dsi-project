@@ -14,6 +14,7 @@ class Productos extends Component
 {
     public $name,$description,$subcategoria_id,$talla,$precio,$disponibilidad,$color,$image,$producto_id,$productoFoto;
     public $productos;
+    public $subcategorias;
     public $modal = false;
     use WithFileUploads;
     protected $rules = [
@@ -25,6 +26,7 @@ class Productos extends Component
         'precio' => 'required',
         'disponibilidad' => 'required',
         'color' => 'required',
+        'subcategorias' => 'required',
     ];
 
     public function mount()
@@ -35,7 +37,7 @@ class Productos extends Component
     public function render()
     {
         $this->productos = Producto::all();
-        $this->subcategor = SubCategoria::all();
+        $this->subcategorias = SubCategoria::all();
         return view('livewire.producto.productos');
     }
 
@@ -76,6 +78,7 @@ class Productos extends Component
         $this->precio=$productos->precio;
         $this->disponibilidad=$productos->disponibilidad;
         $this->color=$productos->color;
+        //$this->subcategorias->name= $productos->subcategorias->name;
         $this->abrirModal();
     }
     public function borrar($id)
