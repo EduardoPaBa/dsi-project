@@ -114,10 +114,12 @@ Route::middleware(['auth', 'isUser'])->group(function () {
 
     /* PRODUCTOS */
 
-    
-    
-    
-    
+
+    /* CARRITO DE COMPRA */
+    Route::view('/carritoCompras', 'shop.cartshoppin')->name('carritodeComprass');
+
+
+
 
 
 });
