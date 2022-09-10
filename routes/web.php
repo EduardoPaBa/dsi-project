@@ -116,7 +116,7 @@ Route::middleware(['auth', 'isUser'])->group(function () {
 
 
     /* CARRITO DE COMPRA */
-    Route::view('/carritoCompras', 'shop.cartshoppin')->name('carritodeComprass');
+    Route::view('/carritoCompras', 'shop.cart-shoppin')->name('carritodeComprass');
 
 
 

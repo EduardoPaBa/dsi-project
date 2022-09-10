@@ -36,7 +36,7 @@ class CatalogosCliente extends Component
         $this->SubCategoriaSele  =false;
         $this->categorias=[];
         $this->subcategorias=[];
-        //$this->catalogosAll=Catalogo::all();
+        $this->productosAll=Producto::all();
 
     }
     public function render()
