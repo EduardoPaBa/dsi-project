@@ -6,11 +6,8 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
-<<<<<<< HEAD
         "classiebit/addchat-laravel": "^1.0",
-=======
         "darryldecode/cart": "^4.2",
->>>>>>> 8823c5f3574024723d8b079eb61ec6aab0bb444e
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.75",
