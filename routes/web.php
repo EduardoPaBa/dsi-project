@@ -114,10 +114,12 @@ Route::middleware(['auth', 'isUser'])->group(function () {
 
     /* PRODUCTOS */
 
-    
-    
-    
-    
+
+    /* CARRITO DE COMPRA */
+    Route::view('/carritoCompras', 'shop.cart-shoppin')->name('carritodeComprass');
+
+
+
 
 
 });
@@ -135,3 +137,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
 
+
+
+Addchat::routes();

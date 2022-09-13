@@ -1,11 +1,16 @@
 <div>
     {{-- In work, do what you enjoy. --}}
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
     <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="plugins/malihu-custom-scrollbar/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="styles/categories.css">
     <link rel="stylesheet" type="text/css" href="styles/categories_responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <br>
     <div class="page-title-wrapper" aria-label="Catalogos">
         <div class="container">
@@ -13,7 +18,7 @@
             <nav aria-label="breadcrumb">
 
 
-                <ul id="combibox">
+                {{-- <ul id="combibox">
                     <li><a href="#">Services</a>
                         <ul>
                             <li><a href="#">Services-1</a></li>
@@ -26,56 +31,108 @@
                             </li>
                         </ul>
                     </li>
-                </ul>
+                </ul> --}}
+
+
+                {{-- <div style="position:absolute; top:0; left:0;">
+                    <div class="accordion accordion-padding-y:1rem;" id="accordionPanelsStayOpenExample">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                Catálogos
+                            </button>
+                          </h2>
+                          @foreach ($catalogosAll as $item)
+                          <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                            <div class="accordion-body">
+                              This is the first item's accordion body.
+                              <div class="accordion-item">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                                    {{$item->name}}
+                                  </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                                  <div class="accordion-body">
+                                    <strong>This is the second item's accordion body.</strong>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                                            SubCategoría
+                                          </button>
+                                        </h2>
+                                        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                                          <div class="accordion-body">
+                                            <strong>This is the third item's accordion body.</strong>
+                                          </div>
+                                        </div>
+                                      </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+                          @endforeach
+
+                        </div>
+
+
+                      </div>
+                </div>
+
+
+ --}}
+
 
 
                 <ol class="breadcrumb">
-                    @if ($CataSele==false && $CateSele==false && $SubCateSele==false)
+                    @if ($CatalogoSele==false && $CategoriaSele==false && $SubCategoriaSele==false)
                         <li class="mt-n1 mr-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></li>
                         <li class="breadcrumb-item">
                                 <a href="#">Inicio</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#" wire:click="volverCatalogos()">{{$nameSelected}}</a>
+                        </li>
+                    @endif
+                    @if ($CatalogoSele==true)
+                        <li class="mt-n1 mr-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></li>
+                        <li class="breadcrumb-item">
+                                <a href="#">Inicio</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#" wire:click="volverCatalogos()">Catálogos</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                                <a  href="#"  wire:click="volverCate()">{{$nameSelected}}</a>
+                        </li>
+                    @endif
+                    @if ($CategoriaSele==true)
+                        <li class="mt-n1 mr-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></li>
+                        <li class="breadcrumb-item">
+                                <a href="#">Inicio</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#" wire:click="volverCatalogos()">Catálogos</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                                <a  href="#"  wire:click="volverCate()">Categoría</a>
                         </li>
                         <li class="breadcrumb-item">
                                 <a href="">{{$nameSelected}}</a>
                         </li>
                     @endif
-                    @if ($CataSele==true)
+                    @if ($SubCategoriaSele==true)
                         <li class="mt-n1 mr-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></li>
                         <li class="breadcrumb-item">
                                 <a href="#">Inicio</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="">Catálogos</a>
+                            <a href="#" wire:click="volverCatalogos()">Catálogos</a>
                         </li>
                         <li class="breadcrumb-item">
-                                <a href="">{{$nameSelected}}</a>
-                        </li>
-                    @endif
-                    @if ($CateSele==true)
-                        <li class="mt-n1 mr-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></li>
-                        <li class="breadcrumb-item">
-                                <a href="#">Inicio</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="">Catálogos</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="">Categoría</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                                <a href="">{{$nameSelected}}</a>
-                        </li>
-                    @endif
-                    @if ($SubCateSele==true)
-                        <li class="mt-n1 mr-1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></li>
-                        <li class="breadcrumb-item">
-                                <a href="#">Inicio</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="">Catálogos</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="">Categoría</a>
+                                <a  href="#"  wire:click="volverCate()">Categoría</a>
                         </li>
                         <li class="breadcrumb-item">
                             <a href="">SubCategoría</a>
@@ -97,7 +154,7 @@
         <!-- Categories grid-->
         <div class="row">
             <!-- Category-->
-            @if($CataSele==false && $CateSele == false && $SubCateSele==false)
+            @if($CatalogoSele==false && $CategoriaSele == false && $SubCategoriaSele==false)
                 @foreach ($catalogos as $key => $value)
                     <div class="col-md-4 col-sm-6">
                         <div class="card border-0 mb-grid-gutter">
@@ -106,7 +163,7 @@
                             </a>
                             <div class="card-body border mt-n1 py-4 text-center">
 
-                           
+
                             <button type="button" class="btn btn-pill btn-outline-primary btn-sm"
                                 wire:click="catalogoSelected({{ $value->id }})"  >{{ $value->name }}</button>
                             </div>
@@ -114,7 +171,7 @@
                     </div>
                 @endforeach
             @endif
-            @if ($CataSele==true && $SubCateSele==false)
+            @if ($CatalogoSele==true && $SubCategoriaSele==false)
                 {{-- <div>
                     <button type="button" class="btn btn-primary"
                         wire:click="volverCatalogos()"  >  Categorias</button> <br>
@@ -134,13 +191,13 @@
                         </div>
                     @endforeach
             @endif
-            @if ($CateSele == true && $SubCateSele==false)
+            @if ($CategoriaSele == true && $SubCategoriaSele==false)
                 {{-- <div>
                     <button type="button" class="btn btn-primary"
                         wire:click="volverCatalogos()"  >  Categorias</button> <br>
                 </div> --}}
                 <br>
-                @foreach ($cataCate as $key => $value)
+                @foreach ($subcategorias as $key => $value)
                     <div class="col-md-4 col-sm-6">
                         <div class="card border-0 mb-grid-gutter">
                             <a class="d-block" href="">
@@ -155,7 +212,7 @@
                 @endforeach
             @endif
 
-            @if ($SubCateSele== true)
+            @if ($SubCategoriaSele== true)
                 {{-- <div>
                     <button type="button" class="btn btn-primary"
                         wire:click="volverCatalogos()"  >  Categorias</button> <br>
@@ -169,7 +226,7 @@
                             </a>
                             <div class="card-body border mt-n1 py-4 text-center">
                             <button type="button" class="btn btn-pill btn-outline-primary btn-sm"
-                                wire:click="subCategoriaSelected({{$value->id}})"  >{{ $value->name }}</button>
+                                wire:click="add_cart({{$value}})"  >{{ $value->name }}</button>
                             </div>
                         </div>
                     </div>
@@ -178,10 +235,22 @@
 
         </div>
     </div>
-
+    @foreach ($productosAll as $key => $value)
+        <div class="col-md-4 col-sm-6">
+            <div class="card border-0 mb-grid-gutter">
+                <a class="d-block" href="">
+                    <img class="galeria__img"  alt="{{ $value->name }}">
+                </a>
+                <div class="card-body border mt-n1 py-4 text-center">
+                <button type="button" class="btn btn-pill btn-outline-primary btn-sm"
+                    wire:click="add_cart({{$value}})"  >{{ $value->name }}</button>
+                </div>
+            </div>
+        </div>
+    @endforeach
     <!-- Pagination-->
 
-    
+
     <br>
 
 </div>
@@ -351,79 +420,7 @@
     }
 
 
-#combibox {
-  list-style: none inside;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-}
 
-#combibox li {
-  display: block;
-  position: relative;
-  float: left;
-  background: #426ecc;
-  /* menu background color */
-}
-
-#combibox li a {
-  display: block;
-  padding: 0;
-  text-decoration: none;
-  width: 200px;
-  /* this is the width of the menu items */
-  line-height: 35px;
-  /* this is the hieght of the menu items */
-  color: #3d3d3d;
-  /* list item font color */
-}
-
-#combibox li li a {
-  font-size: 80%;
-}
-
-
-/* smaller font size for sub menu items */
-
-#combibox li:hover {
-  background: #b9b9b9;
-}
-
-
-/* highlights current hovered list item and the parent list items when hovering over sub menues */
-
-#combibox ul {
-  position: absolute;
-  padding: 0;
-  left: 0;
-  display: none;
-  /* hides sublists */
-}
-
-#combibox li:hover ul ul {
-  display: none;
-}
-
-
-/* hides sub-sublists */
-
-#combibox li:hover ul {
-  display: block;
-}
-
-
-/* shows sublist on hover */
-
-#combibox li li:hover ul {
-  display: block;
-  /* shows sub-sublist on hover */
-  margin-left: 200px;
-  /* this should be the same width as the parent list item */
-  margin-top: -35px;
-  /* aligns top of sub menu with top of list item */
-
-
-}
 
 
 

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -24,13 +25,24 @@
         <link rel="stylesheet" type="text/css" href="styles/categories.css">
         <link rel="stylesheet" type="text/css" href="styles/categories_responsive.css">
         <script src="js/categories_custom.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
         @livewireStyles
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
+
+        <!-- 1. Addchat css -->
+        <link href="{{ asset('assets/addchat/css/addchat.min.css') }}" rel="stylesheet">
     </head>
     <body class="font-sans antialiased">
+        <!-- 2. AddChat widget -->
+        <div id="addchat_app" 
+        data-baseurl="{{ url('') }}"
+        data-csrfname="{{ 'X-CSRF-Token' }}"
+        data-csrftoken="{{ csrf_token()}}"
+        ></div>
+
         <x-jet-banner />
 
         <div class="min-h-screen bg-gray-100">
@@ -55,5 +67,11 @@
         @stack('modals')
 
         @livewireScripts
+
+        <!-- 3. AddChat JS -->
+        <!-- Modern browsers -->
+        <script type="module" src="{{ asset('assets/addchat/js/addchat.min.js') }}"></script>
+        <!-- Fallback support for Older browsers -->
+        <script nomodule src="{{ asset('assets/addchat/js/addchat-legacy.min.js') }}"></script>
     </body>
 </html>
