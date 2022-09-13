@@ -10,12 +10,17 @@ use App\Models\CatalogoCategoria;
 use App\Models\SubCategoria;
 use App\Models\Producto;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Auth;
 
 
 class CatalogosCliente extends Component
 {
-    public  $nameSelected, $catalogo, $cataCate, $categorias, $categoria, $subCategoria, $productos,
-            $CataSele,$CateSele,$SubCateSele;
+    public  $nameSelected, $catalogosAll, $cateAll, $subcateAll, $productosAll,$producAnad,
+            //variables para control de lo seleccionado
+            $catalogo, $cataCate, $categoria, $subCategoria, $producto,
+            //variables para el conjunto a seleccionar
+            $categorias, $subcategorias, $productos,
+            $CatalogoSele,$CategoriaSele,$SubCategoriaSele ;
     use WithPagination;
     protected $rules = [
         'id'=>'id',
@@ -26,10 +31,12 @@ class CatalogosCliente extends Component
     public function mount()
     {
         $this->nameSelected="Catálogos";
-        $this->CataSele =false;
-        $this->CateSele =false;
-        $this->SubCateSele =false;
+        $this->CatalogoSele =false;
+        $this->CategoriaSele =false;
+        $this->SubCategoriaSele  =false;
         $this->categorias=[];
+        $this->subcategorias=[];
+        $this->productosAll=Producto::all();
 
     }
     public function render()
@@ -37,53 +44,100 @@ class CatalogosCliente extends Component
         $this->catalogos = Catalogo::all();
         return view('livewire.catalogo.catalogos-cliente');
     }
+
+    public function add_cart(Producto $producto)
+    {
+        $this->producAnad= $producto;
+        //dd($this->producAnad);
+
+        \Cart::session(Auth::user()->id)->add(array(
+            'id' => $this->producAnad->id,
+            'name' => $this->producAnad->name,
+            'price' => $this->producAnad->precio,
+            'quantity' => 1,
+
+        ));
+
+        $this->emit('message', 'se a agregado corectamente xd');
+        $this->emitTo('catalogo.cart', 'add_cart');
+
+
+    }
+
+
+    //METODO PARA VALIDAR Y MOSTRAR LAS CATEGORIAS ASOCIADAS AL CATALOGO
     public function catalogoSelected($value)
     {
+        $this->categorias=[];
         $this->catalogo=$value;
         //dd($this->catalogo);
-        $this->cataCate= CatalogoCategoria::where('catalogo_id', $this->catalogo)
-        ->get();
-        $this->CataSele = true;
+        $this->cataCate= CatalogoCategoria::where('catalogo_id', $this->catalogo)->get();
+        //dd($this->cataCate);
+        $this->CatalogoSele = true;
         $this->nameSelected="Categoría";
         //dd($this->cataCate);
-        //$this->cataCate=[];
+
         foreach ($this->cataCate as $key => $value) {
             $cate=[];
             $cate= Categoria::find($value->categoria_id);
-            //dd($cate, $value->categoria_id);
+            //dump($cate, $value->categoria_id);
             array_push($this->categorias, $cate);
         }
         //dd($this->cataCate);
 
     }
-    public function volverCatalogos()
-    {
-        $this->nameSelected="Catalogos";
-        $this->CataSele = false;
-        $this->CateSele = false;
-        $this->cataCate = [];
-        $this->categorias = [];
 
-    }
     public function categoriaSelected($value)
     {
         $this->categoria= $value;
-        $this->CataSele = false;
-        $this->CateSele= true;
-        $this->nameSelected="SubCategorias";
-        $this->cataCate= SubCategoria::where('categoria_id', $this->categoria)
-        ->get();
+        $this->CatalogoSele = false;
+        $this->CategoriaSele= true;
+        $this->nameSelected="SubCategoría";
+        $this->subcategorias= SubCategoria::where('categoria_id', $this->categoria)->get();
         //dd($this->cataCate);
     }
     public function subCategoriaSelected($value)
     {
         $this->subCategoria=$value;
-        $this->CataSele = false;
-        $this->CateSele= false;
-        $this->SubCateSele= true;
+        $this->CatalogoSele = false;
+        $this->CategoriaSele= false;
+        $this->SubCategoriaSele = true;
         $this->nameSelected="Productos";
-        $this->productos= Producto::where('subcategorias_id', $this->subCategoria)
-        ->get();
+        $this->productos= Producto::where('subcategorias_id', $this->subCategoria)->get();
+    }
+
+    public function volverCatalogos()
+    {
+        $this->nameSelected="Catálogos";
+        $this->CatalogoSele = false;
+        $this->CategoriaSele = false;
+        $this->SubCategoriaSele = false;
+
+
+
+    }
+
+    public function volverCate()
+    {
+        $this->nameSelected="Categoría";
+        //dd($this->catalogo);
+        $this->categorias=Categoria::all();
+        $this->CatalogoSele=true;
+        $this->CategoriaSele = false;
+        $this->SubCategoriaSele = false;
+
+        //dd($this->categorias);
+        //dd($this->catalogos);
+
+
+    }
+
+    public function volverSubCate()
+    {
+        $this->CatalogoSele = false;
+        $this->CategoriaSele= true;
+        $this->nameSelected="SubCategoría";
+        $this->subcategorias= SubCategoria::where('categoria_id', $this->categoria)->get();
     }
 
 }
