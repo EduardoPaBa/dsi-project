@@ -29,8 +29,18 @@
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
+
+        <!-- 1. Addchat css -->
+        <link href="{{ asset('assets/addchat/css/addchat.min.css') }}" rel="stylesheet">
     </head>
     <body class="font-sans antialiased">
+        <!-- 2. AddChat widget -->
+        <div id="addchat_app" 
+        data-baseurl="{{ url('') }}"
+        data-csrfname="{{ 'X-CSRF-Token' }}"
+        data-csrftoken="{{ csrf_token()}}"
+        ></div>
+
         <x-jet-banner />
 
         <div class="min-h-screen bg-gray-100">
@@ -55,5 +65,11 @@
         @stack('modals')
 
         @livewireScripts
+
+        <!-- 3. AddChat JS -->
+        <!-- Modern browsers -->
+        <script type="module" src="{{ asset('assets/addchat/js/addchat.min.js') }}"></script>
+        <!-- Fallback support for Older browsers -->
+        <script nomodule src="{{ asset('assets/addchat/js/addchat-legacy.min.js') }}"></script>
     </body>
 </html>
