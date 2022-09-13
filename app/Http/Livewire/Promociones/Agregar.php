@@ -11,11 +11,12 @@ use Psy\CodeCleaner\FunctionContextPass;
 
 class Agregar extends Component
 {
-    public $name,$description,$producto_id,$descuento,$duracion_dias,$descuento_id,$promocion_id;
+    public $name,$borrarPromocion,$description,$producto_id,$descuento,$duracion_dias,$descuento_id,$promocion_id;
     public $promociones;
     public $productos;
     public $modal = false;
-    use WithFileUploads;
+    //use WithFileUploads;
+   
     public function render()
     {
         $this->promociones = Promocion::all();
@@ -61,12 +62,17 @@ class Agregar extends Component
         $this->descuento = $promocion->descuento;
         $this->duracion_dias = $promocion->duracion_dias;
         $this->abrirModal();
+        
     }
-    public function borrar($id){
-        Promocion::find($id)->delete();
+    public function borrar($borrarPromocion){
+        $this->borrarPromocion = $borrarPromocion;
+    }
+    public function borrar_now(){
+        Promocion::find($this->borrarPromocion)-> delete();
         return session()->flash("success", "Se elimino correctamente");
     }
     public function guardar(){
+        $this->validate();
         $id=$this->promocion_id;
         $promocionNew = Promocion::updateOrCreate(['id'=> $id],
         [
@@ -76,7 +82,9 @@ class Agregar extends Component
             'descuento' => $this->descuento,
             'duracion_dias' => $this->duracion_dias,
         ]);
+        
         $promocionNew->save();
         return session()->flash("success", "This is success message");
     }
+    
 }

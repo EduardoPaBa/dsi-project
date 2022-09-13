@@ -5,15 +5,18 @@ namespace App\Http\Livewire\Producto;
 use Livewire\Component;
 use App\Models\Producto;
 use App\Models\SubCategoria;
+use App\Models\Promocion;
 use Producto as GlobalProducto;
 
 use App\Models\ProductoFoto;
+use Exception;
 use Livewire\WithFileUploads;
+
 
 class Productos extends Component
 {
     public $name,$description,$subcategoria_id,$talla,$precio,$disponibilidad,$color,$image,$producto_id,$productoFoto;
-    public $productos;
+    public $productos,$productoPromo;
     public $subcategorias;
     public $modal = false;
     use WithFileUploads;
@@ -81,14 +84,31 @@ class Productos extends Component
         //$this->subcategorias->name= $productos->subcategorias->name;
         $this->abrirModal();
     }
-    public function borrar($id)
-    {
-        Producto::find($id)->delete();
-        return session()->flash("success", "Se elimino correctamente");
+    public function borrar($id){
+        $this->producto_id=$id;        
     }
+    public function borrar_now()
+    {
+        try{
+            Producto::find($this->producto_id)->delete();
+            return session()->flash("success", "Se elimino correctamente");
+        }catch(Exception $e){
+            return session()->flash("success", "El producto tiene una promocion");    
+        }
+        //Promocion::where('producto_id')
+        /*$this->productoPromo = Promocion::where('producto_id', $this->producto_id)->get();
+        if(!$this->productoPromo){
+            return session()->flash("success", "El producto tiene una promocion");    
+        }else{
+            Producto::find($this->producto_id)->delete();
+            return session()->flash("success", "Se elimino correctamente");
+        }*/
+    }
+
 
     public function guardar()
     {
+        $this->validate();
         //dd($this->producto_id);
         $id=$this->producto_id;
         $productoNew = Producto::updateOrCreate(['id'=> $id],
@@ -96,7 +116,7 @@ class Productos extends Component
 
             'name' => $this->name,
             'description' =>$this->description,
-            'subcategorias_id'=>$this->subcategoria_id,
+            'subcategoria_id'=>$this->subcategoria_id,
             'precio'=>$this->precio,
             'disponibilidad'=>$this->disponibilidad,
             'color'=>$this->color,
@@ -106,7 +126,7 @@ class Productos extends Component
 
 
         //dd($productoNew);
-        $this->validate();
+        
         $image = $this->image->store('producto');
         $newValue = ProductoFoto::create([
             'producto_id' => $productoNew->id,

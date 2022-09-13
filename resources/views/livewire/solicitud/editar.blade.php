@@ -68,14 +68,14 @@
                         <div class="form-group">
                             <div class="form-group mb-3">
                                 <label>Departamento:</label>
-                                <!--<input type="text" class="form-control" value="{{ $solicitud->departamento }}" disabled>-->
+                                
                                 <input type="text" class="form-control" value="{{ $nombre_departamento }}" disabled>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-group mb-3">
                                 <label>Municipio:</label>
-                                <!--<input type="text" class="form-control" value="{{ $solicitud->municipio }}" disabled>-->
+                                
                                 <input type="text" class="form-control" value="{{ $nombre_municipio }}" disabled>
                             </div>
                         </div>
