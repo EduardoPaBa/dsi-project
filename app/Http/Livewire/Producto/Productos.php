@@ -116,7 +116,7 @@ class Productos extends Component
 
             'name' => $this->name,
             'description' =>$this->description,
-            'subcategoria_id'=>$this->subcategoria_id,
+            'subcategorias_id'=>$this->subcategoria_id,
             'precio'=>$this->precio,
             'disponibilidad'=>$this->disponibilidad,
             'color'=>$this->color,
