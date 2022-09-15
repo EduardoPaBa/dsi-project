@@ -109,7 +109,7 @@ Route::middleware(['auth', 'isUser'])->group(function () {
     Route::view('/infoContacto', 'contact-form.correos')->name('Contacto');
 
     /* CATALOGOS */
-    Route::view('/Catalogos', 'catalogo.catalogos-cliente')->name('CatalogosCliente');
+    Route::view('/Productos', 'catalogo.catalogos-cliente')->name('CatalogosCliente');
 
 
     /* PRODUCTOS */
