@@ -11,6 +11,7 @@ use App\Models\SubCategoria;
 use App\Models\Producto;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
+use App\Models\ProductoFoto;
 
 
 class CatalogosCliente extends Component
@@ -19,7 +20,7 @@ class CatalogosCliente extends Component
             //variables para control de lo seleccionado
             $catalogo, $cataCate, $categoria, $subCategoria, $producto,
             //variables para el conjunto a seleccionar
-            $categorias, $subcategorias, $productos,
+            $categorias, $subcategorias, $productos,$productoFoto,
             $CatalogoSele,$CategoriaSele,$SubCategoriaSele ;
     use WithPagination;
     protected $rules = [
@@ -30,6 +31,7 @@ class CatalogosCliente extends Component
 
     public function mount()
     {
+        $this->productoFoto= ProductoFoto::all();
         $this->nameSelected="Catálogos";
         $this->CatalogoSele =false;
         $this->CategoriaSele =false;
@@ -112,31 +114,44 @@ class CatalogosCliente extends Component
         $this->CatalogoSele = false;
         $this->CategoriaSele = false;
         $this->SubCategoriaSele = false;
-
-
-
     }
 
     public function volverCate()
     {
         $this->nameSelected="Categoría";
         //dd($this->catalogo);
-        $this->categorias=Categoria::all();
-        $this->CatalogoSele=true;
+
+
+
+        $this->cataCate= CatalogoCategoria::where('catalogo_id', $this->catalogo)->get();
+        //dd($this->cataCate);
+        $this->CatalogoSele = true;
+        //$this->nameSelected="Categoría";
+        //dd($this->cataCate);
+        $this->categorias=[];
+        foreach ($this->cataCate as $key => $value) {
+            $cate=[];
+            $cate= Categoria::find($value->categoria_id);
+            //dump($cate, $value->categoria_id);
+            array_push($this->categorias, $cate);
+        }
+
+        //$this->categorias=Categoria::all();
+        //$this->CatalogoSele=true;
         $this->CategoriaSele = false;
         $this->SubCategoriaSele = false;
-
         //dd($this->categorias);
         //dd($this->catalogos);
-
-
     }
 
     public function volverSubCate()
     {
-        $this->CatalogoSele = false;
-        $this->CategoriaSele= true;
+        $this->CatalogoSele=false;
+        $this->CategoriaSele = true;
+        $this->SubCategoriaSele = false;
         $this->nameSelected="SubCategoría";
+        //dd($this->categoria);
+        //$this->subcategorias= SubCategoria::all();
         $this->subcategorias= SubCategoria::where('categoria_id', $this->categoria)->get();
     }
 

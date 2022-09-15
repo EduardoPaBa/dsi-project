@@ -1,5 +1,11 @@
 <div>
     {{-- Care about people's approval and you will be their prisoner. --}}
+    <div class="row mt-2 mb-2">
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"><button type="button" class="btn btn-primary">Mandar Solicitud</button></div>
+    </div>
+
     <div class="container">
             <table class="table">
                 <thead>
@@ -20,6 +26,7 @@
                             <td>{{\Cart::session(Auth::user()->id)->get($item->id)->getPriceSum()}}</td>
                             <td>
                                 <button type="button" class="btn btn-danger">Eliminar</button>
+
                             </td>
                         </tr>
                     @endforeach

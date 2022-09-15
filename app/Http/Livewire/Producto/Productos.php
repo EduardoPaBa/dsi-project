@@ -85,7 +85,7 @@ class Productos extends Component
         $this->abrirModal();
     }
     public function borrar($id){
-        $this->producto_id=$id;        
+        $this->producto_id=$id;
     }
     public function borrar_now()
     {
@@ -93,12 +93,12 @@ class Productos extends Component
             Producto::find($this->producto_id)->delete();
             return session()->flash("success", "Se elimino correctamente");
         }catch(Exception $e){
-            return session()->flash("success", "El producto tiene una promocion");    
+            return session()->flash("success", "El producto tiene una promocion");
         }
         //Promocion::where('producto_id')
         /*$this->productoPromo = Promocion::where('producto_id', $this->producto_id)->get();
         if(!$this->productoPromo){
-            return session()->flash("success", "El producto tiene una promocion");    
+            return session()->flash("success", "El producto tiene una promocion");
         }else{
             Producto::find($this->producto_id)->delete();
             return session()->flash("success", "Se elimino correctamente");
@@ -126,8 +126,8 @@ class Productos extends Component
 
 
         //dd($productoNew);
-        
-        $image = $this->image->store('producto');
+
+        $image = $this->image->store('producto', 'public');
         $newValue = ProductoFoto::create([
             'producto_id' => $productoNew->id,
             'image'=> $image,
@@ -135,6 +135,11 @@ class Productos extends Component
         $newValue->save();
         //$this->cerrarModal();
         return session()->flash("success", "This is success message");
+
+        
+
+
+
     }
 
 

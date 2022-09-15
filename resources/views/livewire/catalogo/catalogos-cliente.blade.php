@@ -120,7 +120,7 @@
                                 <a  href="#"  wire:click="volverCate()">Categoría</a>
                         </li>
                         <li class="breadcrumb-item">
-                                <a href="">{{$nameSelected}}</a>
+                                <a href="#" wire:click="volverSubCate()">{{$nameSelected}}</a>
                         </li>
                     @endif
                     @if ($SubCategoriaSele==true)
@@ -135,10 +135,10 @@
                                 <a  href="#"  wire:click="volverCate()">Categoría</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="">SubCategoría</a>
+                            <a href="#"    wire:click="volverSubCate()">SubCategoría</a>
                         </li>
                         <li class="breadcrumb-item">
-                                <a href="">{{$nameSelected}}</a>
+                                <a {{-- href="" --}}>{{$nameSelected}}</a>
                         </li>
                     @endif
                 </ol>
@@ -221,9 +221,16 @@
                 @foreach ($productos as $key => $value)
                     <div class="col-md-4 col-sm-6">
                         <div class="card border-0 mb-grid-gutter">
-                            <a class="d-block" href="">
-                                <img class="galeria__img"  alt="{{ $value->name }}">
-                            </a>
+
+                            @foreach ($productoFoto as $item)
+                                @if ($item->producto_id == $value->id)
+                                <a class="d-block" href="">
+                                    <img class="galeria__img" src="{{ asset( 'storage/'.$item->image ) }}" alt="{{ $value->name }}">
+                                </a>
+                                @endif
+                            @endforeach
+
+
                             <div class="card-body border mt-n1 py-4 text-center">
                             <button type="button" class="btn btn-pill btn-outline-primary btn-sm"
                                 wire:click="add_cart({{$value}})"  >{{ $value->name }}</button>
@@ -235,7 +242,7 @@
 
         </div>
     </div>
-    @foreach ($productosAll as $key => $value)
+    {{-- @foreach ($productosAll as $key => $value)
         <div class="col-md-4 col-sm-6">
             <div class="card border-0 mb-grid-gutter">
                 <a class="d-block" href="">
@@ -247,7 +254,7 @@
                 </div>
             </div>
         </div>
-    @endforeach
+    @endforeach --}}
     <!-- Pagination-->
 
 
