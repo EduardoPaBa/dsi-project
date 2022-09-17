@@ -239,7 +239,7 @@
                                             <div class="product_options">
                                                 <div class="product_buy product_option"><img src="images/shopping-bag-white.svg" alt="" wire:click="add_cart({{$value}})"  ></div>
                                                 <div class="product_fav product_option">
-                                                     <a href="{{route('Expansion')}}"><button type="button">+</a></button>
+                                                     <a class="nuevo" href="{{route('Expansion')}}"><button class="nuevo" type="button">+</a></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -272,7 +272,7 @@
                         <div class="product_options">
                             <div class="product_buy product_option"><img src="images/cart-outline.svg" alt="" wire:click="add_cart({{$value}})"  ></div>
                             <div class="product_fav product_option">
-                                <a href="{{route('CatalogosCliente')}}"><button type="button">+</a></button>
+                                <a class="nuevo" href="{{route('CatalogosCliente')}}"><button class="nuevo" type="button">+</a></button>
                             </div>
                         </div>
                     </div>
@@ -594,6 +594,27 @@
 	color: #FFFFFF;
 	background: #232323;
 }
+.nuevo{
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 14px;
+	font-weight: 600;
+	color: #232323;
+	background: #e0e3e4;
+	line-height: 37px;
+	text-align: center;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+
+.nuevo:hover{
+	color: #FFFFFF;
+	background: #232323;
+}
+
 
 
 
