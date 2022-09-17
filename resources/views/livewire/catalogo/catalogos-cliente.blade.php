@@ -181,7 +181,7 @@
                         <div class="col-md-4 col-sm-6">
                             <div class="card border-0 mb-grid-gutter">
                                 <a class="d-block" href="">
-                                    <img class="galeria__img"  alt="{{ $value->name }}">
+                                    <img class="galeria__img" src="{{ asset( 'storage/'.$value->image ) }}"  alt="{{ $value->name }}">
                                 </a>
                                 <div class="card-body border mt-n1 py-4 text-center">
                                 <button type="button" class="btn btn-pill btn-outline-primary btn-sm"
@@ -201,7 +201,7 @@
                     <div class="col-md-4 col-sm-6">
                         <div class="card border-0 mb-grid-gutter">
                             <a class="d-block" href="">
-                                <img class="galeria__img" alt="{{ $value->name }}">
+                                <img class="galeria__img" src="{{ asset( 'storage/'.$value->image ) }}" alt="{{ $value->name }}">
                             </a>
                             <div class="card-body border mt-n1 py-4 text-center">
                             <button type="button" class="btn btn-pill btn-outline-primary btn-sm"
@@ -238,7 +238,9 @@
                                             </div>
                                             <div class="product_options">
                                                 <div class="product_buy product_option"><img src="images/shopping-bag-white.svg" alt="" wire:click="add_cart({{$value}})"  ></div>
-                                                <div class="product_fav product_option">+</div>
+                                                <div class="product_fav product_option">
+                                                     <a href="{{route('Expansion')}}"><button type="button">+</a></button>
+                                                </div>
                                             </div>
                                         </div>
                                 </div>
@@ -268,8 +270,10 @@
                             <div class="product_price">${{ $value->precio }}</div>
                         </div>
                         <div class="product_options">
-                            <div class="product_buy product_option"><img src="images/shopping-bag-white.svg" alt="" wire:click="add_cart({{$value}})"  ></div>
-                            <div class="product_fav product_option">+</div>
+                            <div class="product_buy product_option"><img src="images/cart-outline.svg" alt="" wire:click="add_cart({{$value}})"  ></div>
+                            <div class="product_fav product_option">
+                                <a href="{{route('CatalogosCliente')}}"><button type="button">+</a></button>
+                            </div>
                         </div>
                     </div>
              </div>

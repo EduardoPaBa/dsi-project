@@ -50,7 +50,7 @@
                                                 <div class="cart_product_total">${{\Cart::session(Auth::user()->id)->get($item->id)->getPriceSum()}}</div>
                                                 <!-- Product Cart Trash Button -->
                                                 <div >
-                                                    <button type="button" class="btn btn-danger">Eliminar</button>
+                                                    <button type="button" class="btn btn-danger" wire:click="deleteItem({{$item->id}})">Eliminar</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -65,8 +65,8 @@
                         <div class="cart_control_bar d-flex flex-md-row flex-column align-items-start justify-content-start">
                             <button class="button_clear cart_button">Limpiar Carrito</button>
                             <button class="button_update cart_button">Actualizar Carrito</button>
-                            <button class="button_update cart_button_2 ml-md-auto">Realizar Solicitud</button>
-                            <button class="button_update cart_button_2 ml-md-auto">Continuar Comprando</button>
+                            <a class="nuevo" href="{{ route('addSolicitud') }}" ><button class="button_update cart_button_2 ml-md-auto">Realizar Solicitud </a></button>
+							<a class="nuevo" href="{{ route('CatalogosCliente') }}" ><button class="button_update cart_button_2 ml-md-auto"  >Continuar Comprando</a></button>
                         </div>
                     </div>
                 </div>
@@ -133,6 +133,11 @@ a, a:hover, a:visited, a:active, a:link
 	-webkit-font-smoothing: antialiased;
 	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
+	
+	
+	
+	
+
 }
 p a:active
 {
@@ -604,6 +609,16 @@ section
     color: #FFFFFF;
 	border: solid 1px #5c77fc;
 	
+}
+
+.nuevo{
+	color: #232323;
+}
+
+.nuevo:hover{
+	background: #5c77fc;
+    color: #FFFFFF;
+	border: solid 1px #5c77fc;
 }
 .cart_button:hover
 {
