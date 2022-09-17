@@ -67,7 +67,7 @@
                     <div class="col">
                         <div class="cart_control_bar d-flex flex-md-row flex-column align-items-start justify-content-start">
                             <button class="button_clear cart_button">Limpiar Carrito</button>
-                            <button class="button_update cart_button">Actualizar Carrito</button>
+                            <a class="nuevo" href="{{ route('carritodeComprass') }}"  ><button class="button_update cart_button">Actualizar Carrito</a></button>
                             <a class="nuevo" href="{{ route('addSolicitud') }}" ><button class="button_update cart_button_2 ml-md-auto">Realizar Solicitud </a></button>
 							<a class="nuevo" href="{{ route('CatalogosCliente') }}" ><button class="button_update cart_button_2 ml-md-auto"  >Continuar Comprando</a></button>
                         </div>

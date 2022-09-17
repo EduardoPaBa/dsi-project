@@ -239,7 +239,7 @@
                                             <div class="product_options">
                                                 <div class="product_buy product_option"><img src="images/shopping-bag-white.svg" alt="" wire:click="add_cart({{$value}})"  ></div>
                                                 <div class="product_fav product_option">
-                                                     <a class="nuevo" href="{{route('Expansion')}}"><button class="nuevo" type="button">+</a></button>
+                                                     <a class="nuevo" href="{{route('Expansion')}}" wire:click="expandir({{$value}})"><button class="nuevo" type="button" >+</a></button>
                                                 </div>
                                             </div>
                                         </div>

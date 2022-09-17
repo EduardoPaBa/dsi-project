@@ -20,7 +20,7 @@ class CatalogosCliente extends Component
             //variables para control de lo seleccionado
             $catalogo, $cataCate, $categoria, $subCategoria, $producto,
             //variables para el conjunto a seleccionar
-            $categorias, $subcategorias, $productos,$productoFoto,
+            $categorias, $subcategorias, $productos,$productoFoto, $image,
             $CatalogoSele,$CategoriaSele,$SubCategoriaSele, $selectedProd, $descrpition,$disponinilidad,$precio,$talla,$color;
     use WithPagination;
     protected $rules = [
@@ -53,9 +53,11 @@ class CatalogosCliente extends Component
         //dd($this->producAnad);
 
         \Cart::session(Auth::user()->id)->add(array(
+            
             'id' => $this->producAnad->id,
             'name' => $this->producAnad->name,
             'price' => $this->producAnad->precio,
+            'size' =>$this->producAnad->talla,
             'quantity' => 1,
 
         ));

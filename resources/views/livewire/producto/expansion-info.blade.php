@@ -1,70 +1,67 @@
 <div class="container">
     <br>
 	<div class="row product_row">
-        <!-- Product Image -->
-        <div class="col-lg-7">
-            <div class="product_image">
-                <div class="product_image_large"><img src="images/product_image_1.jpg" alt=""></div>
-                <div class="product_image_thumbnails d-flex flex-row align-items-start justify-content-start">
-                    <div class="product_image_thumbnail" style="background-image:url(images/product_image_1.jpg)" data-image="images/product_image_1.jpg"></div>
-                    <div class="product_image_thumbnail" style="background-image:url(images/product_image_2.jpg)" data-image="images/product_image_2.jpg"></div>
-                    <div class="product_image_thumbnail" style="background-image:url(images/product_image_4.jpg)" data-image="images/product_image_4.jpg"></div>
-                </div>
-            </div>
-        </div>
+		@foreach ($productos as $key => $value)
+			@foreach ($productoFoto as $item)
+				@if ($item->producto_id == $value->id)
+			<!-- Product Image -->
+					<div class="col-lg-7">
+						<div class="product_image">
+							<div class="product_image_large"><img class="galeria__img" src="{{ asset( 'storage/'.$item->image ) }}"  alt=""></div>
+							<!--<div class="product_image_thumbnails d-flex flex-row align-items-start justify-content-start">
+								<div class="product_image_thumbnail" style="background-image:url(images/product_image_1.jpg)" data-image="images/product_image_1.jpg"></div>
+								<div class="product_image_thumbnail" style="background-image:url(images/product_image_2.jpg)" data-image="images/product_image_2.jpg"></div>
+								<div class="product_image_thumbnail" style="background-image:url(images/product_image_4.jpg)" data-image="images/product_image_4.jpg"></div>
+							</div>-->
+						</div>
+					</div>
+				@endif
+			@endforeach
 
-        <!-- Product Content -->
-        <div class="col-lg-5">
-            <div class="product_content">
-                <div class="product_name">2 Piece Swimsuit</div>
-                <div class="product_price">$35.00</div>
-                
-                
-                <div class="product_text">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis quam ipsum. Pellentesque consequat tellus non tortor tempus, id egestas elit iaculis. Proin eu dui porta, pretium metus vitae, pharetra odio. Sed ac mi commodo, pellentesque erat eget, accumsan justo. Etiam sed placerat felis. Proin non rutrum ligula.</p>
-                </div>
-                <!-- Product Quantity -->
-                <div class="product_quantity_container">
-                    <span>Quantity</span>
-                    <div class="product_quantity clearfix">
-                        <input id="quantity_input" type="text" pattern="[0-9]*" value="1">
-                        <div class="quantity_buttons">
-                            <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-caret-up" aria-hidden="true"></i></div>
-                            <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product Size -->
-                    <div class="product_size_container">
-                        <span>Size</span>
-                        <div class="product_size">
-                            <ul class="d-flex flex-row align-items-start justify-content-start">
-                                <li>
-                                    <input type="radio" id="radio_1" name="product_radio" class="regular_radio radio_1">
-                                    <label for="radio_1">XS</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="radio_2" name="product_radio" class="regular_radio radio_2" checked>
-                                    <label for="radio_2">S</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="radio_3" name="product_radio" class="regular_radio radio_3">
-                                    <label for="radio_3">M</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="radio_4" name="product_radio" class="regular_radio radio_4">
-                                    <label for="radio_4">L</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="radio_5" name="product_radio" class="regular_radio radio_5">
-                                    <label for="radio_5">XL</label>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="button cart_button"><a href="#">add to cart</a></div>
-                    </div>
-            </div>
+			<!-- Product Content -->
+			<div class="col-lg-5">
+				<div class="product_content">
+					<div class="product_name">{{ $value->name }}</div>
+					<div class="product_price">Precio: ${{ $value->precio }}</div>
+					<!--<div class="product_price">Disponibilidad: {{ $value->disponibilidad }}</div>-->
+					
+					
+					<div class="product_price">
+						Descripcion: {{ $value->description }}
+					</div>
+					<!-- Product Quantity -->
+					<div class="product_quantity_container">
+						<span>Cantidad</span>
+						<div class="product_quantity clearfix">
+							<input id="quantity_input" type="text" pattern="[0-9]*" value="1">
+							<div class="quantity_buttons">
+								<div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-caret-up" aria-hidden="true"></i></div>
+								<div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
+							</div>
+						</div>
+					</div>
+					<!-- Product Size -->
+						<div class="product_size_container">
+							<span>Talla</span>
+							<div class="product_size">
+								<ul class="d-flex flex-row align-items-start justify-content-start">
+									<li>
+										<input type="radio" id="radio_1" name="product_radio" class="regular_radio radio_1">
+										<label for="radio_1">{{ $value->talla }}</label>
+									</li>
+									
+								</ul>
+							</div>
+							
+							<div class="button cart_button"><a href="#" wire:click="add_cart({{$value}})">Añadir al carrito</a></div>
+						</div>
+						
+
+
+				</div>
+			
         </div>
+		@endforeach
 	</div>
     
 </div>
@@ -311,7 +308,7 @@ section
 }
 .button
 {
-	width: 142px;
+	width: 180px;
 	height: 46px;
 	background: #937c6f;
 	text-align: center;
@@ -630,7 +627,7 @@ section
 }
 .cart_button
 {
-	margin-top: 55px;
+	margin-top: 40px;
 }
 
 
