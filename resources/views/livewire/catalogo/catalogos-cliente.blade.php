@@ -219,8 +219,8 @@
                 </div> --}}
                 <br>
                 @foreach ($productos as $key => $value)
-                    
-                    
+
+
                             <div class="col-md-4 col-sm-6">
                                 <div class="card border-0 mb-grid-gutter">
                                         @foreach ($productoFoto as $item)
@@ -230,7 +230,7 @@
                                                 </a>
                                             @endif
                                         @endforeach
-                                        
+
                                         <div class="product_content clearfix">
                                             <div class="product_info">
                                                 <div class="product_name">{{ $value->name }}</div>
@@ -247,7 +247,7 @@
 
 
                             </div>
-                       
+
 
                 @endforeach
             @endif
@@ -261,9 +261,9 @@
                     <a class="d-block" href="">
                             <img class="galeria__img"  alt="{{ $value->name }}">
                     </a>
-                                    
-                                    
-                                        
+
+
+
                     <div class="product_content clearfix">
                         <div class="product_info">
                             <div class="product_name">{{ $value->name }}</div>
@@ -278,8 +278,8 @@
                     </div>
              </div>
         </div>
-                                        
-        
+
+
      @endforeach --}}
     <!-- Pagination-->
 
@@ -315,11 +315,11 @@
         display:-ms-flexbox;
         display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-right:-15px;margin-left:-15px
     }
-    
+
 
     div {
         display: block;
-        
+
     }
 
     .page-title-wrapper {
@@ -459,7 +459,7 @@
     }
 
     .btn-group-sm>.btn-pill.btn, .btn-group-sm>.form-control-pill.btn, .btn-pill.btn-sm, .btn-pill.form-control-sm, .form-control-pill.btn-sm, .form-control-pill.form-control-sm {
-        
+
     }
 
     .btn-outline-primary {

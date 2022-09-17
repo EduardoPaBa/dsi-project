@@ -17,10 +17,10 @@
                     <div class="col">
                         <div class="cart_bar d-flex flex-row align-items-center justify-content-start">
                             <div class="cart_bar_title_name">Producto</div>
-                           
+
                             <div class="cart_bar_title_content ml-auto">
                                 <div class="cart_bar_title_content_inner d-flex flex-row align-items-center justify-content-end">
-                                    
+
                                     <div class="cart_bar_title_price">Precio</div>
                                     <div class="cart_bar_title_quantity">Cantidad</div>
                                     <div class="cart_bar_title_total">Total</div>
@@ -45,7 +45,10 @@
                                                 <!-- Product Price -->
                                                 <div class="cart_product_price">${{$item->price}}</div>
                                                 <!-- Product Quantity -->
-                                                <div class="cart_product_price">{{$item->quantity}}</div>
+                                                <input type="number" class="form-control col-2"
+                                                wire:change="updateQuantity({{$item->id}}, {{$item->quantity}})"
+                                                style="color: black" value="{{$item->quantity}}">
+
                                                 <!-- Products Total Price -->
                                                 <div class="cart_product_total">${{\Cart::session(Auth::user()->id)->get($item->id)->getPriceSum()}}</div>
                                                 <!-- Product Cart Trash Button -->
@@ -133,10 +136,10 @@ a, a:hover, a:visited, a:active, a:link
 	-webkit-font-smoothing: antialiased;
 	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
-	
-	
-	
-	
+
+
+
+
 
 }
 p a:active
@@ -155,11 +158,11 @@ p a:hover::after
 }
 ::selection
 {
-	
+
 }
 p::selection
 {
-	
+
 }
 h1{font-size: 48px;}
 h2{font-size: 36px;}
@@ -173,14 +176,14 @@ h1, h2, h3, h4, h5, h6
 	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
 }
-h1::selection, 
-h2::selection, 
-h3::selection, 
-h4::selection, 
-h5::selection, 
+h1::selection,
+h2::selection,
+h3::selection,
+h4::selection,
+h5::selection,
 h6::selection
 {
-	
+
 }
 .form-control
 {
@@ -489,7 +492,7 @@ section
 	height: 100%;
 	width: 29px;
 }
-.quantity_inc, 
+.quantity_inc,
 .quantity_dec
 {
 	display: -webkit-box;
@@ -589,7 +592,7 @@ section
 	height: 47px;
 	border: solid 1px #b5b5b5;
 	outline: none;
-	
+
 	padding-left: 34px;
 	padding-right: 34px;
 	text-transform: uppercase;
@@ -608,7 +611,7 @@ section
 	background: #5c77fc;
     color: #FFFFFF;
 	border: solid 1px #5c77fc;
-	
+
 }
 
 .nuevo{
@@ -664,9 +667,9 @@ section
 	font-size: 14px !important;
 	font-weight: 400 !important;
 	color: #232323 !important;
-} 
+}
 .cart_coupon_input:-ms-input-placeholder
-{ 
+{
 	font-size: 14px !important;
 	font-weight: 400 !important;
 	color: #232323 !important;
