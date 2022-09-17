@@ -28,6 +28,7 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Nombre SubCategoria</th>
+                                <th scope="col">Imagen</th>
                                 <th scope="col">#Categoria</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Acciones</th>
@@ -39,6 +40,9 @@
                                 <tr>
                                     <th scope="row">{{ $key + 1 }}</th>
                                     <td>{{ $value->name }}</td>
+                                    <td>
+                                         <img src="{{ asset( 'storage/'.$value->image ) }}" width="100" height="100"/>
+                                    </td>
                                     <td>{{ $value->categoria_id }}</td>
                                   
                                     <td>{{ $value->categoria->name }}</td>
