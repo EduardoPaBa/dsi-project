@@ -15,6 +15,18 @@ class CartShoppin extends Component
         return view('livewire.shop.cart-shoppin');
     }
 
-   
+   public function deleteItem($itemId)
+   {
+    //dd("Hola");
+    \Cart::session(Auth::user()->id)->remove($itemId);
+   }
+   public function updateQuantity($itemId, $quantity)
+   {
+    //dd("adios");
+    //\Cart::session(Auth::user()->id)->getContent();
+    \Cart::session(Auth::user()->id)->update($itemId, [
+        'quantity' => $quantity,
+    ]);
+   }
 
 }
