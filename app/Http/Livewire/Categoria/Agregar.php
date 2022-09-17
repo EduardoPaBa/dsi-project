@@ -7,18 +7,20 @@ use App\Models\Categoria;
 use App\Models\Catalogo;
 use App\Models\CatalogoCategoria;
 use Illuminate\Http\Request;
+use Livewire\WithFileUploads;
 
 class Agregar extends Component
-{
-    public $catalogos, $arrayCatalogoID, $name;
+{    use WithFileUploads;
+    public $catalogos, $arrayCatalogoID, $name,$image,$idFile;
     protected $rules = [
         'name' => 'required',
         'arrayCatalogoID' => 'required',
+        'image' => 'image',
     ];
 
 
     public function mount()
-    {
+    {   $this->idFile= rand();
         $this->catalogos=Catalogo::all();
     }
     public function render()
@@ -30,14 +32,19 @@ class Agregar extends Component
     {
         $this->name = '';
         $this->arrayCatalogoID=null;
+        $this->image=null;
+        $this->reset(['image',]);
+        $this->idFile= rand();
 
     }
 
     public function save()
     {
         $this->validate();
+        $image = $this->image->store('categoria', 'public');
         $newVal = Categoria::create([
             'name' => $this->name,
+            'image'=> $image,
         ]);
         $newVal->save();
 

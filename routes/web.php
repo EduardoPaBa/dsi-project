@@ -113,10 +113,16 @@ Route::middleware(['auth', 'isUser'])->group(function () {
 
 
     /* PRODUCTOS */
+    Route::view('/InformacionProducto', 'producto.expansion-info')->name('Expansion');
+
 
 
     /* CARRITO DE COMPRA */
     Route::view('/carritoCompras', 'shop.cart-shoppin')->name('carritodeComprass');
+
+    /* SOLICITUD */
+    Route::view('/agregarSolicitud', 'solicitud.agregar')->name('addSolicitud');
+    Route::view('/editarSolicitud', 'solicitud.editar')->name('editSolicitud');
 
 
 

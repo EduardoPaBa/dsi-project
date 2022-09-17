@@ -181,7 +181,7 @@
                         <div class="col-md-4 col-sm-6">
                             <div class="card border-0 mb-grid-gutter">
                                 <a class="d-block" href="">
-                                    <img class="galeria__img"  alt="{{ $value->name }}">
+                                    <img class="galeria__img" src="{{ asset( 'storage/'.$value->image ) }}"  alt="{{ $value->name }}">
                                 </a>
                                 <div class="card-body border mt-n1 py-4 text-center">
                                 <button type="button" class="btn btn-pill btn-outline-primary btn-sm"
@@ -201,7 +201,7 @@
                     <div class="col-md-4 col-sm-6">
                         <div class="card border-0 mb-grid-gutter">
                             <a class="d-block" href="">
-                                <img class="galeria__img" alt="{{ $value->name }}">
+                                <img class="galeria__img" src="{{ asset( 'storage/'.$value->image ) }}" alt="{{ $value->name }}">
                             </a>
                             <div class="card-body border mt-n1 py-4 text-center">
                             <button type="button" class="btn btn-pill btn-outline-primary btn-sm"
@@ -219,42 +219,68 @@
                 </div> --}}
                 <br>
                 @foreach ($productos as $key => $value)
-                    <div class="col-md-4 col-sm-6">
-                        <div class="card border-0 mb-grid-gutter">
-
-                            @foreach ($productoFoto as $item)
-                                @if ($item->producto_id == $value->id)
-                                <a class="d-block" href="">
-                                    <img class="galeria__img" src="{{ asset( 'storage/'.$item->image ) }}" alt="{{ $value->name }}">
-                                </a>
-                                @endif
-                            @endforeach
 
 
-                            <div class="card-body border mt-n1 py-4 text-center">
-                            <button type="button" class="btn btn-pill btn-outline-primary btn-sm"
-                                wire:click="add_cart({{$value}})"  >{{ $value->name }}</button>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="card border-0 mb-grid-gutter">
+                                        @foreach ($productoFoto as $item)
+                                            @if ($item->producto_id == $value->id)
+                                                <a class="d-block" href="">
+                                                    <img class="galeria__img" src="{{ asset( 'storage/'.$item->image ) }}" alt="{{ $value->name }}">
+                                                </a>
+                                            @endif
+                                        @endforeach
+
+                                        <div class="product_content clearfix">
+                                            <div class="product_info">
+                                                <div class="product_name">{{ $value->name }}</div>
+                                                <div class="product_price">${{ $value->precio }}</div>
+                                            </div>
+                                            <div class="product_options">
+                                                <div class="product_buy product_option"><img src="images/shopping-bag-white.svg" alt="" wire:click="add_cart({{$value}})"  ></div>
+                                                <div class="product_fav product_option">
+                                                     <a class="nuevo" href="{{route('Expansion')}}" wire:click="expandir({{$value}})"><button class="nuevo" type="button" >+</a></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+
+
                             </div>
-                        </div>
-                    </div>
+
+
                 @endforeach
             @endif
 
         </div>
     </div>
     {{-- @foreach ($productosAll as $key => $value)
+
         <div class="col-md-4 col-sm-6">
-            <div class="card border-0 mb-grid-gutter">
-                <a class="d-block" href="">
-                    <img class="galeria__img"  alt="{{ $value->name }}">
-                </a>
-                <div class="card-body border mt-n1 py-4 text-center">
-                <button type="button" class="btn btn-pill btn-outline-primary btn-sm"
-                    wire:click="add_cart({{$value}})"  >{{ $value->name }}</button>
-                </div>
-            </div>
+             <div class="card border-0 mb-grid-gutter">
+                    <a class="d-block" href="">
+                            <img class="galeria__img"  alt="{{ $value->name }}">
+                    </a>
+
+
+
+                    <div class="product_content clearfix">
+                        <div class="product_info">
+                            <div class="product_name">{{ $value->name }}</div>
+                            <div class="product_price">${{ $value->precio }}</div>
+                        </div>
+                        <div class="product_options">
+                            <div class="product_buy product_option"><img src="images/cart-outline.svg" alt="" wire:click="add_cart({{$value}})"  ></div>
+                            <div class="product_fav product_option">
+                                <a class="nuevo" href="{{route('CatalogosCliente')}}"><button class="nuevo" type="button">+</a></button>
+                            </div>
+                        </div>
+                    </div>
+             </div>
         </div>
-    @endforeach --}}
+
+
+     @endforeach --}}
     <!-- Pagination-->
 
 
@@ -285,9 +311,15 @@
     margin-left: -15px;
     margin-right: -15px;
     }
+    .row{
+        display:-ms-flexbox;
+        display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-right:-15px;margin-left:-15px
+    }
+
 
     div {
         display: block;
+
     }
 
     .page-title-wrapper {
@@ -426,11 +458,162 @@
         border-left-style: none;
     }
 
+    .btn-group-sm>.btn-pill.btn, .btn-group-sm>.form-control-pill.btn, .btn-pill.btn-sm, .btn-pill.form-control-sm, .form-control-pill.btn-sm, .form-control-pill.form-control-sm {
 
+    }
 
+    .btn-outline-primary {
+        border-color: #5c77fc;
+        color: #5c77fc;
+    }
 
+    .btn {
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 0;
+    color: #404040;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    padding: 0.5rem 1.125rem;
+    text-align: center;
+    transition: color .25s ease-in-out,background-color .25s ease-in-out,border-color .25s ease-in-out,box-shadow .2s ease-in-out;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+    }
 
+    .clearfix::before, .clearfix::after
+{
+	content: "";
+	display: table;
+}
+.clearfix::after
+{
+	clear: both;
+}
+.clearfix
+{
+	zoom: 1;
+}
 
+.product_content
+{
+	margin-top: 7px;
+}
+
+.product_info
+{
+	float: left;
+}
+.product_name a
+{
+	font-size: 16px;
+	font-weight: 600;
+	color: #232323;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.product_name a:hover
+{
+	color: #937c6f;
+}
+.product_price
+{
+	font-size: 24px;
+	font-weight: 600;
+	color: #8a8a8a;
+	margin-top: 0px;
+}
+
+.product_options
+{
+	float: right;
+	transform: translateY(11px);
+}
+.product_option
+{
+	width: 37px;
+	height: 37px;
+	cursor: pointer;
+}
+.product_buy
+{
+	display: inline-block;
+	background: #937c6f;
+	vertical-align: middle;
+	margin-right: 4px;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+
+.product_buy img
+{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	width: 23px;
+	height: 23px;
+}
+.product_buy:hover
+{
+	background: #2f2f2f;
+}
+.product_fav
+{
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 14px;
+	font-weight: 600;
+	color: #232323;
+	background: #e0e3e4;
+	line-height: 37px;
+	text-align: center;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.product_fav:hover
+{
+	color: #FFFFFF;
+	background: #232323;
+}
+.nuevo{
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 14px;
+	font-weight: 600;
+	color: #232323;
+	background: #e0e3e4;
+	line-height: 37px;
+	text-align: center;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+
+.nuevo:hover{
+	color: #FFFFFF;
+	background: #232323;
+}
 
 
 

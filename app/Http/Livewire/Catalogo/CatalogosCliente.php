@@ -20,8 +20,8 @@ class CatalogosCliente extends Component
             //variables para control de lo seleccionado
             $catalogo, $cataCate, $categoria, $subCategoria, $producto,
             //variables para el conjunto a seleccionar
-            $categorias, $subcategorias, $productos,$productoFoto,
-            $CatalogoSele,$CategoriaSele,$SubCategoriaSele ;
+            $categorias, $subcategorias, $productos,$productoFoto, $image,
+            $CatalogoSele,$CategoriaSele,$SubCategoriaSele, $selectedProd, $descrpition,$disponinilidad,$precio,$talla,$color;
     use WithPagination;
     protected $rules = [
         'id'=>'id',
@@ -53,9 +53,11 @@ class CatalogosCliente extends Component
         //dd($this->producAnad);
 
         \Cart::session(Auth::user()->id)->add(array(
+            
             'id' => $this->producAnad->id,
             'name' => $this->producAnad->name,
             'price' => $this->producAnad->precio,
+            'size' =>$this->producAnad->talla,
             'quantity' => 1,
 
         ));
@@ -153,6 +155,19 @@ class CatalogosCliente extends Component
         //dd($this->categoria);
         //$this->subcategorias= SubCategoria::all();
         $this->subcategorias= SubCategoria::where('categoria_id', $this->categoria)->get();
+    }
+
+    public function expandir($value){
+
+        $this->selectedProd=Producto::find($value);
+        $this->name = Producto::find($value)->name;
+        $this->description = Producto::find($value)->description;
+        $this->precio = Producto::find($value)->precio;
+        $this->disponibilidad = Producto::find($value)->disponibilidad;
+        $this->color = Producto::find($value)->color;
+        $this->talla = Producto::find($value)->talla;
+
+
     }
 
 }

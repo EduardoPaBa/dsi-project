@@ -32,7 +32,9 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Nombre</th>
+                                <th scope="col">Imagen</th>
                                 <th scope="col">Catálogos</th>
+
                                 <th scope="col">Acciones</th>
 
                             </tr>
@@ -42,6 +44,9 @@
                             <tr>
                                 <th scope="row">{{ $key + 1 }}</th>
                                 <td>{{ $value->name }}</td>
+                                <td>
+                                <img src="{{ asset( 'storage/'.$value->image ) }}" width="100" height="100"/>
+                                </td>
                                 <td>
                                     <button type="button" class="btn btn-info" data-toggle="modal"
                                         data-target="#exampleModal"

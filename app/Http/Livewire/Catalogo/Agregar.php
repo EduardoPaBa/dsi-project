@@ -7,6 +7,8 @@ use App\Models\Catalogo;
 use Livewire\WithFileUploads;
 use Illuminate\Http\Request;
 
+use Intervention\Image\ImageManagerStatic as Image;
+
 class Agregar extends Component
 {
     use WithFileUploads;
