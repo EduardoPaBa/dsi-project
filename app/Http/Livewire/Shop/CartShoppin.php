@@ -6,13 +6,15 @@ namespace App\Http\Livewire\Shop;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Producto;
+use App\Models\ProductoFoto;
 
 class CartShoppin extends Component
 {
-    public $cart_items, $productos;
+    public $cart_items, $productos,$productoFoto;
     public function mount()
     {
         $this->productos=Producto::all();
+        $this->productoFoto= ProductoFoto::all();
     }
     public function render()
     {
