@@ -33,10 +33,20 @@
 					<div class="product_quantity_container">
 						<span>Cantidad</span>
 						<div class="product_quantity clearfix">
-							<input wire:model="cantidad" id="quantity_input" type="text" pattern="[0-9]*" value="1">
+
+                            <input type="text" class=""
+                                id="v{{$value->id}}"
+
+                                style="color: black" value="{{$value->quantity}}">
+
+
+
+							{{-- <input wire:model="cantidad" id="quantity_input" type="text" pattern="[0-9]*" value="1"> --}}
 							<div class="quantity_buttons">
-								<div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-caret-up" aria-hidden="true"></i></div>
-								<div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
+								<div id="quantity_inc_button" class="quantity_inc quantity_control">
+                                    <i class="fa fa-caret-up" aria-hidden="true"></i></div>
+								<div id="quantity_dec_button" class="quantity_dec quantity_control">
+                                    <i class="fa fa-caret-down" aria-hidden="true"></i></div>
 							</div>
 						</div>
 					</div>
@@ -53,7 +63,7 @@
 								</ul>
 							</div>
 
-							<div class="button cart_button"><a href="#" wire:click="add_cart({{$value}})">Añadir al carrito</a></div>
+							<div class="button cart_button"><a href="#" wire:click="updateQuantity({{$value->id}}, $('#v'+{{$value->id}}).val() )">Añadir al carrito</a></div>
 						</div>
 
 

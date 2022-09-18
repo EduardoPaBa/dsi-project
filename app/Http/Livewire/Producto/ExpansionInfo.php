@@ -61,4 +61,18 @@ class ExpansionInfo extends Component
 
 
     }
+
+    public function updateQuantity($itemId, $quantity)
+    {
+     //dd("adios");
+     //\Cart::session(Auth::user()->id)->getContent();
+     \Cart::session(Auth::user()->id)->update($itemId, [
+         'quantity' => array(
+             'relative' =>false,
+             'value'=>  $quantity
+         ),
+     ]);
+     $this->emit('message', 'se a agregado corectamente xd');
+     $this->emitTo('catalogo.cart', 'add_cart');
+    }
 }
