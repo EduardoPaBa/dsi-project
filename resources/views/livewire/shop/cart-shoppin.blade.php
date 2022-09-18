@@ -22,7 +22,10 @@
                                 <div class="cart_bar_title_content_inner d-flex flex-row align-items-center justify-content-end">
 
                                     <div class="cart_bar_title_price">Precio</div>
+                                    <div class="cart_bar_title_quantity">Talla</div>
+                                    <div class="cart_bar_title_quantity">Color</div>
                                     <div class="cart_bar_title_quantity">Cantidad</div>
+
                                     <div class="cart_bar_title_total">Total</div>
                                     <div class="cart_bar_title_total">Acciones</div>
                                 </div>
@@ -33,7 +36,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="cart_products">
-                            @foreach ($cart_items as $item)
+                            @foreach ($cart_items->sortBy("id") as $item)
                                 <ul>
                                     <li class=" cart_product d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-start">
                                         <!-- Product Image -->
@@ -42,11 +45,22 @@
                                         <div class="cart_product_name">{{$item->name}}</div>
                                         <div class="cart_product_info ml-auto">
                                             <div class="cart_product_info_inner d-flex flex-row align-items-center justify-content-md-end justify-content-start">
+
+
                                                 <!-- Product Price -->
                                                 <div class="cart_product_price">${{$item->price}}</div>
+                                                @foreach ($productos as $prodd)
+                                                    @if ($prodd->id == $item->id )
+                                                    <div class="cart_product_price">{{$prodd->talla}} </div>
+                                                    @endif
+                                                    @if ($prodd->id == $item->id )
+                                                    <div class="cart_product_price">{{$prodd->color}} </div>
+                                                    @endif
+                                                @endforeach
                                                 <!-- Product Quantity -->
                                                 <input type="number" class="form-control col-2"
-                                                wire:change="updateQuantity({{$item->id}}, {{$item->quantity}})"
+                                                id="v{{$item->id}}"
+                                                wire:change="updateQuantity({{$item->id}}, $('#v'+{{$item->id}}).val() )"
                                                 style="color: black" value="{{$item->quantity}}">
 
                                                 <!-- Products Total Price -->
@@ -66,8 +80,8 @@
                 <div class="row">
                     <div class="col">
                         <div class="cart_control_bar d-flex flex-md-row flex-column align-items-start justify-content-start">
-                            <button class="button_clear cart_button">Limpiar Carrito</button>
-                            <a class="nuevo" href="{{ route('carritodeComprass') }}"  ><button class="button_update cart_button">Actualizar Carrito</a></button>
+                            <button class="button_clear cart_button" wire:click="clearCart()">Limpiar Carrito</button>
+                            {{-- <a class="nuevo" href="{{ route('carritodeComprass') }}"  ><button class="button_update cart_button">Actualizar Carrito</a></button> --}}
                             <a class="nuevo" href="{{ route('addSolicitud') }}" ><button class="button_update cart_button_2 ml-md-auto">Realizar Solicitud </a></button>
 							<a class="nuevo" href="{{ route('CatalogosCliente') }}" ><button class="button_update cart_button_2 ml-md-auto"  >Continuar Comprando</a></button>
                         </div>
