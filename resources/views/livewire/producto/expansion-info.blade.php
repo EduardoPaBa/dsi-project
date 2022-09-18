@@ -630,6 +630,14 @@ section
 	margin-top: 40px;
 }
 
+.galeria__img{
+
+width: 500px;
+height: 300px;
+object-fit: fill;
+
+}
+
 
 
 

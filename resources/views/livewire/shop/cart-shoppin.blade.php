@@ -40,8 +40,13 @@
                                 <ul>
                                     <li class=" cart_product d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-start">
                                         <!-- Product Image -->
-                                        <div class="cart_product_image"><img src="images/cart_product_1.jpg" alt=""></div>
+										@foreach ($productoFoto as $prodd)
+											@if ($prodd->id == $item->id )
+                                        		<div class="cart_product_image"><img class="galeria__img" src="{{ asset( 'storage/'.$prodd->image ) }}"alt=""></div>
                                         <!-- Product Name -->
+											@endif
+										@endforeach
+										
                                         <div class="cart_product_name">{{$item->name}}</div>
                                         <div class="cart_product_info ml-auto">
                                             <div class="cart_product_info_inner d-flex flex-row align-items-center justify-content-md-end justify-content-start">
@@ -741,6 +746,14 @@ section
 {
 	background: #FFFFFF;
 	color: #232323;
+}
+
+.galeria__img{
+
+width: 100px;
+height: 100px;
+object-fit: fill;
+
 }
 
 
