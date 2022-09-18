@@ -63,7 +63,7 @@
 								</ul>
 							</div>
 
-							<div class="button cart_button"><a href="#" wire:click="updateQuantity({{$value->id}}, $('#v'+{{$value->id}}).val() )">Añadir al carrito</a></div>
+							<div class="button cart_button"><a href="#" wire:click="add_cart({{$value}})">Añadir al carrito</a></div>
 						</div>
 
 
