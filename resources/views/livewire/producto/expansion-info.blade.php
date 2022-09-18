@@ -24,8 +24,8 @@
 					<div class="product_name">{{ $value->name }}</div>
 					<div class="product_price">Precio: ${{ $value->precio }}</div>
 					<!--<div class="product_price">Disponibilidad: {{ $value->disponibilidad }}</div>-->
-					
-					
+
+
 					<div class="product_price">
 						Descripcion: {{ $value->description }}
 					</div>
@@ -33,7 +33,7 @@
 					<div class="product_quantity_container">
 						<span>Cantidad</span>
 						<div class="product_quantity clearfix">
-							<input id="quantity_input" type="text" pattern="[0-9]*" value="1">
+							<input wire:model="cantidad" id="quantity_input" type="text" pattern="[0-9]*" value="1">
 							<div class="quantity_buttons">
 								<div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-caret-up" aria-hidden="true"></i></div>
 								<div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
@@ -49,23 +49,23 @@
 										<input type="radio" id="radio_1" name="product_radio" class="regular_radio radio_1">
 										<label for="radio_1">{{ $value->talla }}</label>
 									</li>
-									
+
 								</ul>
 							</div>
-							
+
 							<div class="button cart_button"><a href="#" wire:click="add_cart({{$value}})">Añadir al carrito</a></div>
 						</div>
-						
+
 
 
 				</div>
-			
+
         </div>
 		@endforeach
 	</div>
-    
+
 </div>
-	
+
 </div>
 <style>
     @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
@@ -166,11 +166,11 @@ p a:hover::after
 }
 ::selection
 {
-	
+
 }
 p::selection
 {
-	
+
 }
 h1{font-size: 48px;}
 h2{font-size: 36px;}
@@ -184,14 +184,14 @@ h1, h2, h3, h4, h5, h6
 	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
 }
-h1::selection, 
-h2::selection, 
-h3::selection, 
-h4::selection, 
-h5::selection, 
+h1::selection,
+h2::selection,
+h3::selection,
+h4::selection,
+h5::selection,
 h6::selection
 {
-	
+
 }
 .form-control
 {
@@ -365,7 +365,7 @@ section
 }
 .product_image
 {
-	
+
 }
 .product_image_large
 {
@@ -526,7 +526,7 @@ section
 	height: 100%;
 	width: 29px;
 }
-.quantity_inc, 
+.quantity_inc,
 .quantity_dec
 {
 	display: -webkit-box;

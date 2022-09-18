@@ -11,7 +11,7 @@ class ExpansionInfo extends Component
 
 {
     public $name,$description,$subcategoria_id,$talla,$precio,$disponibilidad,$color,$image,$producto_id,$productoFoto,
-    $producAnad,$producto;
+    $producAnad,$producto, $cantidad;
 
     public $cart;
     protected $listeners = ['add_cart'];
@@ -24,10 +24,10 @@ class ExpansionInfo extends Component
         'precio' => 'required',
         'disponibilidad' => 'required',
         'color' => 'required',
-        
+
     ];
 
-    
+
 
     public function mount()
     {
@@ -36,7 +36,7 @@ class ExpansionInfo extends Component
 
 
     public function render()
-    
+
     {
         $this->productos = Producto::all();
         return view('livewire.producto.expansion-info');
@@ -46,13 +46,13 @@ class ExpansionInfo extends Component
     {
         $this->producAnad= $producto;
         //dd($this->producAnad);
-
+        //dd($this->cantidad);
         \Cart::session(Auth::user()->id)->add(array(
-            
+
             'id' => $this->producAnad->id,
             'name' => $this->producAnad->name,
             'price' => $this->producAnad->precio,
-            'quantity' => 1,
+            'quantity' => $this->cantidad,
 
         ));
 
