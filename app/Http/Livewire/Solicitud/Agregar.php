@@ -7,6 +7,8 @@ use App\Models\Solicitud;
 use App\Models\User;
 use App\Models\Departamento;
 use App\Models\Municipio;
+use App\Models\Pedido;
+use Illuminate\Support\Facades\Auth;
 
 class Agregar extends Component
 {
@@ -29,7 +31,9 @@ class Agregar extends Component
     public function render()
     {
         $this->departamentos = Departamento::all();
-
+        //$this->cart_items= \Cart::session(Auth::user()->id)->getContent();
+        $this->cart_items = \Cart::session(Auth::user()->id)->getContent();
+        //dd($this->cart_items);
         return view('livewire.solicitud.agregar');
     }
 
@@ -52,6 +56,22 @@ class Agregar extends Component
         ]);
         $newValue->save();
         $this->clear();
+
+        foreach ($this->cart_items as $cartsito) {
+            # code...
+            //dd( $cartsito);
+            //dd($cartsito['id']);
+            $pedidos = Pedido::create([
+                'producto_id'=> $cartsito['id'],
+                'solicitud_id' => $newValue->id,
+                'cantidad' => $cartsito['quantity'],
+            ]);
+            $pedidos->save();
+        }
+
+        \Cart::session(Auth::user()->id)->clear();
+        $this->emit('message', 'se a agregado corectamente xd');
+        $this->emitTo('catalogo.cart', 'add_cart');
         return session()->flash("success", "Solicitud guardada correctamente");
     }
 
