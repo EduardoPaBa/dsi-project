@@ -13,7 +13,24 @@ class MunicipioSeeder extends Seeder
      * @return void
      */
     public function run()
-    {/*
+    {
+
+        DB::table('municipios')->insert([
+
+            'MunName' => 'Ahuachapán',
+            'DEPSV_ID' => '1',
+        ]);
+        DB::table('municipios')->insert([
+
+            'MunName' => 'Jujutla',
+            'DEPSV_ID' => '1',
+        ]);
+        DB::table('municipios')->insert([
+
+            'MunName' => 'Atiquizaya',
+            'DEPSV_ID' => '1',
+        ]);
+        /*
         //
         DB::insert("
         INSERT INTO `municipios` (`ID`, `MunName`, `DEPSV_ID`) VALUES

@@ -14,6 +14,13 @@ class DepartamentoSeeder extends Seeder
      */
     public function run()
     {
+
+        DB::table('departamentos')->insert([
+
+            'DepName' => 'Ahuachapán',
+            'ISOCode' => 'SV-AH',
+            'ZONESV_ID' => '1',
+        ]);
         //
        /*  DB::insert("
         INSERT INTO `departamentos` (`ID`, `DepName`, `ISOCode`, `ZONESV_ID`) VALUES
