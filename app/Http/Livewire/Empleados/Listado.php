@@ -25,13 +25,13 @@ class Listado extends Component
     {   $this->roles = Role::all();
         $this->usuarioss= User::all();
         return view('livewire.empleados.listado',[
-            'usuarios' => User::where('name', 'like', '%' . $this->search . '%')->paginate(5),
+            'usuarios' => User::where('name', 'like', '%' . $this->search . '%')->where('role_id', '!=', 4)->paginate(5),
         ]);
     }
 
     public function edit($value)
     {
-        
+
         $this->clear();
         $this->selectedUser=User::find($value);
         $this->name = User::find($value)->name;
@@ -39,7 +39,7 @@ class Listado extends Component
         $this->email = User::find($value)->email;
         $this->role_id = User::find($value)->role_id;
         $this->password= User::find($value)->password;
-        
+
     }
 
     public function save_edit()

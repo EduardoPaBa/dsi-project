@@ -8,7 +8,7 @@ use App\Models\Role;
 use Illuminate\Http\Request;
 
 class Agregar extends Component
-{   
+{
 
     public $name, $role_id, $roles,$lastname,$email,$phone,$password;
     protected $rules = [
@@ -20,9 +20,9 @@ class Agregar extends Component
 
     ];
 
-    
+
     public function render()
-    {   $this->roles = Role::all();
+    {   $this->roles = Role::where('id', '!=', '4')->get();
         return view('livewire.empleados.agregar');
     }
 
