@@ -35,6 +35,18 @@
                         </x-jet-nav-link>
                     </div>
 
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('reporteUsers') }}" :active="request()->routeIs('reporteUsers')">
+                            {{ __('Reporte Nuevos Usuarios') }}
+                        </x-jet-nav-link>
+                    </div>
+
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('reporteAcep') }}" :active="request()->routeIs('reporteAcep')">
+                            {{ __('Reporte Aceptación de Productos') }}
+                        </x-jet-nav-link>
+                    </div>
+
                 @endif
 
                 <!-- Navigation Links ADMIN O SUPERVISOR-->
