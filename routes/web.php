@@ -57,7 +57,7 @@ Route::middleware(['auth', 'isSupAdmin'])->group(function () {
     Route::view('/agregarEmpleado/{valueidEmplea?}', 'empleados.agregar')->name('addEmplea');
     Route::view('/Reporte-Nuevos-Usuarios', 'reportes.nuevos-usuarios')->name('reporteUsers');
     Route::view('/Reporte-Aceptacion-Productos', 'reportes.aceptacion-productos')->name('reporteAcep');
-
+    Route::view('/Reporte-Usuarios-Productos', 'reportes.usuarios-mas-productos')->name('reporteUsuaProd');
 });
 
 

@@ -47,6 +47,12 @@
                         </x-jet-nav-link>
                     </div>
 
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('reporteUsuaProd') }}" :active="request()->routeIs('reporteUsuaProd')">
+                            {{ __('Reporte Usuarios con más pedidos') }}
+                        </x-jet-nav-link>
+                    </div>
+
                 @endif
 
                 <!-- Navigation Links ADMIN O SUPERVISOR-->
