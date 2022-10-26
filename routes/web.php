@@ -81,6 +81,7 @@ Route::middleware(['auth', 'isEmpleado'])->group(function () {
 
     /* PRODUCTOS */
     Route::view('/productos','producto.productos')->name('productos');
+    Route::view('/productosMasVendidos','producto.productos-mas-vendidos')->name('productosMasVendidos');
 
     /* SUB CATEGORIA */
     Route::view('/listadoSubCategoria', 'subcategoria.listado')->name('listSubCate');
@@ -94,6 +95,7 @@ Route::middleware(['auth', 'isEmpleado'])->group(function () {
 
     /* LISTADO DE PROMOCIONES */
     Route::view('/agregarPromocion', 'promociones.agregar')->name('addPromocion');
+    Route::view('/promoMasVendida', 'promociones.promociones-mas-vendidas')->name('PromocionMasVendida');
 });
 
 
