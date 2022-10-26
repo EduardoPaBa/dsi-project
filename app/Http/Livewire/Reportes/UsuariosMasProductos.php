@@ -15,7 +15,7 @@ class UsuariosMasProductos extends Component
     public function render()
     {
         $normales = [];
-        $especiales = [];   
+        $especiales = [];
 
         $normales = DB::table('users')
                     ->join('solicitudes', 'users.id', '=', 'solicitudes.usuario_id')
@@ -31,6 +31,7 @@ class UsuariosMasProductos extends Component
         $this->users_solicitud = $normales;
         $this->users_especial = $especiales;
 
+        //dd($this->users_solicitud);
         return view('livewire.reportes.usuarios-mas-productos');
     }
 }

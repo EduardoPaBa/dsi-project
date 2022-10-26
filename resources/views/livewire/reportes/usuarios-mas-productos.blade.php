@@ -60,33 +60,7 @@
                     </div>
                 </div>
 
-                <div class="card mb-4 shadow border-secondary">
-                    <div class="card-header">
-                        <p class="h4 text-center">Resumen</p>
-                    </div>
-                    <div class="card-body">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Nombre</th>
-                                    <th>Apellido</th>
-                                    <th>Email</th>
-                                    <th>Cantidad</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @for($i = 0; $i < count($users_solicitud); $i++)
-                                <tr>
-                                    <td>{{ $users_solicitud[$i]->name }}</td>
-                                    <td>{{ $users_solicitud[$i]->lastname }}</td>
-                                    <td>{{ $users_solicitud[$i]->email }}</td>
-                                    <td>{{ $users_solicitud[$i]->cantidad + $users_especial[$i]->cantidad }}</td>
-                                </tr>
-                                @endfor
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+
             </div>
 
             <div class="col"></div>
