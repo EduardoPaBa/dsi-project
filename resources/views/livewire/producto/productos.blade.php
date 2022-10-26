@@ -19,7 +19,9 @@
 
                             <button wire:click="crear()" type="button" class="btn btn-success"style="float: right;" data-toggle="modal"
                             data-target="#crearEditar">Nuevo</button>
-                            
+                            <a href="{{ route('productosMasVendidos') }}">
+                                <button type="button" class="btn btn-primary">Productos mas vendidos</button>
+                            </a>
                             <a href="{{ route('addPromocion') }}">
                                 <button type="button" class="btn btn-primary">Agregar promoción</button>
                             </a>
