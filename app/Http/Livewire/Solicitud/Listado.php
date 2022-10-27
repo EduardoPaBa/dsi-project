@@ -10,14 +10,17 @@ use Livewire\WithPagination;
 
 class Listado extends Component
 {
-    public $valor_checkbox;
-    public $usuario_id, $estado, $direccion, $departamento = null, $municipio = null, $punto_referencia, $nombre_adicional, $apellido_adicional, $telefono;
+    public $valor_checkbox_estado, $valor_checkbox_entregado;
+    public $usuario_id, $estado, $entregado, $direccion, $departamento = null, $municipio = null, $punto_referencia, $nombre_adicional, $apellido_adicional, $telefono;
     public $solicitudes, $solicitud;
     public $nombre_departamento, $nombre_municipio;
     public $viendoDetalle;
     use WithPagination;
 
-    protected $rules = ['valor_checkbox' => 'boolean'];
+    protected $rules = [
+        'valor_checkbox_estado' => 'boolean',
+        'valor_checkbox_entregado' => 'boolean'
+    ];
 
     public function mount() {
         $this->viendoDetalle = false;
@@ -29,9 +32,15 @@ class Listado extends Component
         
         foreach($this->solicitudes as $solicitud) {
             if($solicitud->estado == "APROBADA") {
-                $this->valor_checkbox[$solicitud->id] = true;
+                $this->valor_checkbox_estado[$solicitud->id] = true;
             } elseif($solicitud->estado == "DENEGADA") {
-                $this->valor_checkbox[$solicitud->id] = false;
+                $this->valor_checkbox_estado[$solicitud->id] = false;
+            }
+
+            if($solicitud->entregado == "0") {
+                $this->valor_checkbox_entregado[$solicitud->id] = false;
+            } elseif($solicitud->entregado = "1") {
+                $this->valor_checkbox_entregado[$solicitud->id] = true;
             }
         }
 
@@ -49,6 +58,7 @@ class Listado extends Component
         $this->nombre_departamento = $this->departamento->DepName;*/
         $this->solicitud = Solicitud::findOrFail($solicitud_id);
         $this->estado = $this->solicitud->estado;
+        $this->estado = $this->solicitud->entregado;
         $this->direccion = $this->solicitud->direccion;
         
         $this->departamento = Departamento::findOrFail($this->solicitud->departamento);
@@ -64,12 +74,27 @@ class Listado extends Component
 
     public function saveEstado($solicitud_id) {
         $this->solicitud = Solicitud::findOrFail($solicitud_id);
-        $this->solicitud->estado = $this->valor_checkbox[$solicitud_id] ? "APROBADA":"DENEGADA";
+        $this->solicitud->estado = $this->valor_checkbox_estado[$solicitud_id] ? "APROBADA":"DENEGADA";
         $this->solicitud->save();
     }
 
     public function getEstado($solicitud_id) {
         $this->solicitud = Solicitud::findOrFail($solicitud_id);
-        $this->valor_checkbox[$solicitud_id] = $this->solicitud->estado;
+        $this->valor_checkbox_estado[$solicitud_id] = $this->solicitud->estado;
+    }
+
+    public function saveEntregado($solicitud_id) {
+        $this->solicitud = Solicitud::findOrFail($solicitud_id);
+        $this->solicitud->entregado = $this->valor_checkbox_entregado[$solicitud_id] ? "1":"0";
+        if($this->solicitud->entregado == "1")
+            $this->solicitud->estado = 'APROBADA';
+        elseif($this->solicitud->entregado == "0")
+            $this->solicitud->estado = 'DENEGADA';
+        $this->solicitud->save();
+    }
+
+    public function getEntregado($solicitud_id) {
+        $this->solicitud = Solicitud::findOrFail($solicitud_id);
+        $this->valor_checkbox_entregado[$solicitud_id] = $this->solicitud->entregado;
     }
 }

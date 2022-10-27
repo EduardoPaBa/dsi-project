@@ -19,6 +19,7 @@ class SolicitudSeeder extends Seeder
         DB::table('solicitudes')->insert([
             'usuario_id' => '1',
             'estado' => 'APROBADA',
+            'entregado' => '0',
             'direccion' => 'dirección',
             'departamento' => '1',
             'municipio' => '1',
@@ -31,6 +32,7 @@ class SolicitudSeeder extends Seeder
         DB::table('solicitudes')->insert([
             'usuario_id' => '1',
             'estado' => 'APROBADA',
+            'entregado' => '0',
             'direccion' => 'dirección',
             'departamento' => '2',
             'municipio' => '13',
@@ -43,6 +45,7 @@ class SolicitudSeeder extends Seeder
         DB::table('solicitudes')->insert([
             'usuario_id' => '1',
             'estado' => 'DENEGADA',
+            'entregado' => '0',
             'direccion' => 'dirección',
             'departamento' => '3',
             'municipio' => '26',
@@ -55,6 +58,7 @@ class SolicitudSeeder extends Seeder
         DB::table('solicitudes')->insert([
             'usuario_id' => '2',
             'estado' => 'APROBADA',
+            'entregado' => '0',
             'direccion' => 'dirección',
             'departamento' => '4',
             'municipio' => '129',
@@ -67,6 +71,7 @@ class SolicitudSeeder extends Seeder
         DB::table('solicitudes')->insert([
             'usuario_id' => '2',
             'estado' => 'DENEGADA',
+            'entregado' => '0',
             'direccion' => 'dirección',
             'departamento' => '5',
             'municipio' => '151',
@@ -79,6 +84,7 @@ class SolicitudSeeder extends Seeder
         DB::table('solicitudes')->insert([
             'usuario_id' => '2',
             'estado' => 'DENEGADA',
+            'entregado' => '0',
             'direccion' => 'dirección',
             'departamento' => '6',
             'municipio' => '200',

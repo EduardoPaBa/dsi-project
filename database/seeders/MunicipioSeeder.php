@@ -15,7 +15,7 @@ class MunicipioSeeder extends Seeder
     public function run()
     {
 
-        DB::table('municipios')->insert([
+        /*DB::table('municipios')->insert([
 
             'MunName' => 'Ahuachapán',
             'DEPSV_ID' => '1',
@@ -29,8 +29,8 @@ class MunicipioSeeder extends Seeder
 
             'MunName' => 'Atiquizaya',
             'DEPSV_ID' => '1',
-        ]);
-        /*
+        ]);*/
+        
         //
         DB::insert("
         INSERT INTO `municipios` (`ID`, `MunName`, `DEPSV_ID`) VALUES
@@ -297,5 +297,5 @@ class MunicipioSeeder extends Seeder
         (261, 'Tepetitán', 10),
         (262, 'Verapaz', 10);
         ");
-     */}
+    }
 }

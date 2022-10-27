@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Agregar extends Component
 {
-    public $usuario_id, $estado, $direccion, $departamento = null, $municipio = null, $punto_referencia, $nombre_adicional, $apellido_adicional, $telefono;
+    public $usuario_id, $estado, $entregado, $direccion, $departamento = null, $municipio = null, $punto_referencia, $nombre_adicional, $apellido_adicional, $telefono;
     public $departamentos, $municipios;
 
     // Validation Rules
@@ -46,6 +46,7 @@ class Agregar extends Component
         $newValue = Solicitud::create([
             'usuario_id'=>auth()->id(),
             'estado'=>"DENEGADA",
+            'entregado'=>'0',
             'direccion'=>$this->direccion,
             'departamento'=>$this->departamento,
             'municipio'=>$this->municipio,
@@ -78,6 +79,7 @@ class Agregar extends Component
     public function clear() {
         $this->usuario_id = '';
         $this->estado = '';
+        $this->entregado = '';
         $this->direccion = '';
         $this->departamento = '';
         $this->municipio = '';

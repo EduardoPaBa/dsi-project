@@ -13,6 +13,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Solicitudes</th>
                                 <th scope="col">Aprobada</th>
+                                <th scope="col">Entregada</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -24,7 +25,13 @@
                                     </td>
                                     <td>
                                         <label class="switch">
-                                            <input type="checkbox" wire:model="valor_checkbox.{{ $solicitud->id }}" wire:click="saveEstado({{ $solicitud->id }})">
+                                            <input type="checkbox" wire:model="valor_checkbox_estado.{{ $solicitud->id }}" wire:click="saveEstado({{ $solicitud->id }})">
+                                            <span class="slider round"></span> 
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="switch">
+                                            <input type="checkbox" wire:model="valor_checkbox_entregado.{{ $solicitud->id }}" wire:click="saveEntregado({{ $solicitud->id }})">
                                             <span class="slider round"></span> 
                                         </label>
                                     </td>

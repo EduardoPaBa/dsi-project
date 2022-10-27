@@ -10,7 +10,7 @@ use Livewire\WithPagination;
 
 class Editar extends Component
 {
-    public $usuario_id, $estado, $direccion, $departamento = null, $municipio = null, $punto_referencia, $nombre_adicional, $apellido_adicional, $telefono;
+    public $usuario_id, $estado, $entregado, $direccion, $departamento = null, $municipio = null, $punto_referencia, $nombre_adicional, $apellido_adicional, $telefono;
     public $solicitudes, $solicitud, $solicitud_id;
     public $nombre_departamento, $dep_id, $nombre_municipio, $mun_id;
     public $viendoDetalle = false, $editandoSolicitud = false;
@@ -61,6 +61,7 @@ class Editar extends Component
         $this->nombre_departamento = $this->departamento->DepName;*/
         $this->solicitud = Solicitud::findOrFail($solicitud_id);
         $this->estado = $this->solicitud->estado;
+        $this->entregado = $this->solicitud->entregado;
         $this->direccion = $this->solicitud->direccion;
         
         $this->departamento = Departamento::findOrFail($this->solicitud->departamento);
@@ -79,6 +80,7 @@ class Editar extends Component
         $this->clear();
         $this->solicitud = Solicitud::findOrFail($solicitud_id);
         $this->estado = Solicitud::findOrFail($solicitud_id)->estado;
+        $this->entregado = Solicitud::findOrFail($solicitud_id)->entregado;
         $this->direccion = Solicitud::findOrFail($solicitud_id)->direccion;
         $this->departamento = Solicitud::findOrFail($solicitud_id)->departamento;
         $this->municipios = Municipio::where('DEPSV_ID', $this->departamento)->get();
@@ -96,6 +98,7 @@ class Editar extends Component
         $this->solicitud->update([
             'usuario_id'=>auth()->id(),
             'estado'=>$this->estado,
+            'entregado'=>$this->entregado,
             'direccion'=>$this->direccion,
             'departamento'=>$this->departamento,
             'municipio'=>$this->municipio,
@@ -124,6 +127,7 @@ class Editar extends Component
     public function clear() {
         $this->usuario_id = '';
         $this->estado = '';
+        $this->entregado = '';
         $this->direccion = '';
         $this->departamento = '';
         $this->municipio = '';

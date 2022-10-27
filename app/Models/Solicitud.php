@@ -14,6 +14,7 @@ class Solicitud extends Model
     protected $fillable = [
         'usuario_id',
         'estado',
+        'entregado',
         'direccion',
         'departamento',
         'municipio',

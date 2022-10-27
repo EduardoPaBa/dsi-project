@@ -14,15 +14,15 @@ class DepartamentoSeeder extends Seeder
      */
     public function run()
     {
-
+        /*
         DB::table('departamentos')->insert([
 
             'DepName' => 'Ahuachapán',
             'ISOCode' => 'SV-AH',
             'ZONESV_ID' => '1',
-        ]);
+        ]);*/
         //
-       /*  DB::insert("
+        DB::insert("
         INSERT INTO `departamentos` (`ID`, `DepName`, `ISOCode`, `ZONESV_ID`) VALUES
         (1, 'Ahuachapán', 'SV-AH', 1),
         (2, 'Santa Ana', 'SV-SA', 1),
@@ -38,6 +38,6 @@ class DepartamentoSeeder extends Seeder
         (12, 'Morazán', 'SV-MO', 4),
         (13, 'San Miguel', 'SV-SM', 4),
         (14, 'La Unión', 'SV-UN', 4);
-        "); */
+        ");
     }
 }
