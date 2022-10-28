@@ -9,32 +9,46 @@
         </div>
         <div class="col-12">
             <div class="card">
+                
                 <div class="card-body">
+                    <h4>Seleccione el rango de fechas a consultar los productos mas vendidos</h4>    
                     <div class="row">
                         <div class="col mb-2">
-                            <input type="text" class="form-control" placeholder="Search" wire:model="search">
+                            <label>Fecha de inicio:</label>
+                            <br>
+                            <input type="date" id="start" name="start" wire:click="limpiarPedido" wire:model="inicio"
+                                min="2022-01-01">
+                        </div>
+                        <div class="col mb-2">
+                            <label>Fecha de final:</label>
+                            <br>
+                            <input type="date" id="end" name="end" wire:click="limpiarPedido" wire:model="fin"
+                                
+                                min="2022-01-01">
                         </div>
                         <div class="col">
-
-                            <button type="button" class="btn btn-success"style="float: right;">Generar PDF</button>
-                            
+                            <button wire:click="ConsultaProdMasVendidos" type="button" class="btn btn-success"style="float: right;">Consultar productos mas vendidos</button>                            
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-success"style="float: right;">Generar PDF</button>                    
                         </div>
                     </div>
 
                     <table class="table table-hover">
                         <thead>
                             <tr>
-
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Cantidad</th>
                                 <th scope="col">Precio</th>
                                 <th scope="col">Descripción</th>
                                 <th scope="col">Talla</th>
-
+                                <th scope="col">Fecha del pedido</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($pedidos as $pedido)
+
+                            @if ($pedidos != null)
+                                @foreach ($pedidos as $pedido)
                                 <tr>
 
                                     <td class="border px-4 py-2">{{ $pedido->name}}</td>
@@ -42,21 +56,15 @@
                                     <td class="border px-4 py-2">{{ $pedido->precio}}</td>
                                     <td class="border px-4 py-2">{{ $pedido->description}}</td>
                                     <td class="border px-4 py-2">{{ $pedido->talla}}</td>
-                                    {{-- <tdclass="borderpx-4py-2">$pedido->pedido->name</td>
-                                    <td class="border px-4 py-2">{{ $pedido->descuento}}</td>
-                                    <td class="border px-4 py-2">{{ $pedido->duracion_dias}}</td> --}}
+                                    <td class="border px-4 py-2">{{ $pedido->fecha}}</td>
                                     
-                                    {{--<td>
-                                        <button wire:click="editar({{ $pedido->id }})" type="button" class="btn btn-primary" data-toggle="modal"
-                                            data-target="#crear">Editar</button>
-                                        <button type="button" class="btn btn-danger" 
-                                            data-toggle="modal"     
-                                            data-target="#eliminarPromo"    
-                                            wire:click="borrar({{ $pedido->id }})" >Borrar</button>
-                                    </td>--}}
-                                   
                                 </tr>
-                            @endforeach
+                                @endforeach 
+                            @else
+                                @error('inicio') <span class="mt-1 error">{{'Error'}}</span> @enderror
+                                @error('fin') <span class="mt-1 error">{{'Error'}}</span> @enderror
+                            @endif
+                            
                         </tbody>
                     </table>
                 </div>
@@ -69,8 +77,8 @@
     @if(Session::has('success'))
         <script>
             Swal.fire({
-                icon: 'success',
-                title: 'Great!',
+                icon: 'error',
+                title: 'Error!',
                 text: '{{ Session::get("success") }}'
             })
         </script>
