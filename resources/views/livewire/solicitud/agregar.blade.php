@@ -85,7 +85,7 @@
                 text: '{{ Session::get("success") }}'
             })
         </script>
-    @endif
+        @endif
         <div class="col">
         </div>
     </div>
