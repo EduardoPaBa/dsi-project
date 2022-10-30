@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Solicitud;
 
 use Livewire\Component;
 use App\Models\Solicitud;
+use App\Models\Pedido;
 use App\Models\Departamento;
 use App\Models\Municipio;
 use Livewire\WithPagination;
@@ -15,6 +16,8 @@ class Listado extends Component
     public $solicitudes, $solicitud;
     public $nombre_departamento, $nombre_municipio;
     public $viendoDetalle;
+    public $pedido;
+    public $productos, $solicitudSelected, $ttoals;
     use WithPagination;
 
     protected $rules = [
@@ -25,11 +28,12 @@ class Listado extends Component
     public function mount() {
         $this->viendoDetalle = false;
         $this->valor_checkbox = [];
+        $this->productos=[];
     }
     public function render()
     {
         $this->solicitudes = Solicitud::all();
-        
+
         foreach($this->solicitudes as $solicitud) {
             if($solicitud->estado == "APROBADA") {
                 $this->valor_checkbox_estado[$solicitud->id] = true;
@@ -46,6 +50,20 @@ class Listado extends Component
 
         return view('livewire.solicitud.listado');
     }
+    public function getDatosProductos($solicitud_id)
+    {
+        $this->productos=[];
+        //$this->solicitudSelected=$solicitud_id;
+        $this->productos=Pedido::where('solicitud_id', $solicitud_id)->get();
+        //dd($this->productos);
+        $subtot=0;
+        $ttoal=0;
+        foreach ($this->productos as $value) {
+            $subtot=$value->producto->precio* $value->cantidad;
+            $ttoal=$ttoal+$subtot;
+        }
+        $this->ttoals=$ttoal;
+    }
 
     public function verDetalleSolicitud($solicitud_id) {
         $this->viendoDetalle = true;
@@ -53,19 +71,19 @@ class Listado extends Component
         $this->estado = $this->solicitud->estado;
         $this->departamento = Departamento::findOrFail($this->solicitud->departamento);
         $this->municipio = Municipio::findOrFail($this->solicitud->municipio);
-        
+
         $this->nombre_municipio = $this->municipio->MunName;
         $this->nombre_departamento = $this->departamento->DepName;*/
         $this->solicitud = Solicitud::findOrFail($solicitud_id);
         $this->estado = $this->solicitud->estado;
         $this->estado = $this->solicitud->entregado;
         $this->direccion = $this->solicitud->direccion;
-        
+
         $this->departamento = Departamento::findOrFail($this->solicitud->departamento);
         $this->nombre_departamento = $this->departamento->DepName;
         $this->municipio = Municipio::findOrFail($this->solicitud->municipio);
         $this->nombre_municipio = $this->municipio->MunName;
-        
+
         $this->punto_referencia = $this->solicitud->punto_referencia;
         $this->nombre_adicional = $this->solicitud->nombre_adicional;
         $this->apellido_adicional = $this->solicitud->apellido_adicional;

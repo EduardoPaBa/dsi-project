@@ -128,7 +128,7 @@ Route::middleware(['auth', 'isUser'])->group(function () {
     /* SOLICITUD */
     Route::view('/agregarSolicitud', 'solicitud.agregar')->name('addSolicitud');
     Route::view('/editarSolicitud', 'solicitud.editar')->name('editSolicitud');
-
+    Route::view('/miListadoSolicitudes', 'solicitud.client.listado')->name('miListSolicitud');
 
 
 
