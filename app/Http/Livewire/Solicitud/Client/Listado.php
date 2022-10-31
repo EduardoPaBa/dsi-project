@@ -7,12 +7,14 @@ use App\Models\Solicitud;
 use App\Models\Departamento;
 use App\Models\Municipio;
 use App\Models\Pedido;
+use App\Models\Producto;
+use Redirect;
 use Livewire\WithPagination;
 
 class Listado extends Component
 {
     public $usuario_id, $estado, $entregado, $direccion, $departamento = null, $municipio = null, $punto_referencia, $nombre_adicional, $apellido_adicional, $telefono;
-    public $solicitudes, $solicitud, $solicitud_id;
+    public $solicitudes, $solicitud, $solicitud_id, $pedido_id;
     public $nombre_departamento, $dep_id, $nombre_municipio, $mun_id;
     public $viendoDetalle = false, $editandoSolicitud = false;
     public $departamentos, $municipios;
@@ -139,6 +141,18 @@ class Listado extends Component
         Solicitud::find($this->solicitud_id)->delete();
         return session()->flash("success", "Solicitud eliminada correctamente");
     }
+
+    public function deleteP($pedido_id) {
+        //dd($pedido_id   );
+        $this->pedido_id = $pedido_id;
+        Pedido::find($this->pedido_id)->delete();
+        return view('livewire.solicitud.client.listado');
+
+        return session()->flash("success", "Solicitud eliminada correctamente");
+
+    }
+
+
 
     public function clear() {
         $this->usuario_id = '';
