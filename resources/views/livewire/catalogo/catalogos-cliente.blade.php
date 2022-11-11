@@ -233,8 +233,9 @@
 
                                         <div class="product_content clearfix">
                                             <div class="product_info">
-                                                <div class="product_name">{{ $value->name }}</div>
-                                                <div class="product_price">${{ $value->precio }}</div>
+                                                <div class="product_pa">{{ $value->name }}</div>
+                                                <div class="product_price">Precio: ${{ $value->precio }}</div>
+                                                <div class="product_price">Talla: {{ $value->talla }}</div>
                                             </div>
                                             <div class="product_options">
                                                 <div class="product_buy product_option"><img src="images/shopping-bag-white.svg" alt="" wire:click="add_cart({{$value}})"  ></div>
@@ -266,7 +267,7 @@
 
                     <div class="product_content clearfix">
                         <div class="product_info">
-                            <div class="product_name">{{ $value->name }}</div>
+                            <div class="product_pa">{{ $value->name }}</div>
                             <div class="product_price">${{ $value->precio }}</div>
                         </div>
                         <div class="product_options">
@@ -502,7 +503,7 @@
 
 .product_content
 {
-	margin-top: 7px;
+	margin-top: 20px;
 }
 
 .product_info
@@ -531,6 +532,12 @@
 	color: #8a8a8a;
 	margin-top: 0px;
 }
+.product_pa{
+        font-size: 20px;
+        font-weight: 600;
+        color: black;
+        
+    }
 
 .product_options
 {
@@ -539,16 +546,17 @@
 }
 .product_option
 {
-	width: 37px;
-	height: 37px;
+	width: 60px;
+	height: 60px;
 	cursor: pointer;
+    margin-top: 20px;
 }
 .product_buy
 {
 	display: inline-block;
 	background: #937c6f;
 	vertical-align: middle;
-	margin-right: 4px;
+	margin-right: 0px;
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
 	-ms-transition: all 200ms ease;
