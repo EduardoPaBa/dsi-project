@@ -15,6 +15,7 @@ class Promocion extends Model
         'producto_id',
         'descuento',
         'duracion_dias',
+        'image',
     ];
     public function producto()
     {

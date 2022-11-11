@@ -9,6 +9,11 @@
                     <ul>
                         <li><a href="#">home</a></li>
                         <li><a href="{{ route('listEmplea') }}">Gestionar Empleados</a></li>
+                        <li><a href="{{ route('reporteUsers') }}">Reporte Nuevos Usuarios</a></li>
+                        <li><a href="{{ route('reporteAcep') }}">Reporte Aceptación de Productos</a></li>
+                        <li><a href="{{ route('reporteUsuaProd') }}">Reporte Usuarios con más pedidos</a></li>
+                        <li><a href="{{ route('reporteCantPed') }}">Reporte Cantidad de pedidos entregados</a></li>
+
                         
                        
                     </ul>
@@ -27,15 +32,19 @@
                         <li><a href="{{ route('listCategor') }}">Categorías</a></li>
                         <li><a href="{{ route('listSubCate') }}">SubCategorias</a></li>
                         <li><a href="{{ route('productos') }}">Productos</a></li>
-                        <!--<li><a href="contact.html">contact</a></li>-->
+                        <li><a href="{{ route('listSolicitud') }}">Solicitudes</a></li>
+                        <li><a href="{{ route('listSoliEspecialAdmin') }}">Solicitudes Especiales</a></li>
+
+                       
                     </ul>
                 @endif
                 @if (Auth::user()->role_id == 4) 
                     <ul>
                         <li><a href="#">home</a></li>
                         <li><a href="{{ route('CatalogosCliente') }}">Catálogos</a></li>
+                        <li><a href="{{ route('miListSolicitud') }}">Solicitudes</a></li>
                         <li><a href="{{ route('listSolicitudEspecial') }}">Solicitud Especial</a></li>
-                        <li><a href="{{ route('listSolicitudEspecial') }}">Promociones</a></li>
+                        <li><a href="{{  route('promoClientes') }}">Promociones</a></li>
                         <li><a href="{{ route('Contacto') }}">Contáctanos</a></li>
                         
                     </ul>

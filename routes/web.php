@@ -130,6 +130,10 @@ Route::middleware(['auth', 'isUser'])->group(function () {
     Route::view('/editarSolicitud', 'solicitud.editar')->name('editSolicitud');
     Route::view('/miListadoSolicitudes', 'solicitud.client.listado')->name('miListSolicitud');
 
+    /* PROMOCIONES */
+    Route::view('/Promociones', 'promociones.promociones-clientes')->name('promoClientes');
+
+
 
 
 

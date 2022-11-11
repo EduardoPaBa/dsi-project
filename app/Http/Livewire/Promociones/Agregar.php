@@ -12,10 +12,15 @@ use Psy\CodeCleaner\FunctionContextPass;
 class Agregar extends Component
 {
     public $name,$borrarPromocion,$description,$producto_id,$descuento,$duracion_dias,$descuento_id,$promocion_id;
-    public $promociones;
+    public $promociones,$image;
     public $productos;
     public $modal = false;
-    //use WithFileUploads;
+    use WithFileUploads;
+
+    public function mount()
+    {
+        $this->idFile= rand();
+    }
    
     public function render()
     {
@@ -29,6 +34,8 @@ class Agregar extends Component
         'producto_id' => 'required',
         'descuento' => 'required',
         'duracion_dias' => 'required',
+        'image' => 'image',
+
     ];
 
 
@@ -73,6 +80,7 @@ class Agregar extends Component
     }
     public function guardar(){
         $this->validate();
+        $image = $this->image->store('promociones', 'public');
         $id=$this->promocion_id;
         $promocionNew = Promocion::updateOrCreate(['id'=> $id],
         [
@@ -81,10 +89,25 @@ class Agregar extends Component
             'producto_id' => $this->producto_id,
             'descuento' => $this->descuento,
             'duracion_dias' => $this->duracion_dias,
+            'image'=> $image,
         ]);
         
         $promocionNew->save();
+        $this->clear();
         return session()->flash("success", "This is success message");
     }
+
+    public function clear()
+    {
+        $this->name = '';
+        $this->description = '';
+        $this->producto_id = '';
+        $this->descuento = '';
+        $this->duracion_dias = '';
+        $this->image=null;
+        $this->reset(['image',]);
+        $this->idFile= rand();
+    }
+
     
 }

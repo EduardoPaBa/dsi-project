@@ -36,6 +36,7 @@
                                 <th scope="col">Producto</th>
                                 <th scope="col">Descuento</th>
                                 <th scope="col">Duracion de Promoción</th>
+                                <th scope="col">Imagen promocion</th>
                                 <th scope="col">Opciones</th>
 
                             </tr>
@@ -127,6 +128,13 @@
                                 <input type="number" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="duracion" wire:model="duracion_dias">
                                 @error('duracion_dias') <span class="mt-1 error">{{ $message }}</span> @enderror
 
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group mb-3">
+                                <label for="image" class="block text-gray-700 text-sm font-bold mb-2">Imagen Promociòn:</label>
+                                <input type="file" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="image" wire:model="image">
+                                @error('image') <span class="mt-1 error">{{ $message }}</span> @enderror
                             </div>
                         </div>
                     </form>

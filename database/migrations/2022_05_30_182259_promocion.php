@@ -16,11 +16,13 @@ class Promocion extends Migration
         //
         Schema::create('promociones', function (Blueprint $table) {
             $table->id();
+            
             $table->string('name');
             $table->string('description');
             $table->unsignedBigInteger('producto_id');
             $table->decimal('descuento');
             $table->integer('duracion_dias');
+            $table->string('image')->nullable();
             $table->foreign('producto_id')->references('id')->on('productos');
             $table->timestamps();
         });

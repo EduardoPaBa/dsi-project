@@ -124,20 +124,16 @@
                             {{ __('Solicitud Especial') }}
                         </x-jet-nav-link>
                     </div>
-
-                    {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-jet-nav-link href="{{ route('listSolicitudEspecial') }}" :active="request()->routeIs('listSolicitudEspecial')">
-                            {{ __('Promociones') }}
-                        </x-jet-nav-link>
-                    </div> --}}
-
-
-
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-jet-nav-link href="{{ route('Contacto') }}" :active="request()->routeIs('Contacto')">
                             {{ __('Contáctanos') }}
                         </x-jet-nav-link>
                     </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('promoClientes') }}" :active="request()->routeIs('promoClientes')">
+                            {{ __('Promocioness') }}
+                        </x-jet-nav-link>
+                    </div> 
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-jet-nav-link >
                             {{-- <i class="fa-solid fa-cart-shopping"></i>
