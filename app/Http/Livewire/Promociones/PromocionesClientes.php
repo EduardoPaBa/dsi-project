@@ -16,8 +16,8 @@ class PromocionesClientes extends Component
     public function render()
     {
         $this->productoFoto= ProductoFoto::all();
-        $this->productosAll=Producto::all();
-        $this->promocionesAll=Promocion::all();
+        $this->productos=Producto::all();
+        $this->promociones=Promocion::all();
         return view('livewire.promociones.promociones-clientes');
     }
 

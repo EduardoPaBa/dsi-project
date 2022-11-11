@@ -30,7 +30,7 @@
                         <thead>
                             <tr>
 
-                                <th scope="col">#</th>
+                                
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Descripción</th>
                                 <th scope="col">Producto</th>
@@ -45,16 +45,20 @@
                             @foreach ($promociones as $promocion)
                                 <tr>
 
-                                    <td class="border px-4 py-2">{{ $promocion->id}}</td>
+                                   
                                     <td class="border px-4 py-2">{{ $promocion->name}}</td>
                                     <td class="border px-4 py-2">{{ $promocion->description}}</td>
                                     <td class="border px-4 py-2">{{ $promocion->producto->name}}</td>
-                                    <td class="border px-4 py-2">{{ $promocion->descuento}}</td>
+                                    <td class="border px-4 py-2">{{ $promocion->descuento}}%</td>
                                     <td class="border px-4 py-2">{{ $promocion->duracion_dias}}</td>
-                                    
+                                    <td>
+                                        <img src="{{ asset( 'storage/'.$promocion->image ) }}" width="100" height="100"/>
+                                    </td>
                                     <td>
                                         <button wire:click="editar({{ $promocion->id }})" type="button" class="btn btn-primary" data-toggle="modal"
                                             data-target="#crear">Editar</button>
+                                        <br>
+                                        <br>    
                                         <button type="button" class="btn btn-danger" 
                                             data-toggle="modal"     
                                             data-target="#eliminarPromo"    

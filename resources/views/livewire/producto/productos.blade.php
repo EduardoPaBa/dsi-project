@@ -57,14 +57,14 @@
                                     <td class="border px-4 py-2">{{ $producto->description}}</td>
                                     <td class="border px-4 py-2">{{ $producto->subcategorias->name}}</td>
                                     <td class="border px-4 py-2">{{ $producto->talla}}</td>
-                                    <td class="border px-4 py-2">{{ $producto->precio}}</td>
+                                    <td class="border px-4 py-2">${{ $producto->precio}}</td>
                                     <td class="border px-4 py-2">{{ $producto->disponibilidad}}</td>
                                     <td class="border px-4 py-2">{{ $producto->color}}</td>
                                     <td class="border px-4 py-2">
 
                                         @foreach ($productoFoto as $item)
                                             @if ($item->producto_id == $producto->id)
-                                                <img src="{{ asset( 'storage/'.$item->image ) }}" width="100" height="100"/> <br>
+                                                <img src="{{ asset( 'storage/'.$item->image ) }}" width="300" height="300"/> <br>
                                             @endif
                                         @endforeach
 
@@ -73,6 +73,8 @@
                                     <td>
                                         <button wire:click="editar({{ $producto->id }})" type="button" class="btn btn-primary" data-toggle="modal"
                                             data-target="#crearEditar">Editar</button>
+                                        <br>
+                                        <br>
                                         <button wire:click="borrar({{ $producto->id }})" type="button" class="btn btn-danger" data-toggle="modal"
                                             data-target="#exampleModal2">Borrar</button>
                                     </td>
