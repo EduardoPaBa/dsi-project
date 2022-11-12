@@ -54,7 +54,7 @@
                     </div>
 
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-jet-nav-link href="{{ route('reporteCantPed') }}" :active="request()->routeIs('reporteUsuaProd')">
+                        <x-jet-nav-link href="{{ route('reporteCantPed') }}" :active="request()->routeIs('reporteCantPed')">
                             {{ __('Reporte Cantidad de pedidos entregados') }}
                         </x-jet-nav-link>
                     </div>

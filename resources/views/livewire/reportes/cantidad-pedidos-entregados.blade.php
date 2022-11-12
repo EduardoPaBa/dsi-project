@@ -13,7 +13,6 @@
                             <thead>
                                 <th>Cliente</th>
                                 <th>Email</th>
-                                <th>Entregado</th>
                                 <th>Departamento</th>
                                 <th>Municipio</th>
                             </thead>
@@ -22,19 +21,11 @@
                                 <tr>
                                     <td>{{ $pedido->name }}</td>
                                     <td>{{ $pedido->email }}</td>
-                                    <td>SI</td>
                                     <td>{{ $pedido->DepName }}</td>
                                     <td>{{ $pedido->MunName }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td colspan="3"></td>
-                                    <td class="font-weight-bold text-center h5">Total</td>
-                                    <td class="font-weight-bold text-center h5">{{ $cantidad }}</td>
-                                </tr>
-                            </tfoot>
                         </table>
                     </div>
                 </div>
