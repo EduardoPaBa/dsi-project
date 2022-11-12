@@ -19,13 +19,15 @@ class UsuariosMasProductos extends Component
 
         $normales = DB::table('users')
                     ->join('solicitudes', 'users.id', '=', 'solicitudes.usuario_id')
-                    ->select('users.name', 'users.lastname', 'users.email', DB::raw('count(solicitudes.usuario_id) as cantidad'))
+                    ->select('users.name', 'users.lastname', 'users.role_id', 'users.email', DB::raw('count(solicitudes.usuario_id) as cantidad'))
                     ->groupBy('solicitudes.usuario_id')
+                    ->having('users.role_id', 4)
                     ->get();
         $especiales = DB::table('users')
                     ->join('solicitudespeciales', 'users.id', '=', 'solicitudespeciales.usuario_id')
-                    ->select('users.name', 'users.lastname', 'users.email', DB::raw('count(solicitudespeciales.usuario_id) as cantidad'))
+                    ->select('users.name', 'users.lastname', 'users.role_id', 'users.email', DB::raw('count(solicitudespeciales.usuario_id) as cantidad'))
                     ->groupBy('solicitudespeciales.usuario_id')
+                    ->having('users.role_id', 4)
                     ->get();
 
         $this->users_solicitud = $normales;
