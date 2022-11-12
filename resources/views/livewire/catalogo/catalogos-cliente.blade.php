@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" href="styles/categories.css">
     <link rel="stylesheet" type="text/css" href="styles/categories_responsive.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css">
 
     <br>
     <div class="page-title-wrapper" aria-label="Catalogos">
@@ -233,15 +235,17 @@
 
                                         <div class="product_content clearfix">
                                             <div class="product_info">
-                                                <div class="product_name">{{ $value->name }}</div>
-                                                <div class="product_price">${{ $value->precio }}</div>
+                                                <div class="product_pa">{{ $value->name }}</div>
+                                                <div class="product_price">Precio: ${{ $value->precio }}</div>
+                                                <div class="product_price">Talla: {{ $value->talla }}</div>
+                                                <div class="product_buy product_option"><img src="images/cart.svg" alt="" wire:click="add_cart({{$value}})"  ></div>
+                                                <div class="product_fav product_option"><img src="images/star.svg" alt="" data-toggle="modal"
+                                                    data-target="#ratingModal" wire:click="show({{ $value->id }})"></div>
+                                                <div class="product_op product_ops"><img src="images/plus-box-outline.svg" alt="" data-toggle="modal"
+                                                data-target="#optionModal" wire:click="show({{ $value->id }})"></div>
+                                        
                                             </div>
-                                            <div class="product_options">
-                                                <div class="product_buy product_option"><img src="images/shopping-bag-white.svg" alt="" wire:click="add_cart({{$value}})"  ></div>
-                                                <!--<div class="product_fav product_option">
-                                                     <a class="nuevo" href="{{route('Expansion')}}" wire:click="expandir({{$value}})"><button class="nuevo" type="button" >+</a></button>
-                                                </div>-->
-                                            </div>
+                                           
                                         </div>
                                 </div>
 
@@ -266,7 +270,7 @@
 
                     <div class="product_content clearfix">
                         <div class="product_info">
-                            <div class="product_name">{{ $value->name }}</div>
+                            <div class="product_pa">{{ $value->name }}</div>
                             <div class="product_price">${{ $value->precio }}</div>
                         </div>
                         <div class="product_options">
@@ -285,6 +289,129 @@
 
 
     <br>
+    <div wire:ignore.self class="modal fade" id="ratingModal"  tabindex="-1" role="dialog"
+        aria-labelledby="ratingModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ratingModalLabel">Calificación de Producto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="nombre_puntu" class="col-form-label">Nombre:</label>
+                            <input type="text" class="form-control" id="nombre_puntu" wire:model="pname" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="descripcion_puntu" class="col-form-label">Descripcion:</label>
+                            <input type="text" class="form-control" id="descripcion_puntu" wire:model="pdes" disabled>
+                        </div>
+                       
+                    </form>
+                    @if($hideForm != true)
+                                <form wire:submit.prevent="rate()">
+                                    <div class="block max-w-3xl px-1 py-2 mx-auto">
+                                        <label for="descripcion" class="col-form-label">Puntuación</label>
+                                        <div class="flex space-x-1 rating">
+                                            <label for="star1">
+                                                <input hidden wire:model="rating" type="radio" id="star1" name="rating" value="1" />
+                                                <svg class="cursor-pointer block w-8 h-8 @if($rating >= 1 ) text-indigo-500 @else text-grey @endif " fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                            </label>
+                                            <label for="star2">
+                                                <input hidden wire:model="rating" type="radio" id="star2" name="rating" value="2" />
+                                                <svg class="cursor-pointer block w-8 h-8 @if($rating >= 2 ) text-indigo-500 @else text-grey @endif " fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                            </label>
+                                            <label for="star3">
+                                                <input hidden wire:model="rating" type="radio" id="star3" name="rating" value="3" />
+                                                <svg class="cursor-pointer block w-8 h-8 @if($rating >= 3 ) text-indigo-500 @else text-grey @endif " fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                            </label>
+                                            <label for="star4">
+                                                <input hidden wire:model="rating" type="radio" id="star4" name="rating" value="4" />
+                                                <svg class="cursor-pointer block w-8 h-8 @if($rating >= 4 ) text-indigo-500 @else text-grey @endif " fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                            </label>
+                                            <label for="star5">
+                                                <input hidden wire:model="rating" type="radio" id="star5" name="rating" value="5" />
+                                                <svg class="cursor-pointer block w-8 h-8 @if($rating >= 5 ) text-indigo-500 @else text-grey @endif " fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                                            </label>
+                                        </div>
+                                        <div class="my-2">
+                                            @error('comment')
+                                                <p class="mt-1 text-red-500">{{ $message }}</p>
+                                            @enderror
+                                            <label for="comentario" class="col-form-label">Deja tu comentario</label>
+                                            <br>
+                                            <br>
+                                    
+                                            <textarea wire:model.lazy="comment" name="description" class="block w-full px-4 py-3 border border-2 rounded-lg focus:border-blue-500 focus:outline-none" placeholder="Comentario.."></textarea>
+                                          
+                                        </div>
+                                    </div>
+                                    <div class="block">
+                                        <button type="submit" class="w-full px-3 py-4 font-medium text-black  rounded-lg" style="color:black ; background-color:yellow ;" ><b>Calificar</b></button>
+                                      
+                                    </div>
+                                </form>
+                            @endif
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div wire:ignore.self class="modal fade" id="optionModal"  tabindex="-1" role="dialog"
+        aria-labelledby="optionModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="optionModalLabel">Detalle de Producto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Nombre:</label>
+                            <input type="text" class="form-control" id="recipient-name" wire:model="pname">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Descripcion:</label>
+                            <input type="text" class="form-control" id="recipient-name" wire:model="pdes">
+                        </div>
+                       
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    @if(Session::has('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Felicidades!',
+                text: '{{ Session::get("success") }}'
+            })
+        </script>
+    @endif
+    @if(Session::has('great'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Felicidades!',
+                text: '{{ Session::get("great") }}'
+            })
+        </script>
+    @endif
 
 </div>
 <style>
@@ -502,7 +629,7 @@
 
 .product_content
 {
-	margin-top: 7px;
+	margin-top: 20px;
 }
 
 .product_info
@@ -531,6 +658,12 @@
 	color: #8a8a8a;
 	margin-top: 0px;
 }
+.product_pa{
+        font-size: 20px;
+        font-weight: 600;
+        color: black;
+        
+    }
 
 .product_options
 {
@@ -538,22 +671,39 @@
 	transform: translateY(11px);
 }
 .product_option
-{
-	width: 37px;
-	height: 37px;
+{   
+    
+	width: 60px;
+	height: 60px;
 	cursor: pointer;
+    margin-top: 20px;
+    
+    margin-right: 50px;
+    
+}
+
+.product_ops
+{   
+    
+	width: 60px;
+	height: 60px;
+	cursor: pointer;
+    margin-top: 20px;
+    margin-left: 0px;
+    
 }
 .product_buy
 {
 	display: inline-block;
 	background: #937c6f;
 	vertical-align: middle;
-	margin-right: 4px;
+	
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
 	-ms-transition: all 200ms ease;
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
+    margin-right: 85px;
 }
 
 .product_buy img
@@ -571,7 +721,7 @@
 }
 .product_buy:hover
 {
-	background: #2f2f2f;
+	background: red;
 }
 .product_fav
 {
@@ -580,7 +730,7 @@
 	font-size: 14px;
 	font-weight: 600;
 	color: #232323;
-	background: #e0e3e4;
+	background: #937c6f;
 	line-height: 37px;
 	text-align: center;
 	-webkit-transition: all 200ms ease;
@@ -588,19 +738,79 @@
 	-ms-transition: all 200ms ease;
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
+    
+    
+}
+
+.product_fav img
+{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	width: 23px;
+	height: 23px;
+    
+    
 }
 .product_fav:hover
 {
-	color: #FFFFFF;
-	background: #232323;
+	color: yellow;
+	background: yellow;
 }
+
+.product_op{
+
+    display: inline-block;
+	vertical-align: middle;
+	font-size: 14px;
+	font-weight: 600;
+	color: #232323;
+	background: #937c6f;
+	line-height: 37px;
+	text-align: center;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+    margin-left: 35px;
+}
+
+.product_op:hover
+{
+	color: yellowgreen;
+	background: yellowgreen;
+}
+
+.product_op img
+{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	width: 23px;
+	height: 23px;
+    
+    
+}
+
+
 .nuevo{
 	display: inline-block;
 	vertical-align: middle;
 	font-size: 14px;
 	font-weight: 600;
 	color: #232323;
-	background: #e0e3e4;
+	background: #937c6f;
 	line-height: 37px;
 	text-align: center;
 	-webkit-transition: all 200ms ease;
@@ -614,6 +824,10 @@
 	color: #FFFFFF;
 	background: #232323;
 }
+
+.form-control {
+        color: black;
+    }
 
 
 

@@ -26,4 +26,9 @@ class Producto extends Model
     {
         return $this->hasMany(Promocion::class);
     }
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
 }

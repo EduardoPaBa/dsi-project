@@ -19,15 +19,15 @@
                                     @endforeach
                                     <div class="product_content clearfix">
                                         <div class="product_info">
-                                            <div class="product_name"><b>{{ $prom->producto->name }}</b></div>
+                                            <div class="product_pa"><b>{{ $prom->producto->name }}</b></div>
                                             <div class="product_name"><b>Promocion: {{ $prom->name }}</b></div>
                                             <div class="product_name"><b>Duracion: {{ $prom->duracion_dias }} dias</b></div>
                                             <div class="product_name"><b>Descuento: {{ $prom->descuento }}%</b></div>
                                         </div>
                                         
                                         <div class="product_info">
-                                            <div class="product_price">Precio: ${{ $prom->producto->precio }}</div>
-                                            <div class="product_p">Nuevo Precio: $</div>
+                                            <div class="product_price">Precio: ${{ $prom->producto->precio}}</div>
+                                            <div class="product_p">Nuevo Precio: ${{ $prom->producto->precio - $prom->descuento/100 * $prom->producto->precio}}</div>
                                             
                                         </div>
                                         <div class="product_options">
@@ -305,6 +305,13 @@
         font-size: 24px;
         font-weight: 600;
         color: black;
+    }
+
+    .product_pa{
+        font-size: 20px;
+        font-weight: 600;
+        color: black;
+        text-align: center;
     }
 
     .product_options
