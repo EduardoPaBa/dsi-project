@@ -12,6 +12,7 @@ use App\Models\Producto;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
 use App\Models\ProductoFoto;
+use App\Models\Rating;
 
 
 class CatalogosCliente extends Component
@@ -22,6 +23,7 @@ class CatalogosCliente extends Component
             //variables para el conjunto a seleccionar
             $categorias, $subcategorias, $productos,$productoFoto, $image,
             $CatalogoSele,$CategoriaSele,$SubCategoriaSele, $selectedProd, $descrpition,$disponinilidad,$precio,$talla,$color;
+    public $product, $pname,$pdes,$rating,$comment,$currentId, $hideForm;        
     use WithPagination;
     protected $rules = [
         'id'=>'id',
@@ -169,5 +171,77 @@ class CatalogosCliente extends Component
 
 
     }
+
+    public function show($id)
+    {
+    $this->product = \App\Models\Producto::findOrFail($id);
+    $this->pname = \App\Models\Producto::findOrFail($id)->name;
+    $this->pdes = \App\Models\Producto::findOrFail($id)->description;
+
+    }
+
+    public function rate()
+    {
+        $rating = Rating::where('usuario_id', auth()->user()->id)->where('producto_id', $this->product->id)->first();
+        $this->validate([
+
+            'rating' => ['required', 'in:1,2,3,4,5'],
+            'comment' => 'required',
+        ]);
+        if (!empty($rating)) {
+            $rating->usuario_id = auth()->user()->id;
+            $rating->producto_id = $this->product->id;
+            $rating->rating = $this->rating;
+            $rating->comment = $this->comment;
+            $rating->status = 1;
+            try {
+                $rating->update();
+            } catch (\Throwable $th) {
+                throw $th;
+            }
+            $this->clear_rate();
+            return session()->flash('success', 'Se actualizo correctamente la puntuación');
+        } else {
+            $rating = new Rating;
+            $rating->usuario_id = auth()->user()->id;
+            $rating->producto_id = $this->product->id;
+            $rating->rating = $this->rating;
+            $rating->comment = $this->comment;
+            $rating->status = 1;
+            try {
+                $rating->save();
+                $this->clear_rate();
+                return session()->flash('great', 'Se guardo correctamente la puntuación');
+            } catch (\Throwable $th) {
+                throw $th;
+            }
+            $this->hideForm = true;
+        }
+
+        
+    }
+
+    public function delete($id)
+    {
+        $rating = Rating::where('id', $id)->first();
+        if ($rating && ($rating->usuario_id == auth()->user()->id)) {
+            $rating->delete();
+        }
+        if ($this->currentId) {
+            $this->currentId = '';
+            $this->rating  = '';
+            $this->comment = '';
+        }
+
+
+    }
+
+    public function clear_rate(){
+
+        $this->rating  = '';
+        $this->comment = '';
+    }
+
+
 
 }
