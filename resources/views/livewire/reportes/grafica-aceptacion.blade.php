@@ -6,7 +6,11 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                        
+                        <div class="col">
+
+                            <a href="{{ route('reporteAcep') }}"><button type="button" class="btn btn-success"style="float: right;">Regresar</button></a>
+    
+                        </div>
                     </div>
                     <br>
 
@@ -22,14 +26,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($calificaciones as  $rate)
-                                <tr>
-                                   
-                                 
-                                    <td class="border px-4 py-2">{{ $rate->nombreProd}}</td>
-                                    <td class="border px-4 py-2">{{ $rate->cali}}</td>
+                            @foreach($productos as  $prod)
+                                 @foreach($calificaciones as  $rate)
+                                    <tr>
                                     
-                                </tr>
+                                        @if($rate->producto_id == $prod->id)
+                                            <td class="border px-4 py-2">{{ $prod->name}}</td>
+                                      
+                                            <td class="border px-4 py-2">{{($rate->rating)}}</td>
+                                        @endif
+                                    </tr>
+                                @endforeach   
                             @endforeach
                         </tbody>
                     </table>
