@@ -59,6 +59,12 @@
                         </x-jet-nav-link>
                     </div>
 
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('reporteSoliAcpDen') }}" :active="request()->routeIs('reporteSoliAcpDen')">
+                            {{ __('Reporte Solicitudes Aceptadas/Denegadas') }}
+                        </x-jet-nav-link>
+                    </div>
+
                 @endif
 
                 <!-- Navigation Links ADMIN O SUPERVISOR-->
@@ -133,7 +139,7 @@
                         <x-jet-nav-link href="{{ route('promoClientes') }}" :active="request()->routeIs('promoClientes')">
                             {{ __('Promocioness') }}
                         </x-jet-nav-link>
-                    </div> 
+                    </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-jet-nav-link >
                             {{-- <i class="fa-solid fa-cart-shopping"></i>
