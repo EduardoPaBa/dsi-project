@@ -10,6 +10,7 @@ use Livewire\WithPagination;
 
 class AceptacionProductos extends Component
 {
+    
     protected $rules = [
         
         'usuario_id'=>'required',
@@ -22,8 +23,10 @@ class AceptacionProductos extends Component
 
     public function render()
     {
+        $this->usuarios= User::all();
         $this->calificaciones= Rating::all();
         return view('livewire.reportes.aceptacion-productos',[
+       
             
         ]);
     }
