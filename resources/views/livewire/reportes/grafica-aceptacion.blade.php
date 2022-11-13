@@ -13,7 +13,7 @@
                         </div>
                     </div>
                     <br>
-
+                  
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -26,18 +26,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($productos as  $prod)
-                                 @foreach($calificaciones as  $rate)
+                                @for ($i = 0; $i < count($notas); $i++)
                                     <tr>
-                                    
-                                        @if($rate->producto_id == $prod->id)
-                                            <td class="border px-4 py-2">{{ $prod->name}}</td>
+                                        <td class="border px-4 py-2">{{$notas[$i]->name}}</td>
                                       
-                                            <td class="border px-4 py-2">{{($rate->rating)}}</td>
-                                        @endif
+                                         <td class="border px-4 py-2">{{$notas[$i]->rating}}</td>   
                                     </tr>
-                                @endforeach   
-                            @endforeach
+                                @endfor
+                               
                         </tbody>
                     </table>
                    

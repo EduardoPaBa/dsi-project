@@ -7,7 +7,8 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col mb-2">
-                            <input type="text" class="form-control" wire:model="search">
+                            <label for="fecha">Ingrese una fecha en el formato que se muestra abajo</label>
+                            <input type="text" class="form-control" placeholder="2022-08" wire:model="search">
                         </div>
                        
                     </div>
