@@ -242,7 +242,7 @@
                                                 <div class="product_fav product_option"><img src="images/star.svg" alt="" data-toggle="modal"
                                                     data-target="#ratingModal" wire:click="show({{ $value->id }})"></div>
                                                 <div class="product_op product_ops"><img src="images/plus-box-outline.svg" alt="" data-toggle="modal"
-                                                data-target="#optionModal" wire:click="show({{ $value->id }})"></div>
+                                                data-target="#detalleModal" wire:click="detalle({{ $value->id }})"></div>
                                         
                                             </div>
                                            
@@ -364,7 +364,7 @@
         </div>
     </div>
 
-    <div wire:ignore.self class="modal fade" id="optionModal"  tabindex="-1" role="dialog"
+    <div wire:ignore.self class="modal fade" id="detalleModal"  tabindex="-1" role="dialog"
         aria-labelledby="optionModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -378,11 +378,23 @@
                     <form>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Nombre:</label>
-                            <input type="text" class="form-control" id="recipient-name" wire:model="pname">
+                            <input type="text" class="form-control" id="recipient-name" wire:model="pname" disabled>
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Descripcion:</label>
-                            <input type="text" class="form-control" id="recipient-name" wire:model="pdes">
+                            <input type="text" class="form-control" id="recipient-name" wire:model="pdes" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Talla:</label>
+                            <input type="text" class="form-control" id="recipient-name" wire:model="ptalla" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Color:</label>
+                            <input type="text" class="form-control" id="recipient-name" wire:model="pcolor" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Precio:</label>
+                            <input type="text" class="form-control" id="recipient-name" wire:model="pprecio" disabled>
                         </div>
                        
                     </form>
