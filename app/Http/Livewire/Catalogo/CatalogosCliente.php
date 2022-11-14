@@ -23,7 +23,7 @@ class CatalogosCliente extends Component
             //variables para el conjunto a seleccionar
             $categorias, $subcategorias, $productos,$productoFoto, $image,
             $CatalogoSele,$CategoriaSele,$SubCategoriaSele, $selectedProd, $descrpition,$disponinilidad,$precio,$talla,$color;
-    public $product, $pname,$pdes,$rating,$comment,$currentId, $hideForm;        
+    public $product, $pname,$pdes,$ptalla,$pcolor,$pprecio,$rating,$comment,$currentId, $hideForm;        
     use WithPagination;
     protected $rules = [
         'id'=>'id',
@@ -159,24 +159,26 @@ class CatalogosCliente extends Component
         $this->subcategorias= SubCategoria::where('categoria_id', $this->categoria)->get();
     }
 
-    public function expandir($value){
-
-        $this->selectedProd=Producto::find($value);
-        $this->name = Producto::find($value)->name;
-        $this->description = Producto::find($value)->description;
-        $this->precio = Producto::find($value)->precio;
-        $this->disponibilidad = Producto::find($value)->disponibilidad;
-        $this->color = Producto::find($value)->color;
-        $this->talla = Producto::find($value)->talla;
-
-
-    }
+    
 
     public function show($id)
     {
     $this->product = \App\Models\Producto::findOrFail($id);
     $this->pname = \App\Models\Producto::findOrFail($id)->name;
     $this->pdes = \App\Models\Producto::findOrFail($id)->description;
+
+    }
+
+    public function detalle($id)
+    {
+    $this->product = \App\Models\Producto::findOrFail($id);
+    $this->pname = \App\Models\Producto::findOrFail($id)->name;
+    $this->pdes = \App\Models\Producto::findOrFail($id)->description;
+    $this->ptalla = \App\Models\Producto::findOrFail($id)->talla;
+    $this->pcolor = \App\Models\Producto::findOrFail($id)->color;
+    $this->pprecio = \App\Models\Producto::findOrFail($id)->precio;
+
+
 
     }
 
