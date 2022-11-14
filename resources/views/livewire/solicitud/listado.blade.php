@@ -65,6 +65,16 @@
                 <form>
                     <div class="form-group">
                         <div class="form-group mb-3">
+                            <label>Nombre Usuario:</label>
+                            {{auth()->user()->name}} <br>
+                            <label>Correo:</label>
+                            {{auth()->user()->email}}
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-group mb-3">
                             <label>Dirección:</label>
                             <input type="text" class="form-control" value="{{ $direccion }}" disabled>
                         </div>
