@@ -13,7 +13,7 @@ class Listado extends Component
 {
     public $valor_checkbox_estado, $valor_checkbox_entregado;
     public $usuario_id, $estado, $entregado, $direccion, $departamento = null, $municipio = null, $punto_referencia, $nombre_adicional, $apellido_adicional, $telefono;
-    public $solicitudes, $solicitud;
+    public $solicitudes, $solicitud, $usuuu, $usuCo;
     public $nombre_departamento, $nombre_municipio;
     public $viendoDetalle;
     public $pedido;
@@ -75,6 +75,8 @@ class Listado extends Component
         $this->nombre_municipio = $this->municipio->MunName;
         $this->nombre_departamento = $this->departamento->DepName;*/
         $this->solicitud = Solicitud::findOrFail($solicitud_id);
+        $this->usuuu = $this->solicitud->usuario->name;
+        $this->usuCo = $this->solicitud->usuario->email;
         $this->estado = $this->solicitud->estado;
         $this->estado = $this->solicitud->entregado;
         $this->direccion = $this->solicitud->direccion;

@@ -66,9 +66,9 @@
                     <div class="form-group">
                         <div class="form-group mb-3">
                             <label>Nombre Usuario:</label>
-                            {{$solicitud->usuario->name}} <br>
+                            {{$usuuu}} <br>
                             <label>Correo:</label>
-                            {{$solicitud->usuario->email}}
+                            {{$usuCo}}
 
                         </div>
                     </div>
