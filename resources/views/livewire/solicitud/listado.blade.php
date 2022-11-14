@@ -66,9 +66,9 @@
                     <div class="form-group">
                         <div class="form-group mb-3">
                             <label>Nombre Usuario:</label>
-                            {{auth()->user()->name}} <br>
+                            {{$solicitud->usuario->name}} <br>
                             <label>Correo:</label>
-                            {{auth()->user()->email}}
+                            {{$solicitud->usuario->email}}
 
                         </div>
                     </div>
